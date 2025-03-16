@@ -1,27 +1,31 @@
-principal : main.o ArticuloRevista.o DTFecha.o DTRefer.o Investigador.o Libro.o PaginaWeb.o Publicacion.o
-	@gcc main.o ArticuloRevista.o DTFecha.o DTRefer.o Investigador.o Libro.o PaginaWeb.o Publicacion.o -o principal
+CXX = g++
 
-main.o : main.cpp
-	@gcc -c main.cpp
+CXXFLAGS = -Wall -Wextra -std=c++11
 
-ArticuloRevista.o : ArticuloRevista.cpp
-	@gcc -c ArticuloRevista.cpp
+INCLUDE_DIR = include
+SRC_DIR = src
+OBJ_DIR = obj
+BIN_DIR = ejecutables
 
-DTFecha.o : DTFecha.cpp	
-	@gcc -c DTFecha.cpp	
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 
-DTRefer.o : DTRefer.cpp
-	@gcc -c DTRefer.cpp
+OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
-Investigador.o : Investigador.cpp
-	@gcc -c Investigador.cpp
+TARGET = $(BIN_DIR)/main
 
-Libro.o : Libro.cpp
-	@gcc -c Libro.cpp
+all: $(TARGET)
 
-PaginaWeb.o : PaginaWeb.cpp
-	@gcc -c PaginaWeb.cpp
+$(TARGET): $(OBJS) | $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
 
-Publicacion.o : Publicacion.cpp
-	@gcc -c Publicacion.cpp
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(wildcard $(INCLUDE_DIR)/*.h) | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+$(OBJ_DIR):
+	mkdir -p $@
+
+$(BIN_DIR):
+	mkdir -p $@
+
+clean:
+	rm -f $(OBJS) $(TARGET)
