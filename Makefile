@@ -11,7 +11,7 @@ SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 
 OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
-TARGET = $(BIN_DIR)/main
+TARGET = $(BIN_DIR)/principal
 
 ejec: $(TARGET)
 
