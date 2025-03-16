@@ -1,20 +1,25 @@
-TARGET = principal
-CC = g++
+TARGET = $(BIN_DIR)/principal
+OBJ_DIR = ../obj
+BIN_DIR = ../bin
+INC_DIR = ../include
+OBJS =  $(OBJ_DIR) main.o \
+		$(OBJ_DIR) ArticuloRevista.o \
+		$(OBJ_DIR) DTFecha.o DTRefer.o \
+  		$(OBJ_DIR) Investigador.o \
+		$(OBJ_DIR) Libro.o \
+		$(OBJ_DIR) PaginaWeb.o \
+		$(OBJ_DIR) Publicacion.o
+CFLAGS = -g -Wall -I$(INC_DIR)
 
-$(TARGET) : main.o ArticuloRevista.o DTFecha.o DTRefer.o Investigador.o Libro.o PaginaWeb.o Publicacion.o
-	@g++ main.o ArticuloRevista.o DTFecha.o DTRefer.o Investigador.o Libro.o PaginaWeb.o Publicacion.o -o principal
 
-main.o : main.cpp
-	@g++ -c main.cpp
+$(TARGET) : $(OBJS)
+	mkdir -p $(BIN_DIR)
+	@g++ $(CFLAGS) $(OBJS) -o $(TARGET)
 
-ArticuloRevista.o : ArticuloRevista.cpp
-DTFecha.o : DTFecha.cpp	
-DTRefer.o : DTRefer.cpp
-Investigador.o : Investigador.cpp
-Libro.o : Libro.cpp
-PaginaWeb.o : PaginaWeb.cpp
-Publicacion.o : Publicacion.cpp
+$(OBJ_DIR)/%.o : %.cpp
+	mkdir -p $(OBJ_DIR)
+	@g++ -c $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
 clean:
-	rm -f *.o principal
+	@rm -r $(OBJ_DIR) $(BIN_DIR)
