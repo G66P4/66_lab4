@@ -1,25 +1,23 @@
-TARGET = $(BIN_DIR)/principal
-OBJ_DIR = ../obj
-BIN_DIR = ../bin
-INC_DIR = ../include
-OBJS =  $(OBJ_DIR) main.o \
-		$(OBJ_DIR) ArticuloRevista.o \
-		$(OBJ_DIR) DTFecha.o DTRefer.o \
-  		$(OBJ_DIR) Investigador.o \
-		$(OBJ_DIR) Libro.o \
-		$(OBJ_DIR) PaginaWeb.o \
-		$(OBJ_DIR) Publicacion.o
-CFLAGS = -g -Wall -I$(INC_DIR)
+CC = g++
 
+CCFLAGS = -Wall -Wextra -std=c++11
 
-$(TARGET) : $(OBJS)
-	mkdir -p $(BIN_DIR)
-	@g++ $(CFLAGS) $(OBJS) -o $(TARGET)
+INCLUDE_DIR = include
+SRC_DIR = src
 
-$(OBJ_DIR)/%.o : %.cpp
-	mkdir -p $(OBJ_DIR)
-	@g++ -c $(CFLAGS) -c $< -o $@
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 
-.PHONY: clean
+OBJS = $(SRCS:.cpp=.o)
+
+TARGET = main
+
+ejec: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(CCFLAGS) -o $@ $^
+
+%.o: %.cpp $(INCLUDE_DIR)/*.h
+	$(CC) $(CCFLAGS) -c $< -o $@
+
 clean:
-	@rm -r $(OBJ_DIR) $(BIN_DIR)
+	rm -f $(OBJS) $(TARGET)
