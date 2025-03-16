@@ -5,7 +5,7 @@ CXXFLAGS = -Wall -Wextra -std=c++11
 INCLUDE_DIR = include
 SRC_DIR = src
 OBJ_DIR = obj
-BIN_DIR = bin
+BIN_DIR = ejecutables
 
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 
