@@ -1,6 +1,6 @@
-CC = g++
+CXX = g++
 
-CCFLAGS = -Wall -Wextra -std=c++11
+CXXFLAGS = -Wall -Wextra -std=c++11
 
 INCLUDE_DIR = include
 SRC_DIR = src
@@ -16,16 +16,16 @@ TARGET = $(BIN_DIR)/main
 ejec: $(TARGET)
 
 $(TARGET): $(OBJS) | $(BIN_DIR)
-	$(CC) $(CCFLAGS) -o $@ $^
+	$(CC) $(CCFLAGS) -o $@ $<
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(INCLUDE_DIR)/*.h | $(OBJ_DIR)
 	$(CC) $(CCFLAGS) -c $< -o $@
 
 $(OBJ_DIR): 
-	mkdir -p $(OBJ_DIR)
+	mkdir -p $@
 
 $(BIN_DIR):
-	mkdir -p $(BIN_DIR)
+	mkdir -p $@
 
 clean:
 	rm -f $(OBJS) $(TARGET)
