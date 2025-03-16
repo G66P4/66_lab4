@@ -18,7 +18,7 @@ ejec: $(TARGET)
 $(TARGET): $(OBJS) | $(BIN_DIR)
 	$(CC) $(CCFLAGS) -o $@ $^
 
-%.o: %.cpp $(INCLUDE_DIR)/*.h | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(INCLUDE_DIR)/*.h | $(OBJ_DIR)
 	$(CC) $(CCFLAGS) -c $< -o $@
 
 $(OBJ_DIR): 
