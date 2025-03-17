@@ -1,9 +1,9 @@
-class Fecha {
+class DTFecha {
     private:
         int dia, mes, anio;
     public:
-    Fecha(int,int,int);
-    ~Fecha();
+    DTFecha(int,int,int);
+    ~DTFecha();
     int get_dia();
     int get_mes();
     int get_anio();

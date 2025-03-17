@@ -1,24 +1,24 @@
 #include <iostream>
-#include "DTFecha.h"
+#include "../include/DTFecha.h"
 //constructor
-Fecha::Fecha(int d, int m, int a) {
+DTFecha::DTFecha(int d, int m, int a) {
     this->dia = d;
     this->mes = m;
     this->anio = a;
 };
 //destructor
-Fecha::~Fecha() {
+DTFecha::~DTFecha() {
 };
 //geters
-int Fecha::get_dia() {
+int DTFecha::get_dia() {
     return this->dia;
 };
 
-int Fecha::get_mes() {
+int DTFecha::get_mes() {
     return this->mes;
 };
 
-int Fecha::get_anio() {
+int DTFecha::get_anio() {
     return this->anio;
 };
 
