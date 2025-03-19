@@ -47,9 +47,9 @@ DTFecha Publicacion::getFecha() const {
 DTRefer Publicacion::getDT() {
     std::vector<std::string> autores;
 
-    for (auto autor : dtRefer.autores) { 
-        autores.push_back(autor.get_Nombre());  // cambiar get_nombre en caso de que sea otro el nombre del getter en investigador
+    for (std::set<Investigador>::iterator it = dtRefer.autores.begin(); it != dtRefer.autores.end(); ++it) {
+        autores.push_back(it->get_Nombre()); 
     }
 
-    return DTRefer(DOI, titulo, fecha, autores); 
+    return DTRefer(DOI, titulo, fecha, autores);
 }
