@@ -1,6 +1,10 @@
 #include <iostream>
 #include "../include/DTFecha.h"
 //constructor
+DTFecha::DTFecha(){
+
+};
+
 DTFecha::DTFecha(int d, int m, int a) {
     this->dia = d;
     this->mes = m;

@@ -1,6 +1,8 @@
+#include "DTRefer.h"
+#include "Investigador.h"
+#include "DTFecha.h"
 #include <iostream>
 #include <string>
-#include <vector>
 #include <set>  
 
 
@@ -9,6 +11,7 @@ private:
     std::string DOI;
     std::string titulo;
     DTFecha fecha;
+    std::set<Investigador*> investigadores;
 
 public:
     Publicacion(std::string doi, std::string tit, DTFecha f);
@@ -45,11 +48,13 @@ DTFecha Publicacion::getFecha() const {
 }
 
 DTRefer Publicacion::getDT() {
-    std::vector<std::string> autores;
-
-    for (std::set<Investigador>::iterator it = dtRefer.autores.begin(); it != dtRefer.autores.end(); ++it) {
-        autores.push_back(it->get_Nombre()); 
+    std::set<std::string> nombresAutores;
+    
+    // Recorremos el set de investigadores y obtenemos sus nombres
+    for (std::set<Investigador*>::iterator it = investigadores.begin();
+         it != investigadores.end(); ++it) {
+        nombresAutores.insert((*it)->get_Nombre());
     }
-
-    return DTRefer(DOI, titulo, fecha, autores);
+    
+    return DTRefer(DOI, titulo, fecha, nombresAutores);
 }
