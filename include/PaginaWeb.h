@@ -11,7 +11,7 @@ class PaginaWeb: public Publicacion{
 		PaginaWeb(std::string,std::string,DTFecha,std::string,std::string);
 		std::string getUrl();
 		std::string getContenidoExtraido();
-		bool contienePalabra(std::string);
+		virtual bool contienePalabra(std::string);
 };
 
 #endif
