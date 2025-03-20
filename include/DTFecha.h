@@ -1,5 +1,4 @@
-#ifndef DTFECHA_H
-#define DTFECHA_H 
+
 #ifndef DTFECHA_H
 #define DTFECHA_H
 
@@ -23,5 +22,3 @@ class DTFecha {
 };
 #endif
 
-};
-#endif
