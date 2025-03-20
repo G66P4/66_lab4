@@ -1,3 +1,5 @@
+#ifndef DTFECHA_H
+#define DTFECHA_H 
 class DTFecha {
     private:
         int dia, mes, anio;
@@ -15,3 +17,4 @@ class DTFecha {
     bool operator>= (DTFecha);
     bool operator<= (DTFecha);
 };
+#endif
