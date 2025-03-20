@@ -17,6 +17,6 @@ std::string PaginaWeb::getContenidoExtraido(){
 	return contenidoExtraido;
 }
 
-virtual bool PaginaWeb::contienePalabra(std::string palabra){
+bool PaginaWeb::contienePalabra(std::string palabra){
 	return contenidoExtraido.find(palabra) != std::string::npos;
 }

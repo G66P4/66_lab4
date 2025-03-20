@@ -1,6 +1,6 @@
-#include "DTRefer.h"
-#include "Investigador.h"
-#include "DTFecha.h"
+#include "../include/DTRefer.h"
+#include "../include/Investigador.h"
+#include "../include/DTFecha.h"
 #include <iostream>
 #include <string>
 #include <set>  
