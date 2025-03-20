@@ -1,4 +1,6 @@
 #ifndef DTFECHA_H
+#define DTFECHA_H 
+#ifndef DTFECHA_H
 #define DTFECHA_H
 
 
@@ -12,5 +14,14 @@ class DTFecha {
     int get_dia();
     int get_mes();
     int get_anio();
+    bool operator> (DTFecha);
+    bool operator< (DTFecha); 
+    bool operator== (DTFecha);
+    bool operator!= (DTFecha);
+    bool operator>= (DTFecha);
+    bool operator<= (DTFecha);
+};
+#endif
+
 };
 #endif
