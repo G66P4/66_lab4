@@ -1,8 +1,8 @@
 #ifndef PUBLICACION
 #define PUBLICACION 
 #include <iostream>
-#include "DTRefer.h"
-#include "DTFecha.h"
+#include "../include/DTRefer.h"
+#include "../include/DTFecha.h"
 class Publicacion {
     private:
         std::string DOI;
