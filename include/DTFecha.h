@@ -9,4 +9,9 @@ class DTFecha {
     int get_mes();
     int get_anio();
     bool operator> (DTFecha);
+    bool operator< (DTFecha); 
+    bool operator== (DTFecha);
+    bool operator!= (DTFecha);
+    bool operator>= (DTFecha);
+    bool operator<= (DTFecha);
 };
