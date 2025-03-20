@@ -1,5 +1,8 @@
 #ifndef DTFECHA_H
 #define DTFECHA_H 
+#ifndef DTFECHA_H
+#define DTFECHA_H
+
 
 class DTFecha {
     private:
@@ -17,5 +20,8 @@ class DTFecha {
     bool operator!= (DTFecha);
     bool operator>= (DTFecha);
     bool operator<= (DTFecha);
+};
+#endif
+
 };
 #endif
