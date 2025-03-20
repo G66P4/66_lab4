@@ -8,4 +8,5 @@ class DTFecha {
     int get_dia();
     int get_mes();
     int get_anio();
+    bool operator> (DTFecha);
 };
