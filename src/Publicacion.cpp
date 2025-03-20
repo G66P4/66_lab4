@@ -54,7 +54,7 @@ DTRefer Publicacion::getDT() {
     // Recorremos el set de investigadores y obtenemos sus nombres
     for (std::set<Investigador*>::iterator it = investigadores.begin();
          it != investigadores.end(); ++it) {
-        nombresAutores.insert((*it)->get_Nombre());
+        nombresAutores.insert((*it)->getNombre());
     }
     
     return DTRefer(DOI, titulo, fecha, nombresAutores);

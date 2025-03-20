@@ -1,3 +1,5 @@
+#include "../include/Publicacion.h"  
+#include "../include/Investigador.h" 
 #include <iostream>
 #include <list>
 #include <map>
