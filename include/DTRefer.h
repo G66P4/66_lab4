@@ -12,7 +12,7 @@ class DTRefer {
     		std::set<std::string> Autores;
     	public:
     		DTRefer(std::string, std::string ,DTFecha ,std::set<std::string>);
-    		friend std::ostream &operator<<(std::ostream &, DTRefer&);
+    		friend std::ostream &operator<<(std::ostream &, const DTRefer&);
 };
 
 #endif

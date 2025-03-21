@@ -10,7 +10,6 @@ class ArticuloRevista: public Publicacion{
         std::string extracto; 
     public:
         ArticuloRevista(std::string, std::string, DTFecha, std::string, std::string);
-        ~ArticuloRevista();
         std::string getRevista();
         std::string getExtracto();
         virtual bool contienePalabra(std::string);

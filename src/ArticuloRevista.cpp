@@ -7,9 +7,7 @@ ArticuloRevista::ArticuloRevista(std::string doi, std::string tit, DTFecha f,std
     this->extracto = extracto;
 };
 
-//destructor
-ArticuloRevista::~ArticuloRevista(){
-};
+
 
 //getters
 std::string ArticuloRevista::getRevista(){

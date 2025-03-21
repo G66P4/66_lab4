@@ -40,12 +40,12 @@ Publicacion* coleccion_getPublicacion(std::string DOI){
 }
 
 void parte_a(){
-	/* //Creacion de articulos de revista
+	//Creacion de articulos de revista
 	ArticuloRevista *ar1= new ArticuloRevista("10.1234/abc123", "Fundamentos de POO", DTFecha(15,5,2023), "Programación Avanzada", "Introduccion a los principios fundamentales de la programacion orientada a objetos, explicando sus conceptos clave como clases, objetos, herencia y polimorfismo.");
 	ArticuloRevista *ar2 = new ArticuloRevista("10.4567/jkl012", "Utilidad de diagramas UML", DTFecha(10,2,2024), "Modelado de Software", "Ejercicio empirico de como los diagramas UML pueden ayudar en el proceso y documentacion de software, cubriendo los tipos masimportantes utilizados, como clases.");
 	//Se agregan a la coleccion
 	coleccion_guardarPublicacion(ar1);
-	coleccion_guardarPublicacion(ar2); */
+	coleccion_guardarPublicacion(ar2);
 }
 
 void parte_b(){
@@ -66,7 +66,7 @@ void parte_c(){
 
 void parte_d(){
 	for (list<Publicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end(); ++it){
-			std::cout << (*it)->getDOI() << std::endl;
+			std::cout << (*it)->getDT() << std::endl;
     }
 }
 
@@ -89,13 +89,20 @@ void parte_g(){
 	//Asignacion de investigador a publicaciones
 	coleccion_getInvestigador("0000-0003-1234-5678")->autor(coleccion_getPublicacion("10.1234/abc123"));
 	coleccion_getInvestigador("0000-0003-1234-5678")->autor(coleccion_getPublicacion("10.4567/jkl012"));
-	coleccion_getInvestigador("0000-0003-1234-5678")->autor(coleccion_getPublicacion("10.5678/mno345"));
+	//coleccion_getInvestigador("0000-0003-1234-5678")->autor(coleccion_getPublicacion("10.5678/mno345"));
 	coleccion_getInvestigador("0000-0003-1234-5678")->autor(coleccion_getPublicacion("10.3456/ghi789"));
 	coleccion_getInvestigador("0000-0001-8765-4321")->autor(coleccion_getPublicacion("10.1234/abc123"));
-	coleccion_getInvestigador("0000-0001-8765-4321")->autor(coleccion_getPublicacion("10.2345/def456"));
+	//coleccion_getInvestigador("0000-0001-8765-4321")->autor(coleccion_getPublicacion("10.2345/def456"));
 	coleccion_getInvestigador("0000-0001-8765-4321")->autor(coleccion_getPublicacion("10.4567/jkl012"));
 	//Asignacion de publicacion a investigadores
-	//en produccion
+	coleccion_getPublicacion("10.1234/abc123")->agregarAutor(coleccion_getInvestigador("0000-0003-1234-5678"));
+	coleccion_getPublicacion("10.1234/abc123")->agregarAutor(coleccion_getInvestigador("0000-0001-8765-4321"));
+	coleccion_getPublicacion("10.4567/jkl012")->agregarAutor(coleccion_getInvestigador("0000-0003-1234-5678"));
+	coleccion_getPublicacion("10.4567/jkl012")->agregarAutor(coleccion_getInvestigador("0000-0001-8765-4321"));
+	//coleccion_getPublicacion("10.5678/mno345")->agregarAutor(coleccion_getInvestigador("0000-0003-1234-5678"));
+	coleccion_getPublicacion("10.3456/ghi789")->agregarAutor(coleccion_getInvestigador("0000-0003-1234-5678"));
+	//coleccion_getPublicacion("10.2345/def456")->agregarAutor(coleccion_getInvestigador("0000-0001-8765-4321"));
+
 }
 
 void parte_h(){

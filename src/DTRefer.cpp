@@ -9,7 +9,7 @@ DTRefer::DTRefer(std::string doi, std::string titulo, DTFecha fecha,std::set<std
 
 }
 
-std::ostream &operator<<(std::ostream &o, DTRefer &refer) {
+std::ostream &operator<<(std::ostream &o, const DTRefer &refer) {
 	o << refer.DOI << "->" << refer.Titulo << "(" << refer.Fecha.get_dia() << "/" <<refer.Fecha.get_mes() << "/" <<refer.Fecha.get_anio() << ")/";
 	
 	std::set<std::string>::const_iterator inicio= refer.Autores.begin();

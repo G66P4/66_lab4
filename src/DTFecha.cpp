@@ -14,15 +14,15 @@ DTFecha::DTFecha(int d, int m, int a) {
 DTFecha::~DTFecha() {
 };
 //geters
-int DTFecha::get_dia() {
+int DTFecha::get_dia() const {
     return this->dia;
 };
 
-int DTFecha::get_mes() {
+int DTFecha::get_mes() const {
     return this->mes;
 };
 
-int DTFecha::get_anio() {
+int DTFecha::get_anio() const {
     return this->anio;
 };
 
