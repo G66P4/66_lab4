@@ -2,7 +2,7 @@
 #define INVESTIGADOR_H
 
 #include <string>
-#include <vector>
+#include <list>
 #include <set>
 
 using namespace std;
@@ -16,14 +16,15 @@ private:
     string ORCID;
     string nombre;
     string institucion;
-    vector<Publicacion *> esAutor;
+    list<Publicacion*> esAutor;
 
 public:
     Investigador(string ORCID, string nombre, string institucion);
     string getORCID();
     string getNombre();
     string getInstitucion();
-    void setEsAutor(Publicacion *p);
+    void autor(Publicacion *p);
+    void noAutor(Publicacion *p);
     string toString() const;
     set<string> listarPublicaciones(DTFecha desde, string palabra);
 };
