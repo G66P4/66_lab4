@@ -16,12 +16,13 @@ private:
 
 public:
     Publicacion(std::string doi, std::string tit, DTFecha f);
-    ~Publicacion(); 
+    virtual ~Publicacion(); 
     std::string getDOI() const;   
     std::string getTitulo() const;   
     DTFecha getFecha() const;
     DTRefer getDT();
     virtual bool contienePalabra(std::string palabra) = 0;
+    void agregarAutor(Investigador* autor);
 };
 
 // constructor
@@ -33,6 +34,9 @@ Publicacion::Publicacion(std::string doi, std::string tit, DTFecha f) {
 
 // destructor
 Publicacion::~Publicacion() {
+    for (std::set<Investigador*>::iterator it = investigadores.begin(); it != investigadores.end(); ++it) {
+        (*it)->noAutor(this);  
+    }
 }
 
 // getters
@@ -51,11 +55,14 @@ DTFecha Publicacion::getFecha() const {
 DTRefer Publicacion::getDT() {
     std::set<std::string> nombresAutores;
     
-    // Recorremos el set de investigadores y obtenemos sus nombres
     for (std::set<Investigador*>::iterator it = investigadores.begin();
          it != investigadores.end(); ++it) {
         nombresAutores.insert((*it)->getNombre());
     }
     
     return DTRefer(DOI, titulo, fecha, nombresAutores);
+}
+
+void Publicacion::agregarAutor(Investigador* autor) {
+    investigadores.insert(autor);
 }
