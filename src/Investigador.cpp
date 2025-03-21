@@ -9,6 +9,10 @@ Investigador::Investigador(string ORCID, string nombre, string institucion)
     this->institucion = institucion;
 }
 
+Investigador::~Investigador()
+{
+    esAutor.clear();
+}
 string Investigador::getORCID()
 {
     return ORCID;

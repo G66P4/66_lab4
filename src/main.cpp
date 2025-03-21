@@ -109,7 +109,7 @@ void parte_h(){
 void parte_i(){
 	Publicacion *pub = coleccion_getPublicacion("10.4567/jkl012");
 	coleccion_eliminarPublicacion(pub);
-	pub->~Publicacion();
+	delete pub;
 }
 
 void parte_j(){
@@ -124,8 +124,18 @@ void parte_k(){
 }
 
 void cleanUp(){
-
+	for (list<Publicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end(); ++it){
+		delete *it;
+	}
+	publicaciones.clear();
+	map_publicaciones.clear();
+	for (list<Investigador*>::iterator it = investigadores.begin(); it != investigadores.end(); ++it){
+		delete *it;
+	}
+	investigadores.clear();
+	map_investigadores.clear();
 }
+
 int main() {
 	std::cout << "parte_a" <<  std::endl;
 	parte_a();
