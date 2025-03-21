@@ -20,6 +20,7 @@ private:
 
 public:
     Investigador(string ORCID, string nombre, string institucion);
+    ~Investigador();
     string getORCID();
     string getNombre();
     string getInstitucion();
