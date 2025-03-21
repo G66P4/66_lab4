@@ -49,12 +49,17 @@ void parte_a(){
 }
 
 void parte_b(){
-/* 	//Creacion de Libros
-	Libro *l1 = new Libro("10.2345/def456", "Patrones de Diseno en c++", DTFecha(20,8,2022), "Software Design",{ "Diseno", "OOP", "Class" });
-	Libro *l2 = new Libro("10.5678/mno345", "Guia de UML", DTFecha(20,8,2022), "IEEE", { "UML", "Diagramas", "Software", "Modelado" });
+	//Creacion de set de palabras clave
+	std::string arr1[] = { "Diseno", "OOP", "Class" };
+    std::set<std::string> palabras1(arr1, arr1 + 3);
+    std::string arr2[] = { "UML", "Diagramas", "Software", "Modelado" };
+    std::set<std::string> palabras2(arr2, arr2 + 4);
+ 	//Creacion de Libros;
+	Libro *l1 = new Libro("10.2345/def456", "Patrones de Diseno en c++", DTFecha(20,8,2022), "Software Design", palabras1);
+	Libro *l2 = new Libro("10.5678/mno345", "Guia de UML", DTFecha(20,8,2022), "IEEE", palabras2);
 	//Se agregan a la coleccion
 	coleccion_guardarPublicacion(l1);
-	coleccion_guardarPublicacion(l2); */
+	coleccion_guardarPublicacion(l2); 
 }
 
 void parte_c(){
@@ -89,25 +94,25 @@ void parte_g(){
 	//Asignacion de investigador a publicaciones
 	coleccion_getInvestigador("0000-0003-1234-5678")->autor(coleccion_getPublicacion("10.1234/abc123"));
 	coleccion_getInvestigador("0000-0003-1234-5678")->autor(coleccion_getPublicacion("10.4567/jkl012"));
-	//coleccion_getInvestigador("0000-0003-1234-5678")->autor(coleccion_getPublicacion("10.5678/mno345"));
+	coleccion_getInvestigador("0000-0003-1234-5678")->autor(coleccion_getPublicacion("10.5678/mno345"));
 	coleccion_getInvestigador("0000-0003-1234-5678")->autor(coleccion_getPublicacion("10.3456/ghi789"));
 	coleccion_getInvestigador("0000-0001-8765-4321")->autor(coleccion_getPublicacion("10.1234/abc123"));
-	//coleccion_getInvestigador("0000-0001-8765-4321")->autor(coleccion_getPublicacion("10.2345/def456"));
+	coleccion_getInvestigador("0000-0001-8765-4321")->autor(coleccion_getPublicacion("10.2345/def456"));
 	coleccion_getInvestigador("0000-0001-8765-4321")->autor(coleccion_getPublicacion("10.4567/jkl012"));
 	//Asignacion de publicacion a investigadores
 	coleccion_getPublicacion("10.1234/abc123")->agregarAutor(coleccion_getInvestigador("0000-0003-1234-5678"));
 	coleccion_getPublicacion("10.1234/abc123")->agregarAutor(coleccion_getInvestigador("0000-0001-8765-4321"));
 	coleccion_getPublicacion("10.4567/jkl012")->agregarAutor(coleccion_getInvestigador("0000-0003-1234-5678"));
 	coleccion_getPublicacion("10.4567/jkl012")->agregarAutor(coleccion_getInvestigador("0000-0001-8765-4321"));
-	//coleccion_getPublicacion("10.5678/mno345")->agregarAutor(coleccion_getInvestigador("0000-0003-1234-5678"));
+	coleccion_getPublicacion("10.5678/mno345")->agregarAutor(coleccion_getInvestigador("0000-0003-1234-5678"));
 	coleccion_getPublicacion("10.3456/ghi789")->agregarAutor(coleccion_getInvestigador("0000-0003-1234-5678"));
-	//coleccion_getPublicacion("10.2345/def456")->agregarAutor(coleccion_getInvestigador("0000-0001-8765-4321"));
+	coleccion_getPublicacion("10.2345/def456")->agregarAutor(coleccion_getInvestigador("0000-0001-8765-4321"));
 
 }
 
 void parte_h(){
 	//Listar publicaciones de un investigador 0000-0003-1234-5678
-	set<string> publicacionesInv1 = coleccion_getInvestigador("0000-0003-1234-5678")->listarPublicaciones(DTFecha(1,1,2023), "UML");
+	set<string> publicacionesInv1 = coleccion_getInvestigador("0000-0003-1234-5678")->listarPublicaciones(DTFecha(10,12,2023), "UML");
 	for (set<string>::iterator it = publicacionesInv1.begin(); it != publicacionesInv1.end(); ++it){
 		std::cout << *it << std::endl;
 	}
