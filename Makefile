@@ -27,6 +27,9 @@ $(OBJ_DIR):
 $(BIN_DIR):
 	mkdir -p $@
 
+$(TARGET): $(OBJS) | $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
+	
  $(TARGET):
 	@echo "Ejecutando el programa..."
 	@./$(TARGET)
