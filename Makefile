@@ -1,5 +1,4 @@
 CXX = g++
-
 CXXFLAGS = -Wall -Wextra -std=c++98
 
 INCLUDE_DIR = include
@@ -8,7 +7,6 @@ OBJ_DIR = obj
 BIN_DIR = ejecutables
 
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
-
 OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 TARGET = $(BIN_DIR)/main
@@ -16,10 +14,10 @@ TARGET = $(BIN_DIR)/main
 all: $(TARGET)
 
 $(TARGET): $(OBJS) | $(BIN_DIR)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)  # Solo una regla para el ejecutable
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(wildcard $(INCLUDE_DIR)/*.h) | $(OBJ_DIR)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 $(OBJ_DIR):
 	mkdir -p $@
@@ -27,13 +25,9 @@ $(OBJ_DIR):
 $(BIN_DIR):
 	mkdir -p $@
 
- $(TARGET):
-	@echo "Ejecutando el programa..."
-	@./$(TARGET)
-
-	$(TARGET): $(OBJS) | $(BIN_DIR)
-		$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
-	
-
 clean:
 	rm -f $(OBJS) $(TARGET)
+
+run: $(TARGET)
+	@echo "Ejecutando el programa..."
+	@./$(TARGET)
