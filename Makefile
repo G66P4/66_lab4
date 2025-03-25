@@ -27,5 +27,8 @@ $(OBJ_DIR):
 $(BIN_DIR):
 	mkdir -p $@
 
+./$($(BIN_DIR)/main): $(TARGET)
+	$(TARGET)
+
 clean:
 	rm -f $(OBJS) $(TARGET)
