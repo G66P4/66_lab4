@@ -27,8 +27,9 @@ $(OBJ_DIR):
 $(BIN_DIR):
 	mkdir -p $@
 
-./$($(BIN_DIR)/main): $(TARGET)
-	$(TARGET)
+ $(TARGET):
+	@echo "Ejecutando el programa..."
+	@./$(TARGET)
 
 clean:
 	rm -f $(OBJS) $(TARGET)
