@@ -19,8 +19,8 @@ public:
     bool altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email);
     bool altaPropietario(std::string nickname, std::string contrasena, std::string nombre, std::string email);
     bool altaInnmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email);
-    std::set<DTUsuario*> listarInmobiliarias() override;
-    std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(std::string nickname) override;
+    std::set<DTUsuario*> listarInmobiliarias();
+    std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(std::string nickname);
     ~ControladorUsuario();
 };
 
