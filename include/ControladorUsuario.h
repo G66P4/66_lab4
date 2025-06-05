@@ -4,6 +4,9 @@
 #include "Usuario.h"
 #include "DTUsuario.h"
 #include "DTInmuebleAdministrado.h"
+#include "ManejadorUsuario.h"
+#include "Inmueble.h"
+#include "Inmobiliaria.h"
 
 
 
@@ -13,9 +16,9 @@ private:
     ControladorUsuario();
 public:
     static ControladorUsuario* getInstance();
-    void altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email) override;
-    void altaPropietario(std::string nickname, std::string contrasena, std::string nombre, std::string email) override;
-    void altaInnmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email) override;
+    bool altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email) override;
+    bool altaPropietario(std::string nickname, std::string contrasena, std::string nombre, std::string email) override;
+    bool altaInnmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email) override;
     std::set<DTUsuario*> listarInmobiliarias() override;
     std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(std::string nickname) override;
     ~ControladorUsuario();
