@@ -16,9 +16,9 @@ private:
     ControladorUsuario();
 public:
     static ControladorUsuario* getInstance();
-    bool altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email) override;
-    bool altaPropietario(std::string nickname, std::string contrasena, std::string nombre, std::string email) override;
-    bool altaInnmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email) override;
+    bool altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email);
+    bool altaPropietario(std::string nickname, std::string contrasena, std::string nombre, std::string email);
+    bool altaInnmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email);
     std::set<DTUsuario*> listarInmobiliarias() override;
     std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(std::string nickname) override;
     ~ControladorUsuario();
