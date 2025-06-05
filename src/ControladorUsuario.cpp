@@ -68,5 +68,6 @@ std::set<DTInmuebleAdministrado*> ControladorUsuario::listarInmueblesAdministrad
             DTInmuebleAdministrado* dtInmueble = new DTInmuebleAdministrado(inmueble->getCodigo(), inmueble->getDireccion(), inmueble->getFechaComienzo());
             inmueblesAdminSet.insert(dtInmueble);
         }
+        return inmueblesAdminSet; 
     }
 }
