@@ -12,6 +12,8 @@ class Usuario {
     public:
         Usuario(std::string nickname, std::string contrasena, std::string nombre, std::string email);
         virtual ~Usuario();
+        std::string getNickname() const;
+        std::string getNombre() const;
 };
 
 #endif

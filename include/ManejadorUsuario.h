@@ -10,7 +10,7 @@
 class ManejadorUsuario {
     private:
         static ManejadorUsuario* instance;
-        std::map<Usuario*> usuarios;
+        std::map <std::string, Usuario*> usuarios;
         ManejadorUsuario();
 
     public:

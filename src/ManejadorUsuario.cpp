@@ -1,4 +1,4 @@
-#include "../include/ManejadorUsuario.h>"
+#include "../include/ManejadorUsuario.h"
 
 
 
@@ -26,21 +26,26 @@ void ManejadorUsuario::eliminarUsuario(std::string nickname) {
 }
 
 bool ManejadorUsuario::existeUsuario(const std::string& nickname) {
-    return usuarios.find(nickname) != NULL;
+    Usuario* usuario = findUsuario(nickname);
+    return usuario != NULL;
 }
 
 Usuario* ManejadorUsuario::findUsuario(const std::string& nickname){
-    Usuario* usuario== usuarios.find(nickname);
+    Usuario* usuario = findUsuario(nickname);
     if (usuario != NULL) {
-        return usuario->second;
+        return usuario;
     }
     return NULL;
 }
 
 ManejadorUsuario::~ManejadorUsuario() {
-    for(Usuario* usuario : usuarios) {
-        delete usuario.second;
+    std::map<std::string, Usuario*>::iterator it;   
+    for(it=usuarios.begin(); it!=usuarios.end(); ++it) {
+        delete it->second;
     }
     usuarios.clear();
-    instance = NULL;
+    if (instance != NULL) {
+        delete instance;
+        instance = NULL;
+    }
 }
