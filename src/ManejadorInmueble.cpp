@@ -48,6 +48,7 @@ ManejadorInmueble::~ManejadorInmueble(){
     std::map<int, Inmueble*>::iterator it = inmuebles.begin();
     while (it != inmuebles.end()) {
         delete it->second;
-        it=inmuebles.erase(it);
+        it++;
     }
+    inmuebles.clear();
 }
