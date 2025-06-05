@@ -1,6 +1,7 @@
 #ifndef INMUEBLE_H
 #define INMUEBLE_H
 #include <string>
+#include "DTFecha.h"
 
 class Inmueble {
     private:
