@@ -13,6 +13,8 @@ class Inmueble {
     public:
         Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
         int getCodigo();
+        std::string getDireccion();
+        DTFecha* getFechaComienzo();
         ~Inmueble();
 };
 

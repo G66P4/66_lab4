@@ -1,4 +1,4 @@
-#include "ControladorUsuario.h"
+#include "../include/ControladorUsuario.h"
 
 
 ControladorUsuario* ControladorUsuario::instance = NULL;

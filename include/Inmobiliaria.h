@@ -2,6 +2,7 @@
 #define INMOBILIARIA_H
 #include "Usuario.h"
 #include <string>
+#include <list>
 
 class Inmobiliaria : public Usuario {
     private:
@@ -11,6 +12,7 @@ class Inmobiliaria : public Usuario {
 
     public:
         Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);
+        std::list<Inmueble*> getInmueblesAdministrados();
         ~Inmobiliaria();
 };
 

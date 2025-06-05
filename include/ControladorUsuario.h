@@ -6,7 +6,7 @@
 #include "DTInmuebleAdministrado.h"
 #include "ManejadorUsuario.h"
 #include "Inmueble.h"
-#include "Inmobiliaria.h"
+#include "Inmobiliaria.h" 
 
 
 
