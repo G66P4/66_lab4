@@ -57,17 +57,6 @@ std::set<DTUsuario*> ControladorUsuario::listarInmobiliarias(){
 
 std::set<DTInmuebleAdministrado*> ControladorUsuario::listarInmueblesAdministrados(std::string nickname) {
     std::set<DTInmuebleAdministrado*> inmueblesAdminSet;
-    Usuario* usuario = ManejadorUsuario::getInstance()->findUsuario(nickname);
-
-    if(usuario == NULL || !usuario->esInmobiliaria()) {
-        return inmueblesAdminSet; // Usuario no encontrado o no es una inmobiliaria
-    }else{
-        std::list<Inmueble*> inmueblesAdministrados = static_cast<Inmobiliaria*>(usuario)->getInmueblesAdministrados();
-        for (std::list<Inmueble*>::iterator it = inmueblesAdministrados.begin(); it != inmueblesAdministrados.end(); ++it) {
-            Inmueble* inmueble = *it;
-            DTInmuebleAdministrado* dtInmueble = new DTInmuebleAdministrado(inmueble->getCodigo(), inmueble->getDireccion(), inmueble->getFechaComienzo());
-            inmueblesAdminSet.insert(dtInmueble);
-        }
-        return inmueblesAdminSet; 
-    }
+    Inmobiliaria* inmo = ManejadorUsuario::getInstance()->findInmobiliaria(nickname);
+    inmo->obtenerInmuebleData();
 }

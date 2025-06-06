@@ -45,9 +45,34 @@ bool ManejadorUsuario::existeUsuario(const std::string& nickname) {
 }
 
 Usuario* ManejadorUsuario::findUsuario(const std::string& nickname){
+    std::map<std::string, Usuario*>::iterator it = usuarios.find(nickname);
+    if (it != usuarios.end()) {
+        return it->second; 
+    }
+    return NULL; 
+   
+}
+
+Inmobiliaria* ManejadorUsuario::findInmobiliaria(const std::string& nickname) {
     Usuario* usuario = findUsuario(nickname);
-    if (usuario != NULL) {
-        return usuario;
+    if (usuario != NULL && usuario->esInmobiliaria()) {
+        return dynamic_cast<Inmobiliaria*>(usuario);
+    }
+    return NULL;
+}
+
+Propietario* ManejadorUsuario::findPropietario(const std::string& nickname) {
+    Usuario* usuario = findUsuario(nickname);
+    if (usuario != NULL && usuario->esPropietario()) {
+        return dynamic_cast<Propietario*>(usuario);
+    }
+    return NULL;
+}
+
+Cliente* ManejadorUsuario::findCliente(const std::string& nickname) {
+    Usuario* usuario = findUsuario(nickname);
+    if (usuario != NULL && usuario->esCliente()) {
+        return dynamic_cast<Cliente*>(usuario);
     }
     return NULL;
 }
