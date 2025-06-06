@@ -1,5 +1,5 @@
-#ifndef DTFECHA
-#define DTFECHA
+#ifndef DTFECHA_H
+#define DTFECHA_H
 
 #include <string>
 

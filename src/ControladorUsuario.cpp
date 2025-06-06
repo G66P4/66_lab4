@@ -12,31 +12,31 @@ ControladorUsuario* ControladorUsuario::getInstance() {
     return instance;
 }
 
-bool ControladorUsuario::altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email) {
+bool ControladorUsuario::altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string apellido, std::string documento) {
     if( ManejadorUsuario::getInstance()->existeUsuario(nickname) ) {
         return false; // El usuario ya existe
     }else {
-        Usuario* cliente = new Usuario(nickname, contrasena, nombre, email);
+        Cliente* cliente = new Cliente(nickname, contrasena, nombre, email, apellido, documento);
         ManejadorUsuario::getInstance()->agregarUsuario(cliente);
         return true; // Usuario creado exitosamente
     }
 }
 
-bool ControladorUsuario::altaPropietario(std::string nickname, std::string contrasena, std::string nombre, std::string email) {
+bool ControladorUsuario::altaPropietario(std::string nickname, std::string contrasena, std::string nombre, std::string email,std::string cuentaBancaria,std::string telefono) {
     if( ManejadorUsuario::getInstance()->existeUsuario(nickname) ) {
         return false; // El usuario ya existe
     }else {
-        Usuario* propietario = new Usuario(nickname, contrasena, nombre, email);
+        Propietario* propietario = new Propietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
         ManejadorUsuario::getInstance()->agregarUsuario(propietario);
         return true; // Usuario creado exitosamente
     }
 }
 
-bool ControladorUsuario::altaInnmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email) {
+bool ControladorUsuario::altaInnmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono) {
     if( ManejadorUsuario::getInstance()->existeUsuario(nickname) ) {
         return false; // El usuario ya existe
     }else{
-    Usuario* inmobiliaria = new Usuario(nickname, contrasena, nombre, email);
+    Inmobiliaria* inmobiliaria = new Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
     ManejadorUsuario::getInstance()->agregarUsuario(inmobiliaria);
         return true; // Usuario creado exitosamente
     }
@@ -45,12 +45,12 @@ bool ControladorUsuario::altaInnmobiliaria(std::string nickname, std::string con
 std::set<DTUsuario*> ControladorUsuario::listarInmobiliarias(){
     std::set<DTUsuario*> inmobiliariasSet;
 
-    std::list<Usuario*> inmobiliarias = ManejadorUsuario::getInstance()->getInmobiliarias();
+    std::list<Inmobiliaria*> inmobiliarias = ManejadorUsuario::getInstance()->getInmobiliarias();
     
-    for (std::list<Usuario*>::iterator it = inmobiliarias.begin(); it != inmobiliarias.end(); ++it) {
-        Usuario* inmobiliaria = *it;
-        DTUsuario* dtInmobiliaria = new DTUsuario(inmobiliaria->getNickname(), inmobiliaria->getNombre());
-        inmobiliariasSet.insert(dtInmobiliaria);
+    for (std::list<Inmobiliaria*>::iterator it = inmobiliarias.begin(); it != inmobiliarias.end(); ++it) {
+        Inmobiliaria* inmobiliaria = *it;
+        DTUsuario* dtu = inmobiliaria->getInmobiliariaData();
+        inmobiliariasSet.insert(dtu);
     }
     return inmobiliariasSet;
 }

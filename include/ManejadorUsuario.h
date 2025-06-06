@@ -15,9 +15,9 @@ class ManejadorUsuario {
     private:
         static ManejadorUsuario* instance;
         std::map <std::string, Usuario*> usuarios;
-        std::list<Usuario*> Inmobiliarias;
-        std::list<Usuario*> Propietarios;
-        std::list<Usuario*> Clientes;
+        std::list<Inmobiliaria*> Inmobiliarias;
+        std::list<Propietario*> Propietarios;
+        std::list<Cliente*> Clientes;
         ManejadorUsuario();
 
     public:
@@ -32,9 +32,9 @@ class ManejadorUsuario {
         bool esInmobiliaria(const std::string& nickname);
         bool esPropietario(const std::string& nickname);
         bool esCliente(const std::string& nickname);
-        std::list<Usuario*> getInmobiliarias();
-        std::list<Usuario*> getPropietarios();
-        std::list<Usuario*> getClientes();
+        std::list<Inmobiliaria*> getInmobiliarias();
+        std::list<Propietario*> getPropietarios();
+        std::list<Cliente*> getClientes();
         ~ManejadorUsuario();
 };
 #endif

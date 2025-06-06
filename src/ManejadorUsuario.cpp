@@ -16,26 +16,36 @@ ManejadorUsuario* ManejadorUsuario::getInstance() {
 void ManejadorUsuario::agregarUsuario(Usuario* usuario) {
     usuarios[usuario->getNickname()] = usuario;
     if (usuario->esInmobiliaria()) {
-        Inmobiliarias.push_back(usuario);
+        Inmobiliarias.push_back(dynamic_cast<Inmobiliaria*>(usuario));
     } else if (usuario->esPropietario()) {
-        Propietarios.push_back(usuario);
+        Propietarios.push_back(dynamic_cast<Propietario*>(usuario));
     } else if (usuario->esCliente()) {
-        Clientes.push_back(usuario);
+        Clientes.push_back(dynamic_cast<Cliente*>(usuario));
     }
 }   
 
 void ManejadorUsuario::eliminarUsuario(std::string nickname) {
-    Usuario* usuario = findUsuario(nickname);
+    Inmobiliaria* usuario = findInmobiliaria(nickname);
     if (usuario != NULL) {
         usuarios.erase(nickname);
         if( usuario->esInmobiliaria() ) {
             Inmobiliarias.remove(usuario);
-        } else if (usuario->esPropietario()) {
-            Propietarios.remove(usuario);
-        } else if (usuario->esCliente()) {
-            Clientes.remove(usuario);
-        }
         delete usuario;
+        }
+    } else {
+        Propietario* propietario = findPropietario(nickname);
+        if (propietario != NULL) {
+            usuarios.erase(nickname);
+            Propietarios.remove(propietario);
+            delete propietario;
+        } else {
+            Cliente* cliente = findCliente(nickname);
+            if (cliente != NULL) {
+                usuarios.erase(nickname);
+                Clientes.remove(cliente);
+                delete cliente;
+            }
+        }
     }
 }
 
@@ -116,15 +126,15 @@ ManejadorUsuario::~ManejadorUsuario() {
     Clientes.clear();
 }
 
-std::list<Usuario*> ManejadorUsuario::getInmobiliarias() {
+std::list<Inmobiliaria*> ManejadorUsuario::getInmobiliarias() {
     return Inmobiliarias;
 }
 
-std::list<Usuario*> ManejadorUsuario::getPropietarios() {
+std::list<Propietario*> ManejadorUsuario::getPropietarios() {
     return Propietarios;
 }
 
-std::list<Usuario*> ManejadorUsuario::getClientes() {
+std::list<Cliente*> ManejadorUsuario::getClientes() {
     return Clientes;
 }
 
