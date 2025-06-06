@@ -10,9 +10,10 @@
 #include "../include/DTFecha.h"
 #include "../include/DTInmueble.h"
 #include "../include/DTInmuebleAdministrado.h"
-#include "../include/DTinmuebleListado.h"
+#include "../include/DTInmuebleListado.h"
 #include "../include/DTPublicacion.h"
 #include "../include/DTUsuario.h"
+#include <cstdlib> 
 #include <string>
 #include <set>
 
