@@ -99,9 +99,10 @@ bool ManejadorUsuario::esCliente(const std::string& nickname) {
     Usuario* usuario = findUsuario(nickname);
     if (usuario == NULL) {
         return false; 
-    }else{
+    } else {
         return usuario->esCliente();
     }
+    
 }
 
 ManejadorUsuario::~ManejadorUsuario() {
