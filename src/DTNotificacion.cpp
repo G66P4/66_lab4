@@ -28,9 +28,9 @@ std::string DTNotificacion::getTextoPublicacion() const
 }
 TipoPublicacion DTNotificacion::getTipoPublicacion() const
 {
-    return tipoPublicacion; // Assuming TipoPublicacion is a pointer type
+    return tipoPublicacion; 
 }
 TipoInmueble DTNotificacion::getTipoInmuebl() const
 {
-    return tipoInmuebl; // Assuming TipoInmueble is a pointer type
+    return tipoInmuebl; 
 }
