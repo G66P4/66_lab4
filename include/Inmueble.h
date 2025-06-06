@@ -2,6 +2,8 @@
 #define INMUEBLE_H
 #include <string>
 #include "DTFecha.h"
+#include "DTInmuebleAdministrado.h"
+#include "TipoInmueble.h"
 
 class Inmueble {
     private:
@@ -13,10 +15,16 @@ class Inmueble {
 
     public:
         Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
+        ~Inmueble();
+
         int getCodigo();
         std::string getDireccion();
-        DTFecha* getFechaComienzo();
-        ~Inmueble();
+        int getNumeroPuerta();
+        int getSuperficie();
+        int getAnoConstruccion();
+        void eliminarLinksINmueble(int codigoInmueble);
+        DTInmuebleAdministrado getinfoInmueble();
+        TipoInmueble consultarTipo();
 };
 
 #endif
