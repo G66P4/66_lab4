@@ -1,13 +1,11 @@
 #ifndef ADMINISTRAPROPIEDAD_H
 #define ADMINISTRAPROPIEDAD_H
 #include <set>
-#include "../include/TipoInmueble.h"
-#include "../include/TipoPublicacion.h"
+#include "TipoInmueble.h"
+#include "TipoPublicacion.h"
+#include "DTFecha.h"
+#include "Inmobiliaria.h"
 
-class DTFecha;
-class Inmobiliaria;
-class Inmueble;
-class Publicacion;
 
 class AdministraPropiedad
 {

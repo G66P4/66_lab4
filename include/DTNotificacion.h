@@ -2,9 +2,9 @@
 #define DTNOTIFICACION_H
 
 #include <string>
-#include "DTFecha.h"
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
+#include "DTFecha.h"
 
 class DTNotificacion
 {
