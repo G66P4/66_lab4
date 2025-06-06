@@ -2,6 +2,7 @@
 #define DTFECHA_H
 
 #include <string>
+#include <ostream>
 
 
 class DTFecha {

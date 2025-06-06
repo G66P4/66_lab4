@@ -1,6 +1,6 @@
 #include "../include/DTNotificacion.h"
 
-DTNotificacion(int codigo, DTFecha *fecha, std::string texto, std::string nickinmobiliaria, TipoPublicacion tipoPub, TipoInmueble tipoInm){
+DTNotificacion(int codigo, DTFecha* fecha, std::string texto, std::string nickinmobiliaria, TipoPublicacion tipoPub, TipoInmueble tipoInm){
     this->codigoPublicacion = codigo;
     this->fechaPublicacion = fecha;
     this->nickInmobiliaria = nickinmobiliaria;
