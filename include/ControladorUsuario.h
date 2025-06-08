@@ -18,9 +18,10 @@ public:
     static ControladorUsuario* getInstance();
     bool altaCliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string apellido, std::string documento);
     bool altaPropietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono);
-    bool altaInnmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email,std::string direccion, std::string url, std::string telefono);
+    bool altaInmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email,std::string direccion, std::string url, std::string telefono);
     std::set<DTUsuario*> listarInmobiliarias();
     std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(std::string nickname);
+    std::set<DTUsuario*> listarPropietarios();
     ~ControladorUsuario();
 };
 

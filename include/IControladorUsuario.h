@@ -13,6 +13,7 @@ class IControladorUsuario {
         virtual bool altaInmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono) = 0;
         virtual std::set<DTUsuario*> listarInmobiliarias() = 0;
         virtual std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(std::string nickname) = 0;
+        virtual std::set<DTUsuario*> listarPropietarios() = 0;
         virtual ~IControladorUsuario() {}
 };
 

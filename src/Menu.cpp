@@ -170,8 +170,12 @@ void altaUsuario(){
             while (salir != 0){
                 if (tipoUsuario == 1){
                     std::cout << "Lista de Propietarios:\n";
-                    //TODO: Coleccion de DTUsuario = controlador->listarPropietarios();
+                    std::set<DTUsuario*> Propietarios = ci->listarPropietarios();
                     //Recorrer la coleccion Mostrar "- Nickname: xx, Nombre: zz";
+                    for(std::set<DTUsuario*>::iterator it = Propietarios.begin(); it != Propietarios.end(); ++it) {
+                        DTUsuario* dtu = *it;
+                        std::cout << "- Nickname: " << dtu->getNickname() << ", Nombre: " << dtu->getNombre() << std::endl;
+                    }
                     std::cout << "Nickname propietario a representar: ";
                     std::string nicknamePropietario;
                     std::getline(std::cin, nicknamePropietario);

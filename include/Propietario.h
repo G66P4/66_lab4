@@ -10,6 +10,7 @@ class Propietario : public Usuario {
 
     public:
         Propietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono);
+        DTUsuario* getPropietarioData();
 };
 
 #endif
