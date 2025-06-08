@@ -14,6 +14,9 @@
 #include "../include/DTPublicacion.h"
 #include "../include/DTUsuario.h"
 #include "../include/IControladorUsuario.h"
+#include "../include/IControladorFechaActual.h"
+#include "../include/ManejadorUsuario.h"
+
 #include <cstdlib> 
 #include <string>
 #include <set>
@@ -179,7 +182,9 @@ void altaUsuario(){
                     std::cout << "Nickname propietario a representar: ";
                     std::string nicknamePropietario;
                     std::getline(std::cin, nicknamePropietario);
-                    //TODO: controlador->representarPropietario(nicknamePropietario)
+                    ManejadorUsuario* manejador = ManejadorUsuario::getInstance();
+                    Inmobiliaria* inmobiliaria = manejador->findInmobiliaria(nickname);
+                    inmobiliaria->representarPropietario(nicknamePropietario); // AGREGA EL PROPIETARIO A LA LISTA DE PROPIETARIOS REPRESENTADOS
                 }else if (tipoUsuario == 2){
                     int tipoInmueble;
                     std::cout << "Indique el tipo de inmueble (1: Casa, 0: Apartamento): ";
@@ -237,7 +242,7 @@ void altaUsuario(){
             std::cin >> salir;
             std::cin.ignore();
         }
-        //TODO: controlador->finalizarAltaUsuario();
+        //TODO: controlador->finalizarAltaUsuario(); PREGUNTAR AL PROFE
     }else{
         std::cout << "Error al crear el usuario" << std::endl;
     }

@@ -14,7 +14,7 @@ class IControladorUsuario {
         virtual std::set<DTUsuario*> listarInmobiliarias() = 0;
         virtual std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(std::string nickname) = 0;
         virtual std::set<DTUsuario*> listarPropietarios() = 0;
-        virtual ~IControladorUsuario() {}
+        ~IControladorUsuario() {}
 };
 
 #endif
