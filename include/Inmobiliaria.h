@@ -1,9 +1,10 @@
 #ifndef INMOBILIARIA_H
 #define INMOBILIARIA_H
 #include "Usuario.h"
+#include "DTUsuario.h"
 #include "DTInmuebleAdministrado.h"
 #include <string>
-#include <list>
+#include <set>
 
 class Inmobiliaria : public Usuario {
     private:
