@@ -14,7 +14,7 @@ ControladorInmueble* ControladorInmueble::getInstance() {
 void ControladorInmueble::eliminarInmueble(int codigoInmueble){
     if(ManejadorInmueble::getInstance()->existeInmueble(codigoInmueble)){
         Inmueble* inm = ManejadorInmueble::getInstance()->findInmueble(codigoInmueble);
-        inm->eliminarLinksINmueble(codigoInmueble);
+        inm->eliminarLinksInmueble(codigoInmueble);
         ManejadorInmueble::getInstance()->eliminarInmueble(codigoInmueble);
         delete inm;
     }
