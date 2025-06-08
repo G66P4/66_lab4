@@ -1,5 +1,5 @@
 #include "../include/Inmueble.h"
-
+#include <stdexcept> 
 Inmueble::Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion){
     this->codigo=codigo;
     this->direccion=direccion;
@@ -26,4 +26,35 @@ int Inmueble::getSuperficie(){
 
 int Inmueble::getAnoConstruccion(){
     return anoConstruccion;
+}
+
+std::set<AdministraPropiedad*>& Inmueble::getAdministracion(){
+    return administracion;
+}
+
+//tuve que agregar la inmobiliaria como parametro porque si no ni idea como hacia
+DTInmuebleAdministrado Inmueble::getinfoInmueble(Inmobiliaria* inm){
+    for (std::set<AdministraPropiedad*>::iterator it = administracion.begin(); it != administracion.end(); ++it) {
+        AdministraPropiedad* administrador = *it;
+        if(administrador->getInmobiliaria()==inm){
+            return DTInmuebleAdministrado(codigo,direccion,administrador->getFecha());
+        }
+    }
+    throw std::runtime_error("Inmobiliaria no encontrada en la administración del inmueble");
+}
+
+void Inmueble::eliminarLinksINmueble(int codigoInmueble){
+    std::set<AdministraPropiedad*>& administrador = this->getAdministracion();
+    std::set<AdministraPropiedad*>::iterator it = administrador.begin();
+    while(it!=administrador.end()){
+        AdministraPropiedad* adminProp = *it;
+        Inmobiliaria* mob = adminProp->getInmobiliaria();
+        //std::string nickMob=getter nickname inmobiliaria y creo que no es necesario
+        //eliminarLinkAdmProp(codigoInmueble);
+        //removerLinkPropiedad(codigoInmueble);
+        std::set<AdministraPropiedad*>::iterator eliminar = it;
+        it++; // avanzo el iterador antes de borrar
+        administrador.erase(eliminar); // borro usando iterador guardado
+    }
+ 
 }
