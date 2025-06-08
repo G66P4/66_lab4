@@ -32,7 +32,7 @@ bool ControladorUsuario::altaPropietario(std::string nickname, std::string contr
     }
 }
 
-bool ControladorUsuario::altaInnmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono) {
+bool ControladorUsuario::altaInmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono) {
     if( ManejadorUsuario::getInstance()->existeUsuario(nickname) ) {
         return false; // El usuario ya existe
     }else{
@@ -59,4 +59,18 @@ std::set<DTInmuebleAdministrado*> ControladorUsuario::listarInmueblesAdministrad
     std::set<DTInmuebleAdministrado*> inmueblesAdminSet;
     Inmobiliaria* inmo = ManejadorUsuario::getInstance()->findInmobiliaria(nickname);
     inmo->obtenerInmuebleData();
+}
+
+
+std::set<DTUsuario*> ControladorUsuario::listarPropietarios() {
+    std::set<DTUsuario*> propietariosSet;
+
+    std::list<Propietario*> propietarios = ManejadorUsuario::getInstance()->getPropietarios();
+    
+    for (std::list<Propietario*>::iterator it = propietarios.begin(); it != propietarios.end(); ++it) {
+        Propietario* propietario = *it;
+        DTUsuario* dtu = propietario->getPropietarioData();
+        propietariosSet.insert(dtu);
+    }
+    return propietariosSet;
 }

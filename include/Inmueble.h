@@ -4,6 +4,9 @@
 #include "DTFecha.h"
 #include "DTInmuebleAdministrado.h"
 #include "TipoInmueble.h"
+#include "AdministraPropiedad.h"
+#include "ControladorUsuario.h"
+#include "ControladorInmueble.h"
 
 class Inmueble {
     private:
@@ -12,6 +15,7 @@ class Inmueble {
         int numeroPuerta;
         int superficie;
         int anoConstruccion;
+        std::set<AdministraPropiedad*> administracion; 
 
     public:
         Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
@@ -23,8 +27,10 @@ class Inmueble {
         int getSuperficie();
         int getAnoConstruccion();
         void eliminarLinksINmueble(int codigoInmueble);
-        DTInmuebleAdministrado getinfoInmueble();
-        TipoInmueble consultarTipo();
+        DTInmuebleAdministrado getinfoInmueble(Inmobiliaria* inm);
+        virtual TipoInmueble consultarTipo() const = 0;
+        std::set<AdministraPropiedad*>& getAdministracion(); 
+
 };
 
 #endif

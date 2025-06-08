@@ -6,7 +6,7 @@ class IControladorInmueble
 public:
     // aria falta esta funcion para cargar inmuebles en el sistema
     // virtual bool altaInmueble() = 0;
-    virtual bool eliminarInmueble(int codigoInmueble) = 0;
+    virtual void eliminarInmueble(int codigoInmueble) = 0;
 };
 
 #endif
