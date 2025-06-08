@@ -10,7 +10,7 @@ class Factory {
     private:
         static Factory* instance;
         IControladorUsuario* controladorUsuario;
-        IControladorInmueble* controladorInmueble
+        IControladorInmueble* controladorInmueble;
         IControladorPublicacion* controladorPublicacion;
         Factory();
 
