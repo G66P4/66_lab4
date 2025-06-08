@@ -11,6 +11,7 @@ class Factory {
     public:
         static Factory* getInstance();
         IControladorFechaActual* getControladorFechaActual();
+        IControladorUsuario* getIControladorUsuario();
         //TODO: Get interfaces de controladores
         ~Factory();
 };
