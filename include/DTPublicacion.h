@@ -17,7 +17,7 @@ class DTPublicacion {
         DTFecha* getFecha();
         std::string getTexto();
         std::string getPrecio();
-        std::string getInmobiliaria();
+        std::string get_Inmobiliaria();
         ~DTPublicacion();
 };
 

@@ -24,7 +24,7 @@ std::string DTPublicacion::getPrecio() {
     return precio;
 }
 
-std::string DTPublicacion::getInmobiliaria() {
+std::string DTPublicacion::get_Inmobiliaria() {
     return inmobiliaria;
 }
 

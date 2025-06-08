@@ -12,7 +12,7 @@ private:
 
 public:
     Apartamento(int codigo, std::string direccion, int numeroPuerta, int superficie,
-                int anoConstruccion, int piso, bool tieneAscensor, float gastosComunes);
+    int anoConstruccion, int piso, bool tieneAscensor, float gastosComunes);
 
     ~Apartamento();
 
