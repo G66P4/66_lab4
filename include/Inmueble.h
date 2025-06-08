@@ -4,9 +4,8 @@
 #include "DTFecha.h"
 #include "DTInmuebleAdministrado.h"
 #include "TipoInmueble.h"
-#include "AdministraPropiedad.h"
-#include "ControladorUsuario.h"
-#include "ControladorInmueble.h"
+#include "Inmobiliaria.h"
+class AdministraPropiedad; //se usa class en lugar de #include para evitar dependencias circulares
 
 class Inmueble {
     private:

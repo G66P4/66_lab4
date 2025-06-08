@@ -1,4 +1,7 @@
 #include "../include/Inmueble.h"
+#include "../include/ControladorUsuario.h"
+#include "../include/ControladorInmueble.h"
+#include "../include/AdministraPropiedad.h"
 #include <stdexcept> 
 Inmueble::Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion){
     this->codigo=codigo;
