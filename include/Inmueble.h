@@ -26,7 +26,7 @@ class Inmueble {
         int getNumeroPuerta();
         int getSuperficie();
         int getAnoConstruccion();
-        void eliminarLinksINmueble(int codigoInmueble);
+        void eliminarLinksInmueble(int codigoInmueble);
         DTInmuebleAdministrado getinfoInmueble(Inmobiliaria* inm);
         virtual TipoInmueble consultarTipo() const = 0;
         std::set<AdministraPropiedad*>& getAdministracion(); 

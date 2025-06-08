@@ -43,18 +43,19 @@ DTInmuebleAdministrado Inmueble::getinfoInmueble(Inmobiliaria* inm){
     throw std::runtime_error("Inmobiliaria no encontrada en la administración del inmueble");
 }
 
-void Inmueble::eliminarLinksINmueble(int codigoInmueble){
+void Inmueble::eliminarLinksInmueble(int codigoInmueble){
     std::set<AdministraPropiedad*>& administrador = this->getAdministracion();
     std::set<AdministraPropiedad*>::iterator it = administrador.begin();
     while(it!=administrador.end()){
         AdministraPropiedad* adminProp = *it;
         Inmobiliaria* mob = adminProp->getInmobiliaria();
+
         //std::string nickMob=getter nickname inmobiliaria y creo que no es necesario
-        //eliminarLinkAdmProp(codigoInmueble);
+        //mob->eliminarLinkAdmProp(codigoInmueble);
         //removerLinkPropiedad(codigoInmueble);
         std::set<AdministraPropiedad*>::iterator eliminar = it;
-        it++; // avanzo el iterador antes de borrar
-        administrador.erase(eliminar); // borro usando iterador guardado
+        it++; 
+        administrador.erase(eliminar); 
     }
  
 }
