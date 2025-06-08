@@ -58,7 +58,7 @@ std::set<DTUsuario*> ControladorUsuario::listarInmobiliarias(){
 std::set<DTInmuebleAdministrado*> ControladorUsuario::listarInmueblesAdministrados(std::string nickname) {
     std::set<DTInmuebleAdministrado*> inmueblesAdminSet;
     Inmobiliaria* inmo = ManejadorUsuario::getInstance()->findInmobiliaria(nickname);
-    inmo->obtenerInmuebleData();
+    inmueblesAdminSet = inmo->obtenerInmuebleData();
 }
 
 
