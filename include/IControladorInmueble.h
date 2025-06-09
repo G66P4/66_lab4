@@ -14,6 +14,8 @@ public:
     // virtual DTInmueble* detalleInmueble(codigoInmueble);
     // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
     // Si es casa-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, PH: Si/No, Tipo de techo: Liviano/A dos aguas/Plano"
+    // std::set<DTInmuebleListado*> listarInmueblesNoAdministradosInmobiliaria(nicknameInmobiliaria);
+    // void altaAdministraPropiedad(int codigoInmueble, std::string nicknameInmobiliaria);
     virtual void eliminarInmueble(int codigoInmueble) = 0;
 };
 

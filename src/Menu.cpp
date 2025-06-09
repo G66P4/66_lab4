@@ -134,14 +134,14 @@ void altaUsuario(){
     std::cout << "Email: ";
     std::getline(std::cin, email);
 
-    IControladorUsuario* ci= factory->getIControladorUsuario();
+    IControladorUsuario* IConUsu= factory->getIControladorUsuario();
 
     if (tipoUsuario == 0){
         std::cout << "Apellido: ";
         std::getline(std::cin, apellido);
         std::cout << "Documento: ";
         std::getline(std::cin, documento);
-        usuarioOk = ci->altaCliente(nickname, contrasena, nombre, email, apellido, documento);
+        usuarioOk = IConUsu->altaCliente(nickname, contrasena, nombre, email, apellido, documento);
 
     }else if (tipoUsuario == 1){
         std::cout << "Direccion: ";
@@ -150,14 +150,14 @@ void altaUsuario(){
         std::getline(std::cin, url);
         std::cout << "Telefono: ";
         std::getline(std::cin, telefono);
-        usuarioOk = ci->altaInmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
+        usuarioOk = IConUsu->altaInmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
 
     }else if (tipoUsuario == 2){
         std::cout << "Cuenta Bancaria: ";
         std::getline(std::cin, cuentaBancaria);
         std::cout << "Telefono: ";
         std::getline(std::cin, telefono);
-        usuarioOk = ci->altaPropietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
+        usuarioOk = IConUsu->altaPropietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
 
     }
     if (usuarioOk){
@@ -173,7 +173,7 @@ void altaUsuario(){
             while (salir != 0){
                 if (tipoUsuario == 1){
                     std::cout << "Lista de Propietarios:\n";
-                    std::set<DTUsuario*> Propietarios = ci->listarPropietarios();
+                    std::set<DTUsuario*> Propietarios = IConUsu->listarPropietarios();
                     //Recorrer la coleccion Mostrar "- Nickname: xx, Nombre: zz";
                     for(std::set<DTUsuario*>::iterator it = Propietarios.begin(); it != Propietarios.end(); ++it) {
                         DTUsuario* dtu = *it;
@@ -182,8 +182,8 @@ void altaUsuario(){
                     std::cout << "Nickname propietario a representar: ";
                     std::string nicknamePropietario;
                     std::getline(std::cin, nicknamePropietario);
-                    ManejadorUsuario* manejador = ManejadorUsuario::getInstance();
-                    Inmobiliaria* inmobiliaria = manejador->findInmobiliaria(nickname);
+                    ManejadorUsuario* manejadorUsu = ManejadorUsuario::getInstance();
+                    Inmobiliaria* inmobiliaria = manejadorUsu->findInmobiliaria(nickname);
                     inmobiliaria->representarPropietario(nicknamePropietario); // AGREGA EL PROPIETARIO A LA LISTA DE PROPIETARIOS REPRESENTADOS
                 }else if (tipoUsuario == 2){
                     int tipoInmueble;
@@ -220,8 +220,8 @@ void altaUsuario(){
                             techo = Plano;
                         }
                         //TODO: controlador->altaCasa(direccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
-                        IControladorInmueble* controlador = factory->getIControladorInmueble();
-                        controlador->altaCasa(inmuebleDireccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
+                        IControladorInmueble* controladorInm = factory->getIControladorInmueble();
+                        controladorInm->altaCasa(inmuebleDireccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
                     }else{
                         int piso;
                         std::cout << "Piso: ";
@@ -421,11 +421,18 @@ void altaAdministracionPropiedad(){
     //TODO: Coleccion de DTInmuebleListado = Controlador->listarInmueblesNoAdministradosInmobiliaria(nicknameInmobiliaria);
     //Recorrer la coleccion Mostrar "- Codigo: xx, direccion: xxxx, propietario: bbbbb";
     IControladorInmueble* controladorInm = factory->getIControladorInmueble();
+    std::set<DTInmuebleListado*> inmueblesNoAdministrados = controladorInm->listarInmueblesNoAdministradosInmobiliaria(nicknameInmobiliaria);
+    for(std::set<DTInmuebleListado*>::iterator it = inmueblesNoAdministrados.begin(); it != inmueblesNoAdministrados.end(); ++it) {
+        DTInmuebleListado* dti = *it;
+        std::cout << "- Codigo: " << dti->getCodigo() << ", Direccion: " << dti->getDireccion() << ", Propietario: " << dti->getPropietario() << std::endl;
+    }
     std::cout << "Codigo del inmueble a administrar: ";
     int codigoInmueble;
     std::cin >> codigoInmueble;
     std::cin.ignore();
     //TODO: Controlador->altaAdministraPropiedad(nicknameInmobiliaria, codigoInmueble);
+    controladorInm->altaAdministraPropiedad(nicknameInmobiliaria, codigoInmueble);
+
 }
 
 void cargarDatos(){
