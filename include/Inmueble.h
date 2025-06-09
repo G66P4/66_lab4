@@ -30,6 +30,8 @@ class Inmueble {
         virtual TipoInmueble consultarTipo() const = 0;
         std::set<AdministraPropiedad*>& getAdministracion(); 
 
+        // agregar getPropietario() 
+
 };
 
 #endif
