@@ -41,6 +41,15 @@ bool AdministraPropiedad::tienePub(DTFecha fechaActual, TipoPublicacion tipoPubl
 
 void AdministraPropiedad::agregarPub(Publicacion *publicacion)
 {
+    std::set<Publicacion *>::iterator it;
+    for (it = publicaciones.begin(); it != publicaciones.end(); ++it)
+    {
+        Publicacion *pub = *it;
+        if ((pub->getTipo() == publicacion->getTipo()) && (pub->getFecha() < publicacion->getFecha()))
+        {
+            pub->setActiva(false);
+        }
+    }
     publicaciones.insert(publicacion);
 }
 
@@ -67,6 +76,11 @@ std::set<Publicacion *> AdministraPropiedad::getPublicaciones() const
 }
 
 // Setters
+
+void AdministraPropiedad::setInmueble(Inmueble *inmueble)
+{
+    this->inmueble = inmueble;
+}
 
 void AdministraPropiedad::setInmobiliaria(Inmobiliaria *inmobiliaria)
 {
