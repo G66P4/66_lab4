@@ -23,7 +23,7 @@ public:
     // Setters
     void setApellido(const std::string &nuevoApellido);
     void setDocumento(const std::string &nuevoDocumento);
-    void Notificar();
+    void Notificar(DTNotificacion notificacion);
 };
 
 #endif
