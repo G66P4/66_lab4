@@ -11,6 +11,7 @@ private:
     std::string apellido;
     std::string documento;
     std::list<DTNotificacion> notificaciones;
+    std::list<Inmobiliaria*> inmobiliariasSuscritas;
 
 public:
     std::list<DTNotificacion> consultarNotificaciones();

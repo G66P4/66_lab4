@@ -29,7 +29,8 @@ class Inmueble {
         DTInmuebleAdministrado getinfoInmueble(Inmobiliaria* inm);
         virtual TipoInmueble consultarTipo() const = 0;
         std::set<AdministraPropiedad*>& getAdministracion(); 
-        
+        bool esAdministrado(Inmobiliaria* inmobiliaria);
+        void asociarAdministracion(AdministraPropiedad* adminProp);
 
 };
 

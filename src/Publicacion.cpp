@@ -8,10 +8,17 @@
 #include <string>
 using namespace std;
 
-Publicacion::Publicacion(int codigo, const DTFecha& fecha, TipoPublicacion tipo,
-                         const string& texto, float precio, bool activa)
-    : codigo(codigo), fecha(fecha), tipo(tipo),
-      texto(texto), precio(precio), activa(activa) {}
+Publicacion::Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, const string& texto, float precio, bool activa){
+    this->codigo = codigo;
+    this->fecha = fecha;
+    this->tipo = tipo;
+    this->texto = texto;
+    this->precio = precio;
+    this->activa = activa;
+
+    // Inicializar adminProp a NULL, se asignará más tarde
+    this->adminProp = nullptr;
+}
 
 Publicacion::~Publicacion() {}
 
@@ -24,18 +31,12 @@ bool Publicacion::cumple(TipoPublicacion tipoPub, float precioMinimo, float prec
 
 
 
-DTPublicacion Publicacion::crearDTPublicacion() const {
+DTPublicacion* Publicacion::crearDTPublicacion() const {
     DTUsuario* dtInmo = adminProp->getInmobiliaria()->getInmobiliariaData();
 
     std::string inmobiliaria = dtInmo->getNickname(); // o dtInmo.getNombre()
-
-    return DTPublicacion(
-        codigo,
-        new DTFecha(fecha),
-        texto,
-        std::to_string(precio),
-        inmobiliaria
-    );
+    DTPublicacion* DTP = new DTPublicacion( codigo, new DTFecha(fecha), texto, std::to_string(precio), inmobiliaria);
+    return DTP;
 }
 //getters
 int Publicacion::getCodigo() const {

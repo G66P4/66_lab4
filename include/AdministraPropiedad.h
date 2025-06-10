@@ -37,6 +37,10 @@ public:
     void setInmobiliaria(Inmobiliaria *inmobiliaria);
     void setInmueble(Inmueble *inmueble);
     void eliminarPublicaciones();
+
+    bool inmobiliariaAsociada(Inmobiliaria* inmobiliaria);
+    
+    ;
 };
 
 #endif

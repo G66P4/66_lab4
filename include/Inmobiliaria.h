@@ -4,16 +4,21 @@
 #include "Usuario.h"
 #include "DTUsuario.h"
 #include "AdministraPropiedad.h"
+#include "Propietario.h"
 
 #include <string>
 #include <map>
 #include <set>
+#include <list>
 
 class Inmobiliaria : public Usuario {
 private:
     std::string direccion;
     std::string url;
     std::string telefono;
+
+    std::list<Propietario*> representa;
+    std::set<Usuario*> suscriptores; 
 
     AdministraPropiedad* propiedad; 
 
@@ -26,11 +31,12 @@ public:
     std::string getUrl() const;
     std::string getTelefono() const;
 
-    DTUsuario obtenerInmuebleData() const;
+    DTInmuebleAdministrado* obtenerInmuebleData() const;
     AdministraPropiedad* adminPropFind(int codigoInmueble);
     void eliminarLinkAdmProp(int codigoInmueble);
-    DTUsuario getInmobiliariaData() const;
+    DTUsuario* getInmobiliariaData() const;
 
+    void representarPropietario(std::string nicknamePropietario);
     void agregarSuscripcion();     
     void eliminarSuscripcion();    
 

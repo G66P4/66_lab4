@@ -11,7 +11,7 @@
 class Publicacion {
 private:
     int codigo;
-    DTFecha fecha;
+    DTFecha* fecha;
     TipoPublicacion tipo;
     std::string texto;
     float precio;
@@ -20,14 +20,13 @@ private:
 
 public:
     // Constructor
-    Publicacion(int codigo, const DTFecha& fecha, TipoPublicacion tipo,
-                const std::string& texto, float precio, bool activa);
+    Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, const std::string& texto, float precio, bool activa);
 
     // Destructor
     ~Publicacion();
 
     bool cumple(TipoPublicacion tipo, float precioMin, float precioMax, TipoInmueble tipoInmueble);  // el tipoInmueble se compara afuera
-    DTPublicacion crearDTPublicacion() const;
+    DTPublicacion* crearDTPublicacion() const;
 
     // Getters
     int getCodigo() const;

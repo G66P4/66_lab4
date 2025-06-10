@@ -432,7 +432,7 @@ void altaAdministracionPropiedad(){
     std::cin >> codigoInmueble;
     std::cin.ignore();
     //TODO: Controlador->altaAdministraPropiedad(nicknameInmobiliaria, codigoInmueble);
-    controladorInm->altaAdministraPropiedad(nicknameInmobiliaria, codigoInmueble);
+    controladorInm->altaAdministraPropiedad(codigoInmueble, nicknameInmobiliaria);
 
 }
 
@@ -442,7 +442,7 @@ void cargarDatos(){
 
  void verFechaActual(){
     Factory* factory = Factory::getInstance();
-    IControladorFechaActual* cfecha = factory->getControladorFechaActual();
+    IControladorFechaActual* cfecha = factory->getIControladorFechaActual();
     DTFecha* fechaActual = cfecha->getFechaActual();
     std::cout << "fecha actual: " << fechaActual;
     delete fechaActual;
@@ -450,7 +450,7 @@ void cargarDatos(){
 
  void asignarFechaActual(){
     Factory* factory = Factory::getInstance();
-    IControladorFechaActual* cfecha = factory->getControladorFechaActual();
+    IControladorFechaActual* cfecha = factory->getIControladorFechaActual();
     std::cout << "dia: ";
     int dia;
     std::cin >> dia;
