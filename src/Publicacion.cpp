@@ -25,10 +25,8 @@ bool Publicacion::cumple(TipoPublicacion tipoPub, float precioMinimo, float prec
 
 
 DTPublicacion Publicacion::crearDTPublicacion() const {
-    // Obtener el DTUsuario desde la inmobiliaria asociada
     DTUsuario* dtInmo = adminProp->getInmobiliaria()->getInmobiliariaData();
 
-    // Extraer el nickname o nombre según lo que necesites
     std::string inmobiliaria = dtInmo->getNickname(); // o dtInmo.getNombre()
 
     return DTPublicacion(
@@ -62,4 +60,9 @@ float Publicacion::getPrecio() const {
 
 bool Publicacion::estaActiva() const {
     return activa;
+}
+
+//setter
+void Publicacion::setActiva(bool activa) {
+    this->activa = activa;
 }

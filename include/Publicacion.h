@@ -37,6 +37,9 @@ public:
     float getPrecio() const;
     bool estaActiva() const;
     std::string getInmobiliaria() const;
+
+    //setter
+    void setActiva(bool activa);
 };
 
 #endif
