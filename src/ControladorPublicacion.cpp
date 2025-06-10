@@ -3,16 +3,18 @@
 std::set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble)
 {
     ManejadorPublicacion *manejadorPub = ManejadorPublicacion::getInstance();
-    std::set<DTPublicacion> listaDePublicaciones;
-    for (int i = 0; i < manejadorPub->getTope(); i++)
+    std::set<DTPublicacion> listaDePublicacionesFiltrada;
+    std::map<int, Publicacion *> listaDePublicacionesActivas = manejadorPub->getPublicacionesActivas();
+    std::map<int, Publicacion *>::iterator it;
+    for (it = listaDePublicacionesActivas.begin(); it != listaDePublicacionesActivas.end(); ++it)
     {
-        Publicacion *publicacion = manejadorPub->getPublicacion(i);
+        Publicacion *publicacion = it->second;
         if (publicacion->cumple(tipoPublicacion, precioMinimo, precioMaximo, tipoInmueble))
         {
-            listaDePublicaciones.insert(publicacion->crearDTPublicacion());
+            listaDePublicacionesFiltrada.insert(publicacion->crearDTPublicacion());
         }
     }
-    return listaDePublicaciones;
+    return listaDePublicacionesFiltrada;
 };
 bool altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio)
 {
