@@ -27,7 +27,7 @@ TipoInmueble AdministraPropiedad::consultarTipoInmueble()
     return this->inmueble->consultarTipo();
 }
 
-bool AdministraPropiedad::tienePub(DTFecha fechaActual, TipoPublicacion tipoPublicacion)
+bool AdministraPropiedad::tienePub(DTFecha* fechaActual, TipoPublicacion tipoPublicacion)
 {
     std::set<Publicacion*>::iterator it;
     for (it = publicaciones.begin(); it != publicaciones.end(); ++it)
