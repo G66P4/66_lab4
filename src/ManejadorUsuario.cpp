@@ -49,12 +49,12 @@ void ManejadorUsuario::eliminarUsuario(std::string nickname) {
     }
 }
 
-bool ManejadorUsuario::existeUsuario(const std::string& nickname) {
+bool ManejadorUsuario::existeUsuario( std::string& nickname) {
     Usuario* usuario = findUsuario(nickname);
     return usuario != NULL;
 }
 
-Usuario* ManejadorUsuario::findUsuario(const std::string& nickname){
+Usuario* ManejadorUsuario::findUsuario( std::string& nickname){
     std::map<std::string, Usuario*>::iterator it = usuarios.find(nickname);
     if (it != usuarios.end()) {
         return it->second; 
@@ -63,7 +63,7 @@ Usuario* ManejadorUsuario::findUsuario(const std::string& nickname){
    
 }
 
-Inmobiliaria* ManejadorUsuario::findInmobiliaria(const std::string& nickname) {
+Inmobiliaria* ManejadorUsuario::findInmobiliaria( std::string& nickname) {
    std::list<Inmobiliaria*> inmobiliarias= getInmobiliarias();
     for (Inmobiliaria* inmobiliaria : inmobiliarias) {
         if (inmobiliaria->getNickname() == nickname) {
@@ -73,7 +73,7 @@ Inmobiliaria* ManejadorUsuario::findInmobiliaria(const std::string& nickname) {
     return NULL;
 }
 
-Propietario* ManejadorUsuario::findPropietario(const std::string& nickname) {
+Propietario* ManejadorUsuario::findPropietario( std::string& nickname) {
     std::list<Propietario*> propietarios= getPropietarios();
     for (Propietario* propietario : propietarios) {
         if (propietario->getNickname() == nickname) {
@@ -83,7 +83,7 @@ Propietario* ManejadorUsuario::findPropietario(const std::string& nickname) {
     return NULL;
 }
 
-Cliente* ManejadorUsuario::findCliente(const std::string& nickname) {
+Cliente* ManejadorUsuario::findCliente( std::string& nickname) {
     std::list<Cliente*> clientes = getClientes();
     for (Cliente* cliente : clientes) {
         if (cliente->getNickname() == nickname) {
@@ -93,7 +93,7 @@ Cliente* ManejadorUsuario::findCliente(const std::string& nickname) {
     return NULL;
 }
 
-bool ManejadorUsuario::esInmobiliaria(const std::string& nickname) {
+bool ManejadorUsuario::esInmobiliaria( std::string& nickname) {
     Usuario* usuario = findUsuario(nickname);
     if (usuario == NULL) {
         return false; 
@@ -102,7 +102,7 @@ bool ManejadorUsuario::esInmobiliaria(const std::string& nickname) {
     }
 }
 
-bool ManejadorUsuario::esPropietario(const std::string& nickname) {
+bool ManejadorUsuario::esPropietario( std::string& nickname) {
     Usuario* usuario = findUsuario(nickname);
     if( usuario == NULL ) {
         return false; 
@@ -111,7 +111,7 @@ bool ManejadorUsuario::esPropietario(const std::string& nickname) {
     }
 }
 
-bool ManejadorUsuario::esCliente(const std::string& nickname) {
+bool ManejadorUsuario::esCliente( std::string& nickname) {
     Usuario* usuario = findUsuario(nickname);
     if (usuario == NULL) {
         return false; 
