@@ -5,12 +5,17 @@
 #include "DTPublicacion.h"
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
+#include "IControladorPublicacion.h"
 
-class ControladorPublicacion
+class ControladorPublicacion: public IControladorPublicacion
 {
-private:
+private:    
+    static ControladorPublicacion* instance;
+    ControladorPublicacion();
 public:
-    std::set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);
+    static ControladorPublicacion* getInstance();
+    ~ControladorPublicacion();
+    std::set<DTPublicacion*> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);
     bool altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio);
 };
 #endif

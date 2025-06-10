@@ -8,9 +8,9 @@
 #include "DTFecha.h"
 #include "Inmobiliaria.h"
 
-class Inmueble; // Forward declaration to avoid circular dependency
-class Publicacion; // Forward declaration to avoid circular dependency
-class Inmobiliaria; // Forward declaration to avoid circular dependency
+class Inmueble; 
+class Publicacion; 
+class Inmobiliaria; 
 class AdministraPropiedad
 {
 private:
@@ -23,7 +23,7 @@ public:
     // listarPublicacion dc
     TipoInmueble consultarTipoInmueble();
     // dc de altaPublicacion
-    bool tienePub(DTFecha fechaActual, TipoPublicacion tipoPublicacion);
+    bool tienePub(DTFecha* fechaActual, TipoPublicacion tipoPublicacion);
     void agregarPub(Publicacion *publicacion);
 
     AdministraPropiedad(DTFecha *fecha);
@@ -36,6 +36,7 @@ public:
     // Setters
     void setInmobiliaria(Inmobiliaria *inmobiliaria);
     void setInmueble(Inmueble *inmueble);
+    void eliminarPublicaciones();
 };
 
 #endif

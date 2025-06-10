@@ -35,7 +35,7 @@ std::set<AdministraPropiedad*>& Inmueble::getAdministracion(){
     return administracion;
 }
 
-//tuve que agregar la inmobiliaria como parametro porque si no ni idea como hacia
+
 DTInmuebleAdministrado Inmueble::getinfoInmueble(Inmobiliaria* inm){
     for (std::set<AdministraPropiedad*>::iterator it = administracion.begin(); it != administracion.end(); ++it) {
         AdministraPropiedad* administrador = *it;

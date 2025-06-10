@@ -5,6 +5,10 @@
 #include "IControladorUsuario.h"
 #include "IControladorInmueble.h"
 #include "IControladorPublicacion.h"
+#include "ControladorFechaActual.h"
+#include "ControladorUsuario.h"
+#include "ControladorInmueble.h"
+#include "ControladorPublicacion.h"
 
 class Factory {
     private:
@@ -16,7 +20,7 @@ class Factory {
 
     public:
         static Factory* getInstance();
-        IControladorFechaActual* getControladorFechaActual();
+        IControladorFechaActual* getIControladorFechaActual();
         IControladorUsuario* getIControladorUsuario();
         //TODO: Get interfaces de controladores
         IControladorUsuario* getIControladorUsuario();
