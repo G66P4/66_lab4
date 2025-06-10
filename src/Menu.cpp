@@ -271,12 +271,10 @@ void altaPublicacion(){
     std::getline(std::cin, nicknameInmobiliaria);
     //TODO: Coleccion de DTInmuebleAdministrado = controlador->listarInmueblesAdministrados(nicknameInmobiliaria);
     //Recorrer la coleccion Mostrar "- Codigo: xx, Direccion: yy, Propietario: zzz"
-    ManejadorInmueble* manejadorInm = ManejadorInmueble::getInstance();
     std::set<DTInmuebleAdministrado*> inmueblesAdministrados = controladorUsu->listarInmueblesAdministrados(nicknameInmobiliaria);
     for(std::set<DTInmuebleAdministrado*>::iterator it = inmueblesAdministrados.begin(); it != inmueblesAdministrados.end(); ++it) {
         DTInmuebleAdministrado* dti = *it;
-        Inmueble* inmueble = manejadorInm->findInmueble(dti->getCodigo());
-        std::cout << "- Codigo: " << dti->getCodigo() << ", Direccion: " << dti->getDireccion() << ", Propietario: " << inmueble->getPropietario() << std::endl;
+        std::cout << "- Codigo: " << dti->getCodigo() << ", Direccion: " << dti->getDireccion() << ", Propietario: " <<  << std::endl;
     }
     int codigoInmueble;
     std::cout << "Inmueble: ";
