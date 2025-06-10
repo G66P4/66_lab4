@@ -66,3 +66,7 @@ bool Publicacion::estaActiva() const {
 void Publicacion::setActiva(bool activa) {
     this->activa = activa;
 }
+
+
+
+
