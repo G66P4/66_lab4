@@ -15,7 +15,7 @@ private:
     std::string url;
     std::string telefono;
 
-    std::map<int, AdministraPropiedad*> propiedades;
+    AdministraPropiedad* propiedad; 
 
 public:
     Inmobiliaria(std::string nickname, std::string nombre, std::string email,
