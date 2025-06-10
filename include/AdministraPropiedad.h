@@ -8,7 +8,9 @@
 #include "DTFecha.h"
 #include "Inmobiliaria.h"
 
-
+class Inmueble; // Forward declaration to avoid circular dependency
+class Publicacion; // Forward declaration to avoid circular dependency
+class Inmobiliaria; // Forward declaration to avoid circular dependency
 class AdministraPropiedad
 {
 private:

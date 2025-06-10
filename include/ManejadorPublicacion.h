@@ -24,7 +24,6 @@ public:
     std::map<int, Publicacion*> getPublicacionesActivas() const;
 std::map<int, Publicacion*> getPublicacionesVenta() const;
 std::map<int, Publicacion*> getPublicacionesAlquiler() const;
-std::map<int, Publicacion*> getPublicaciones() const; 
     ~ManejadorPublicacion();
 };
 
