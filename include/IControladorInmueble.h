@@ -1,6 +1,7 @@
 #ifndef ICONTROLADORINMUEBLE_H
 #define ICONTROLADORINMUEBLE_H
 #include <string>
+#include <set>
 #include "DTInmueble.h"
 #include "DTInmuebleListado.h"
 class IControladorInmueble

@@ -2,13 +2,19 @@
 #define PROPIETARIO_H
 #include "Usuario.h"
 #include "DTUsuario.h"
+#include "DTNotificacion.h"
+
 #include <string>
+#include <list>
+
+class Inmueble;
+class Inmobiliaria;
 
 class Propietario : public Usuario {
     private:
         std::string cuentaBancaria;
         std::string telefono;
-        std::list<DTNotificacion> notificaciones;
+        std::list<DTNotificacion*> notificaciones;
         std::list<Inmueble*> inmueblesDueno;
         std::list<Inmobiliaria*> inmobiliariasSuscritas;
 

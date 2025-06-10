@@ -4,7 +4,8 @@
 #include "IObserver.h"
 #include <string>
 #include <list>
-#include "../include/DTNotificacion.h"
+#include "DTNotificacion.h"
+#include "Inmobiliaria.h"
 class Cliente : public Usuario, public IObserver
 {
 private:

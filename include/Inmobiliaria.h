@@ -3,13 +3,15 @@
 
 #include "Usuario.h"
 #include "DTUsuario.h"
-#include "AdministraPropiedad.h"
 #include "Propietario.h"
+#include "DTInmuebleAdministrado.h"
 
 #include <string>
 #include <map>
 #include <set>
 #include <list>
+
+class AdministraPropiedad;
 
 class Inmobiliaria : public Usuario {
 private:
