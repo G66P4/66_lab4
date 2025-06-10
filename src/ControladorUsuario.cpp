@@ -74,3 +74,23 @@ std::set<DTUsuario*> ControladorUsuario::listarPropietarios() {
     }
     return propietariosSet;
 }
+
+std::set<DTInmuebleListado*> ControladorUsuario::listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria) {
+    Inmobiliaria* inmobiliaria = ManejadorUsuario::getInstance()->findInmobiliaria(nicknameInmobiliaria);
+    return inmobiliaria->listarInmueblesNoAdministrados();
+}
+
+bool ControladorUsuario::altaAdministraPropiedad(std::string nicknameInmobiliaria, int codigoInmueble) {
+    Inmobiliaria* inmobiliaria = ManejadorUsuario::getInstance()->findInmobiliaria(nicknameInmobiliaria);
+    if (inmobiliaria == NULL) {
+        return false; // Inmobiliaria no encontrada
+    }
+    
+    Inmueble* inmueble = ManejadorInmueble::getInstance()->findInmueble(codigoInmueble);
+    if (inmueble == NULL) {
+        return false; // Inmueble no encontrado
+    }
+    
+    return inmobiliaria->agregarInmuebleAdministrado(inmueble);
+}
+ControladorUsuario::~ControladorUsuario() {}

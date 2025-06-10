@@ -12,9 +12,7 @@ Usuario::Usuario(std::string nickname, std::string contrasena, std::string nombr
     this->email = email;
 }
 
-Usuario::~Usuario() {
-    // Destructor vacio, no hay recursos que liberar
-}
+Usuario::~Usuario() {}
 
 std::string Usuario::getNickname(){
     return nickname;

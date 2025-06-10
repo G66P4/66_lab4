@@ -13,6 +13,8 @@ class Inmobiliaria : public Usuario {
         std::string telefono;
 
     public:
+        // bool agragarInmuebleAdministrado(Inmueble* inmueble); agrega un inmueble a la lista de inmuebles administrados
+        // std::set<DTInmuebleAdministrado*> listarInmueblesNoAdministrados(); devuelve un set con los inmuebles no administrados
         Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);
         std::set<DTInmuebleAdministrado*> obtenerInmuebleData();
         DTUsuario* getInmobiliariaData();
