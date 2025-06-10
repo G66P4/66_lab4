@@ -14,7 +14,7 @@ std::list<DTNotificacion> Cliente::consultarNotificaciones()
     return ultimasNotificaciones;
 };
 
-void Cliente::notificar(DTNotificacion notificacion)
+void Cliente::Notificar(DTNotificacion notificacion)
 {
     this->notificaciones.push_back(notificacion);
 };
