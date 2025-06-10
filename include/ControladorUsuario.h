@@ -5,9 +5,10 @@
 #include "DTUsuario.h"
 #include "DTInmuebleAdministrado.h"
 #include "ManejadorUsuario.h"
+#include "DTInmuebleListado.h"
 #include "Inmueble.h"
 #include "Inmobiliaria.h" 
-
+#include "ManejadorInmueble.h"
 
 
 class ControladorUsuario : public IControladorUsuario {
@@ -22,6 +23,8 @@ public:
     std::set<DTUsuario*> listarInmobiliarias();
     std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(std::string nickname);
     std::set<DTUsuario*> listarPropietarios();
+    std::set<DTInmuebleListado*> listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria);
+    bool altaAdministraPropiedad(std::string nicknameInmobiliaria, int codigoInmueble);
     ~ControladorUsuario();
 };
 

@@ -1,5 +1,7 @@
 #include "../include/AdministraPropiedad.h"
 #include "../include/Inmueble.h"
+#include "../include/Casa.h" 
+#include "../include/Apartamento.h"
 #include "../include/Inmobiliaria.h"
 #include "../include/Publicacion.h"
 #include "../include/DTFecha.h"
@@ -31,9 +33,9 @@ bool AdministraPropiedad::tienePub(DTFecha fechaActual, TipoPublicacion tipoPubl
     for (it = publicaciones.begin(); it != publicaciones.end(); ++it)
     {
         Publicacion *pub = *it;
-        if (pub->getFecha() == &fechaActual && pub->getTipo() == tipoPublicacion)
+        if ( ( (pub->getFecha()) == fechaActual ) && ((pub->getTipo()) == tipoPublicacion) ) 
         {
-            return true;
+            return true;    
         }
     }
     return false;

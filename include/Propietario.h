@@ -1,6 +1,7 @@
 #ifndef PROPIETARIO_H
 #define PROPIETARIO_H
 #include "Usuario.h"
+#include "DTUsuario.h"
 #include <string>
 
 class Propietario : public Usuario {
