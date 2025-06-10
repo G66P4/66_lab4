@@ -64,25 +64,31 @@ Usuario* ManejadorUsuario::findUsuario(const std::string& nickname){
 }
 
 Inmobiliaria* ManejadorUsuario::findInmobiliaria(const std::string& nickname) {
-    Usuario* usuario = findUsuario(nickname);
-    if (usuario != NULL && usuario->esInmobiliaria()) {
-        return dynamic_cast<Inmobiliaria*>(usuario);
+   std::list<Inmobiliaria*> inmobiliarias= getInmobiliarias();
+    for (Inmobiliaria* inmobiliaria : inmobiliarias) {
+        if (inmobiliaria->getNickname() == nickname) {
+            return inmobiliaria;
+        }
     }
     return NULL;
 }
 
 Propietario* ManejadorUsuario::findPropietario(const std::string& nickname) {
-    Usuario* usuario = findUsuario(nickname);
-    if (usuario != NULL && usuario->esPropietario()) {
-        return dynamic_cast<Propietario*>(usuario);
+    std::list<Propietario*> propietarios= getPropietarios();
+    for (Propietario* propietario : propietarios) {
+        if (propietario->getNickname() == nickname) {
+            return propietario;
+        }
     }
     return NULL;
 }
 
 Cliente* ManejadorUsuario::findCliente(const std::string& nickname) {
-    Usuario* usuario = findUsuario(nickname);
-    if (usuario != NULL && usuario->esCliente()) {
-        return dynamic_cast<Cliente*>(usuario);
+    std::list<Cliente*> clientes = getClientes();
+    for (Cliente* cliente : clientes) {
+        if (cliente->getNickname() == nickname) {
+            return cliente;
+        }
     }
     return NULL;
 }

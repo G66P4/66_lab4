@@ -17,16 +17,19 @@ std::set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float
 bool altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio)
 {
     ManejadorUsuario *manejadorInmo = ManejadorUsuario::getInstance();
-    Inmobiliaria *inmo = manejadorInmo->findUsuario(nicknameInmobiliaria);
+    Inmobiliaria *inmo = manejadorInmo->findUsuario(nicknameInmobiliaria);  
     AdministrarPropiedad *admiProp = inmo->adminPropFind(codigoInmueble);
     ManejadorFechaActual *manejadorFecha = ManejadorFechaActual::getInstance();
     DTFecha *fechaActual = manejadorFecha->getFechaActual();
     if (!(admiProp->tienePub(fechaActual, tipoPublicacion)))
     {
-        ManejadorPublicacion *manejadorPub = ManejadorPublicacion::getInstance();
-        manejadorPub->altaPublicacion(codigoInmueble, fechaActual, tipoPublicacion, texto, precio);
-        admiProp->agregarPub(manejadorPub->findPublicacion());
-        return true;
+        //Creo una nueva publicacion
+        Publicacion *publicacion = new Publicacion(codigoInmueble, fechaActual, tipoPublicacion, texto, precio, true);
+        //Agrego la publicacion al administr propiedad
+        admiProp->agregarPub(publicacion);
+        //Agrego la publicacion al manejador de publicaciones
+        manejadorInmo->agregarPublicacion(publicacion);
+        return true; 
     }
     else
     {
