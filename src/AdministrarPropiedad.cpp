@@ -88,3 +88,17 @@ void AdministraPropiedad::setInmobiliaria(Inmobiliaria *inmobiliaria)
 {
     this->inmobiliaria = inmobiliaria;
 }
+void AdministraPropiedad::eliminarPublicaciones(){
+    std::set<Publicacion*>::iterator it;
+    for (it = publicaciones.begin(); it != publicaciones.end(); ++it)
+    {
+        Publicacion *pub = *it;
+        delete pub; // Elimina la publicación
+    }
+    publicaciones.clear(); // Limpia el conjunto de publicaciones
+}
+    
+bool AdministraPropiedad::inmobiliariaAsociada(Inmobiliaria* inmobiliaria){
+    return this->inmobiliaria == inmobiliaria;
+}
+    

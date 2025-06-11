@@ -7,14 +7,14 @@ Cliente::Cliente(std::string nickname, std::string contrasena, std::string nombr
     this->documento = documento;
 };
 
-std::list<DTNotificacion> Cliente::consultarNotificaciones()
+std::list<DTNotificacion*> Cliente::consultarNotificaciones()
 {
-    std::list<DTNotificacion> ultimasNotificaciones = this->notificaciones;
+    std::list<DTNotificacion*> ultimasNotificaciones = this->notificaciones;
     notificaciones.clear();
     return ultimasNotificaciones;
 };
 
-void Cliente::Notificar(DTNotificacion notificacion)
+void Cliente::Notificar(DTNotificacion *notificacion)
 {
     this->notificaciones.push_back(notificacion);
 };
@@ -28,11 +28,16 @@ std::string Cliente::getDocumento()
     return documento;
 };
 // Setters
-void Cliente::setApellido(const std::string &nuevoApellido)
+void Cliente::setApellido( std::string nuevoApellido)
 {
     apellido = nuevoApellido;
 };
-void Cliente::setDocumento(const std::string &nuevoDocumento)
+
+void Cliente::setDocumento( std::string nuevoDocumento)
 {
     documento = nuevoDocumento;
 };
+
+std::list<Inmobiliaria*> Cliente::getInmobiliariasSuscritas() const{
+    return inmobiliariasSuscritas;
+}

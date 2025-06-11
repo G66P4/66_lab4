@@ -18,7 +18,6 @@ bool DTApartamento::getTieneAscensor() {
 float DTApartamento::getGastosComunes() {
     return gastosComunes;
 }
-
-DTApartamento::~DTApartamento(){
-
+DTApartamento::~DTApartamento() {
+    // Destructor vacio, no hay recursos que liberar
 }

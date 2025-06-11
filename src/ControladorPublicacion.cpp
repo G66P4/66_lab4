@@ -9,10 +9,24 @@
 #include <map>
 #include <set>
 
-std::set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble)
+
+ControladorPublicacion* ControladorPublicacion::getInstance()
+{
+    if (instance == NULL) {
+        instance = new ControladorPublicacion();
+    }
+    return instance;
+}
+void ControladorPublicacion::borrarInstance(){
+    if (instance != NULL) {
+        delete instance;
+        instance = NULL;
+    }
+}
+std::set<DTPublicacion*> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble)
 {
     ManejadorPublicacion *manejadorPub = ManejadorPublicacion::getInstancia();
-    std::set<DTPublicacion> listaDePublicacionesFiltrada;
+    std::set<DTPublicacion*> listaDePublicacionesFiltrada;
     std::map<int, Publicacion *> listaDePublicacionesActivas = manejadorPub->getPublicacionesActivas();
     std::map<int, Publicacion *>::iterator it;
     for (it = listaDePublicacionesActivas.begin(); it != listaDePublicacionesActivas.end(); ++it)
