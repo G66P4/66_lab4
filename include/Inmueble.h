@@ -3,9 +3,10 @@
 #include <string>
 #include "DTFecha.h"
 #include "DTInmuebleAdministrado.h"
-#include "TipoInmueble.h"
 #include "Inmobiliaria.h"
-class AdministraPropiedad; //se usa class en lugar de #include para evitar dependencias circulares
+#include "TipoInmueble.h"
+
+class AdministraPropiedad; 
 
 class Inmueble {
     private:
@@ -26,8 +27,8 @@ class Inmueble {
         int getSuperficie();
         int getAnoConstruccion();
         void eliminarLinksInmueble(int codigoInmueble);//llamar a eliminar publicaciones de AdministraPropiedad
-        DTInmuebleAdministrado getinfoInmueble(Inmobiliaria* inm);
-        virtual TipoInmueble consultarTipo() const = 0;
+        DTInmuebleAdministrado* getinfoInmueble(Inmobiliaria* inm);
+        virtual TipoInmueble consultarTipo()  = 0;
         std::set<AdministraPropiedad*>& getAdministracion(); 
         bool esAdministrado(Inmobiliaria* inmobiliaria);
         void asociarAdministracion(AdministraPropiedad* adminProp);

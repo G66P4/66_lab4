@@ -4,6 +4,8 @@ ManejadorInmueble* ManejadorInmueble::instance = NULL;
 
 ManejadorInmueble::ManejadorInmueble() {}
 
+int ManejadorInmueble::ultimoCodigo = 0;
+
 ManejadorInmueble* ManejadorInmueble::getInstance() {
     if (instance == NULL) {
         instance = new ManejadorInmueble();
@@ -16,6 +18,10 @@ void ManejadorInmueble::liberarInstancia(){
         delete instance;     
         instance = NULL;     
     }
+}
+
+int ManejadorInmueble::generarNuevoCodigo() {
+    return ++ultimoCodigo;
 }
 
 void ManejadorInmueble::agregarInmueble(Inmueble* inmueble) {

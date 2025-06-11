@@ -10,6 +10,7 @@ class ManejadorInmueble {
         static ManejadorInmueble* instance;
         std::map <int, Inmueble*> inmuebles;
         ManejadorInmueble();
+        static int ultimoCodigo;
 
     public:
         static ManejadorInmueble* getInstance();
@@ -18,6 +19,7 @@ class ManejadorInmueble {
         void eliminarInmueble(int codigo);
         bool existeInmueble(const int codigo);
         Inmueble* findInmueble(const int codigo);
+        int generarNuevoCodigo();
         ~ManejadorInmueble();
 };
 #endif
