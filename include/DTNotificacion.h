@@ -26,6 +26,9 @@ public:
     std::string getTextoPublicacion() const;
     TipoPublicacion getTipoPublicacion() const;
     TipoInmueble getTipoInmuebl() const;
+
+    // Destructor
+    ~DTNotificacion(){}
 };
 
 #endif

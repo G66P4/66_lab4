@@ -34,3 +34,8 @@ TipoInmueble DTNotificacion::getTipoInmuebl() const
 {
     return tipoInmuebl; 
 }
+
+// Destructor
+DTNotificacion::~DTNotificacion() {
+    delete fechaPublicacion;
+}

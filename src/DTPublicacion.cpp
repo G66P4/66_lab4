@@ -8,8 +8,8 @@ DTPublicacion::DTPublicacion(int codigo, DTFecha* fecha, std::string texto, std:
     this->inmobiliaria = inmobiliaria;
 }
 
-bool operator<(DTPublicacion publicacion) const {
-    return this->fecha < publicacion.getFecha(); 
+bool operator<(DTPublicacion* publicacion) const {
+    return this->fecha < publicacion->getFecha(); 
 }
 
 int DTPublicacion::getCodigo() {
