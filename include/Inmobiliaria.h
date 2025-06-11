@@ -25,18 +25,20 @@ private:
     AdministraPropiedad* propiedad; 
 
 public:
-    Inmobiliaria(std::string nickname, std::string nombre, std::string email,
-                 std::string direccion, std::string url, std::string telefono);
+    Inmobiliaria(std::string nickname,std::string contasena , std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);
 
     // Getters
     std::string getDireccion() const;
     std::string getUrl() const;
     std::string getTelefono() const;
 
-    DTInmuebleAdministrado* obtenerInmuebleData() const;
+    std::set<DTInmuebleAdministrado*> obtenerInmuebleData();//devuelve todos los inmuebles administrados por la inmobiliaria
+    std::set<DTInmuebleListado*> listarInmueblesNoAdministrados();//devuelve todos los inmuebles no administrados por la inmobiliaria
+    bool agregarInmuebleAdministrado(Inmueble* inmueble);
     AdministraPropiedad* adminPropFind(int codigoInmueble);
     void eliminarLinkAdmProp(int codigoInmueble);
     DTUsuario* getInmobiliariaData() const;
+
 
     void representarPropietario(std::string nicknamePropietario);
     void agregarSuscripcion();     

@@ -9,6 +9,7 @@ DTPublicacion::DTPublicacion(int codigo, DTFecha* fecha, std::string texto, std:
     this->inmobiliaria = inmobiliaria;
 }
 
+
 bool DTPublicacion::operator<(DTPublicacion* publicacion) const {
     return this->fecha < publicacion->getFecha(); 
 }

@@ -93,4 +93,6 @@ bool ControladorUsuario::altaAdministraPropiedad(std::string nicknameInmobiliari
     
     return inmobiliaria->agregarInmuebleAdministrado(inmueble);
 }
-ControladorUsuario::~ControladorUsuario() {}
+ControladorUsuario::~ControladorUsuario() {
+    instance = NULL; 
+}

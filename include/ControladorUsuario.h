@@ -1,5 +1,7 @@
 #ifndef CONTROLADORUSUARIO_H
 #define CONTROLADORUSUARIO_H
+#include <string>
+#include <set>
 #include "IControladorUsuario.h"
 #include "Usuario.h"
 #include "DTUsuario.h"
@@ -9,6 +11,7 @@
 #include "Inmueble.h"
 #include "Inmobiliaria.h" 
 #include "ManejadorInmueble.h"
+
 
 
 class ControladorUsuario : public IControladorUsuario {
