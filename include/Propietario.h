@@ -19,6 +19,7 @@ class Propietario : public Usuario {
         std::list<Inmobiliaria*> inmobiliariasSuscritas;
 
     public:
+        //falta Notificar a las inmobiliarias suscritas consultar suscripciones y que propietario es hoijo de iovserver(es copiar y pegar lo de Cliente)
         Propietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono);
         DTUsuario* getPropietarioData();
         ~Propietario();

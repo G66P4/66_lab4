@@ -4,6 +4,7 @@
 #include <set>
 #include "DTInmueble.h"
 #include "DTInmuebleListado.h"
+#include "TipoTecho.h"
 class IControladorInmueble
 {
 public:

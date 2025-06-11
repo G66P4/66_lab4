@@ -36,8 +36,8 @@ public:
     // Setters
     void setInmobiliaria(Inmobiliaria *inmobiliaria);
     void setInmueble(Inmueble *inmueble);
+    //faltan:
     void eliminarPublicaciones();
-
     bool inmobiliariaAsociada(Inmobiliaria* inmobiliaria);
     
     ;
