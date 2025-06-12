@@ -36,6 +36,6 @@ void ControladorInmueble::eliminarInmueble(int codigoInmueble){
         Inmueble* inm = ManejadorInmueble::getInstance()->findInmueble(codigoInmueble);
         inm->eliminarLinksInmueble(codigoInmueble);
         ManejadorInmueble::getInstance()->eliminarInmueble(codigoInmueble);
-        delete inm;
+        inm->~Inmueble();
     }
 }

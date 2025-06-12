@@ -41,3 +41,11 @@ void Cliente::setDocumento( std::string nuevoDocumento)
 std::list<Inmobiliaria*> Cliente::getInmobiliariasSuscritas() const{
     return inmobiliariasSuscritas;
 }
+
+Cliente::~Cliente()
+{
+    for (DTNotificacion* notificacion : notificaciones) {
+        delete notificacion; // Liberar memoria de las notificaciones
+    }
+    notificaciones.clear();
+}
