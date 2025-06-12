@@ -86,4 +86,12 @@ bool Inmueble::esAdministrado(Inmobiliaria* inmobiliaria) {
 
 void Inmueble::asociarAdministracion(AdministraPropiedad* adminProp) {
     administracion.insert(adminProp);
+
+}
+Inmueble::~Inmueble(){
+    // Eliminar los enlaces de administración del inmueble
+    eliminarLinksInmueble(codigo);
+    
+    // Limpiar el set de administraciones
+    administracion.clear();
 }

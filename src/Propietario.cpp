@@ -42,4 +42,13 @@ std::set<DTInmuebleListado*> Propietario::listarInmueblesNoAdministrados(std::st
         
 };
 
+void Propietario::Notificar(DTNotificacion notificacion){
+    DTNotificacion* nuevaNotificacion = new DTNotificacion(notificacion);
+    notificaciones.push_back(nuevaNotificacion);
+};
+
+DTUsuario* Propietario::getPropietarioData(){
+    return new DTUsuario(this->getNickname(), this->getNombre());
+};
+
 Propietario::~Propietario(){};

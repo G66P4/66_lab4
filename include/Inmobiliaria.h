@@ -5,6 +5,7 @@
 #include "DTUsuario.h"
 #include "Propietario.h"
 #include "DTInmuebleAdministrado.h"
+#include "DTInmuebleListado.h"
 
 #include <string>
 #include <map>
@@ -22,7 +23,7 @@ private:
     std::list<Propietario*> representa;
     std::set<Usuario*> suscriptores; 
 
-    AdministraPropiedad* propiedad; 
+    std::map<int, AdministraPropiedad*> propiedades; // clave = código del inmueble 
 
 public:
     Inmobiliaria(std::string nickname,std::string contasena , std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);
@@ -32,18 +33,19 @@ public:
     std::string getUrl() const;
     std::string getTelefono() const;
 
+    std::set<DTInmuebleListado*> Inmobiliaria::listarInmueblesNoAdministrados();
     std::set<DTInmuebleAdministrado*> obtenerInmuebleData();//devuelve todos los inmuebles administrados por la inmobiliaria
     bool agregarInmuebleAdministrado(Inmueble* inmueble);
     AdministraPropiedad* adminPropFind(int codigoInmueble);
     void eliminarLinkAdmProp(int codigoInmueble);
-    DTUsuario* getInmobiliariaData() const;
+    DTUsuario* getInmobiliariaData();
 
 
     void representarPropietario(std::string nicknamePropietario);
-    void agregarSuscripcion();     
-    void eliminarSuscripcion();    
+    void agregarSuscripcion(Usuario* usuario);     
+    void eliminarSuscripcion(Usuario* usuario);    
 
-    void modificar(); 
+    void modificar(Publicacion* pub); 
 };
 
 #endif

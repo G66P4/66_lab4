@@ -19,6 +19,8 @@ class DTFecha {
         bool operator==(DTFecha* fecha);
         bool operator==(DTFecha fecha);
         std::string toString();
+
+        static DTFecha* obtenerFechaActual(); //funcion para obtener la fecha del momento
 };
 std::ostream& operator<<(std::ostream& os, DTFecha* fecha);
 #endif

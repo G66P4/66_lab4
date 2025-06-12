@@ -9,6 +9,9 @@
 #include <map>
 #include <set>
 
+ControladorPublicacion* ControladorPublicacion::instance = NULL;
+
+ControladorPublicacion::ControladorPublicacion() {}
 
 ControladorPublicacion* ControladorPublicacion::getInstance()
 {
@@ -19,7 +22,6 @@ ControladorPublicacion* ControladorPublicacion::getInstance()
 }
 void ControladorPublicacion::borrarInstance(){
     if (instance != NULL) {
-        delete instance;
         instance = NULL;
     }
 }

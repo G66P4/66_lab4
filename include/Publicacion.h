@@ -37,6 +37,7 @@ public:
     bool estaActiva() const;
     std::string getInmobiliaria() const;
     AdministraPropiedad* getAdminProp();
+
     //setter
     void setActiva(bool activa);
 };
