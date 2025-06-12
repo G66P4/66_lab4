@@ -1,6 +1,8 @@
 #include "../include/DTFecha.h"
 #include <sstream>
 #include <iostream>
+#include <ctime>
+
 
 DTFecha::DTFecha(int dia, int mes, int anio) {
     this->anio = anio;
@@ -59,4 +61,15 @@ std::string DTFecha::toString(){
 std::ostream& operator<<(std::ostream& os, DTFecha* fecha) {
     os << fecha->toString();
     return os;
+}
+
+DTFecha* DTFecha::obtenerFechaActual() {
+    time_t tiempoActual = time(nullptr);
+    tm* fechaLocal = localtime(&tiempoActual);
+
+    int dia = fechaLocal->tm_mday;
+    int mes = fechaLocal->tm_mon + 1;
+    int anio = fechaLocal->tm_year + 1900;
+
+    return new DTFecha(dia, mes, anio);
 }
