@@ -42,10 +42,10 @@ public:
 
 
     void representarPropietario(std::string nicknamePropietario);
-    void agregarSuscripcion();     
-    void eliminarSuscripcion();    
+    void agregarSuscripcion(Usuario* usuario);     
+    void eliminarSuscripcion(Usuario* usuario);    
 
-    void modificar(); 
+    void modificar(Publicacion* pub); 
 };
 
 #endif

@@ -6,6 +6,9 @@
 #include "../include/Usuario.h"
 #include "../include/Propietario.h"
 #include "../include/ManejadorUsuario.h"
+#include "../include/Publicacion.h"
+
+
 Inmobiliaria::Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email,
                            std::string direccion, std::string url, std::string telefono)
     : Usuario(nickname, contrasena, nombre, email) 
@@ -89,4 +92,34 @@ void Inmobiliaria::representarPropietario(std::string nicknamePropietario) {
     }
 
     representa.push_back(propietario);
+}
+
+void Inmobiliaria::agregarSuscripcion(Usuario* usuario) {
+    suscriptores.insert(usuario);
+}
+
+void Inmobiliaria::eliminarSuscripcion(Usuario* usuario) {
+    suscriptores.erase(usuario);
+}
+
+void Inmobiliaria::modificar(Publicacion* pub) {
+    DTFecha* fechaActual = DTFecha::obtenerFechaActual();
+
+    DTNotificacion* noti = new DTNotificacion(
+        pub->getCodigo(),
+        fechaActual,
+        pub->getTexto(),
+        getNickname(),
+        pub->getTipo(),
+        pub->getAdminProp()->getInmueble()->consultarTipo()
+    );
+
+    for (Usuario* usuario : suscriptores) {
+        IObserver* obs = dynamic_cast<IObserver*>(usuario);
+        if (obs != nullptr) {
+            obs->Notificar(noti);
+        }
+    }
+
+    delete noti;
 }
