@@ -183,9 +183,7 @@ void altaUsuario(){
                     std::cout << "Nickname propietario a representar: ";
                     std::string nicknamePropietario;
                     std::getline(std::cin, nicknamePropietario);
-                    ManejadorUsuario* manejadorUsu = ManejadorUsuario::getInstance();
-                    Inmobiliaria* inmobiliaria = manejadorUsu->findInmobiliaria(nickname);
-                    inmobiliaria->representarPropietario(nicknamePropietario); // AGREGA EL PROPIETARIO A LA LISTA DE PROPIETARIOS REPRESENTADOS
+                    IConUsu->representarPropietario(nickname, nicknamePropietario);
                 }else if (tipoUsuario == 2){
                     int tipoInmueble;
                     std::cout << "Indique el tipo de inmueble (1: Casa, 0: Apartamento): ";
@@ -221,8 +219,8 @@ void altaUsuario(){
                             techo = Plano;
                         }
                         //TODO: controlador->altaCasa(direccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
-                        IControladorInmueble* controladorInm = factory->getIControladorInmueble();
-                        controladorInm->altaCasa(inmuebleDireccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
+                        IControladorInmueble* icontroladorInm = factory->getIControladorInmueble();
+                        icontroladorInm->altaCasa(inmuebleDireccion, numeroPuerta, superficie, anoConstruccion, esPH, techo,nickname);
                     }else{
                         int piso;
                         std::cout << "Piso: ";
@@ -238,8 +236,8 @@ void altaUsuario(){
                         std::cin >> gastosComunes;
                         std::cin.ignore();
                         //TODO: controlador->altaApartamento(direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes)
-                        IControladorInmueble* controlador = factory->getIControladorInmueble();
-                        controlador->altaApartamento(inmuebleDireccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes);
+                        IControladorInmueble* icontrolador = factory->getIControladorInmueble();
+                        icontrolador->altaApartamento(inmuebleDireccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes);
                     }
                 }
             }
@@ -274,7 +272,7 @@ void altaPublicacion(){
     std::set<DTInmuebleAdministrado*> inmueblesAdministrados = controladorUsu->listarInmueblesAdministrados(nicknameInmobiliaria);
     for(std::set<DTInmuebleAdministrado*>::iterator it = inmueblesAdministrados.begin(); it != inmueblesAdministrados.end(); ++it) {
         DTInmuebleAdministrado* dti = *it;
-        std::cout << "- Codigo: " << dti->getCodigo() << ", Direccion: " << dti->getDireccion() << ", Propietario: " <<  << std::endl;
+        std::cout << "- Codigo: " << dti->getCodigo() << ", Direccion: " << dti->getDireccion() << ", Fecha comienzo administracion: " << dti->getFechaComienzo() << std::endl;
     }
     int codigoInmueble;
     std::cout << "Inmueble: ";

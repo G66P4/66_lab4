@@ -96,3 +96,9 @@ bool ControladorUsuario::altaAdministraPropiedad(std::string nicknameInmobiliari
 ControladorUsuario::~ControladorUsuario() {
     instance = NULL; 
 }
+void ControladorUsuario::representarPropietario(std::string nickname, std::string nicknamePropietario) {
+    Inmobiliaria* inmobiliaria = ManejadorUsuario::getInstance()->findInmobiliaria(nickname);
+    if (inmobiliaria != NULL) {
+        inmobiliaria->representarPropietario(nicknamePropietario);
+    }
+}

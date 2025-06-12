@@ -11,6 +11,15 @@ class ControladorInmueble : public IControladorInmueble{
         static ControladorInmueble* instance;
         ControladorInmueble();
     public:
+<<<<<<< Updated upstream
+=======
+        bool altaCasa(std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, bool esPH, TipoTecho techo, std::string nicknamePropietario);
+        bool altaApartamento(std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, int piso, bool tieneAscensor, float gastosComunes, std::string nicknamePropietario);
+        DTInmueble* detalleInmueblePublicacion(int codigoInmueble);
+        std::set<DTInmuebleListado*> listarInmuebles();
+        DTInmueble* detalleInmueble(int codigoInmueble);
+        void altaAdministraPropiedad(int codigoInmueble, std::string nicknameInmobiliaria);
+>>>>>>> Stashed changes
         static ControladorInmueble* getInstance();
         void eliminarInmueble(int codigoInmueble);
         ~ControladorInmueble();
