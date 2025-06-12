@@ -50,6 +50,10 @@ Inmueble* ManejadorInmueble::findInmueble(const int codigo){
     return NULL;
 }
 
+std::map<int, Inmueble*>& ManejadorInmueble::getInmuebles() {
+    return inmuebles;
+}
+
 ManejadorInmueble::~ManejadorInmueble(){
     std::map<int, Inmueble*>::iterator it = inmuebles.begin();
     while (it != inmuebles.end()) {

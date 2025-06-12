@@ -102,3 +102,16 @@ void ControladorUsuario::representarPropietario(std::string nickname, std::strin
         inmobiliaria->representarPropietario(nicknamePropietario);
     }
 }
+
+std::set<DTInmuebleListado*> ControladorUsuario::listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria) {
+    Inmobiliaria* inmobiliaria = ManejadorUsuario::getInstance()->findInmobiliaria(nicknameInmobiliaria);
+    if (inmobiliaria != NULL) {
+        return inmobiliaria->listarInmueblesNoAdministrados();
+    }
+    std::list<Propietario*> propietarios = ManejadorUsuario::getInstance()->getPropietarios();
+    for (std::list<Propietario*>::iterator it = propietarios.begin(); it != propietarios.end(); ++it) {
+        Propietario* propietario = *it;
+        return propietario->listarInmueblesNoAdministrados(nicknameInmobiliaria);
+        }
+    }
+    

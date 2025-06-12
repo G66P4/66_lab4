@@ -20,6 +20,7 @@ class ManejadorInmueble {
         bool existeInmueble(const int codigo);
         Inmueble* findInmueble(const int codigo);
         int generarNuevoCodigo();
+        std::map<int, Inmueble*>& getInmuebles();
         ~ManejadorInmueble();
 };
 #endif
