@@ -59,6 +59,7 @@ std::set<DTInmuebleAdministrado*> ControladorUsuario::listarInmueblesAdministrad
     std::set<DTInmuebleAdministrado*> inmueblesAdminSet;
     Inmobiliaria* inmo = ManejadorUsuario::getInstance()->findInmobiliaria(nickname);
     inmueblesAdminSet = inmo->obtenerInmuebleData();
+    return inmueblesAdminSet;
 }
 
 
@@ -73,11 +74,6 @@ std::set<DTUsuario*> ControladorUsuario::listarPropietarios() {
         propietariosSet.insert(dtu);
     }
     return propietariosSet;
-}
-
-std::set<DTInmuebleListado*> ControladorUsuario::listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria) {
-    Inmobiliaria* inmobiliaria = ManejadorUsuario::getInstance()->findInmobiliaria(nicknameInmobiliaria);
-    return inmobiliaria->listarInmueblesNoAdministrados();
 }
 
 bool ControladorUsuario::altaAdministraPropiedad(std::string nicknameInmobiliaria, int codigoInmueble) {
@@ -103,15 +99,16 @@ void ControladorUsuario::representarPropietario(std::string nickname, std::strin
     }
 }
 
-std::set<DTInmuebleListado*> ControladorUsuario::listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria) {
+std::set<DTInmuebleListado*> ControladorUsuario::listarInmueblesNoAdministrados(std::string nicknameInmobiliaria) {
+    std::set<DTInmuebleListado*> inmueblesNoAdminSet;
     Inmobiliaria* inmobiliaria = ManejadorUsuario::getInstance()->findInmobiliaria(nicknameInmobiliaria);
     if (inmobiliaria != NULL) {
-        return inmobiliaria->listarInmueblesNoAdministrados();
-    }
-    std::list<Propietario*> propietarios = ManejadorUsuario::getInstance()->getPropietarios();
-    for (std::list<Propietario*>::iterator it = propietarios.begin(); it != propietarios.end(); ++it) {
-        Propietario* propietario = *it;
-        return propietario->listarInmueblesNoAdministrados(nicknameInmobiliaria);
+        std::list<Propietario*> propietarios = ManejadorUsuario::getInstance()->getPropietarios();
+        for (std::list<Propietario*>::iterator it = propietarios.begin(); it != propietarios.end(); ++it) {
+            Propietario* propietario = *it;
+            inmueblesNoAdminSet.merge(propietario->listarInmueblesNoAdministrados(nicknameInmobiliaria));
         }
     }
+    return inmueblesNoAdminSet; 
+}
     

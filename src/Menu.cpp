@@ -354,6 +354,11 @@ void consultaPublicaciones(){
         // Si es casa-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, PH: Si/No, Tipo de techo: Liviano/A dos aguas/Plano"
         IControladorInmueble* controladorInmueble = factory->getIControladorInmueble();
         DTInmueble* inmueble = controladorInmueble->detalleInmueblePublicacion(codigoPublicacion);
+        std::cout << "Codigo: " << inmueble->getCodigo() 
+                  << ", Direccion: " << inmueble->getDireccion() 
+                  << ", Numero de Puerta: " << inmueble->getNumeroPuerta() 
+                  << ", Superficie: " << inmueble->getSuperficie() 
+                  << " m2, Ano Construccion: " << inmueble->getAnioConstruccion() << std::endl;
     }
 }
 
@@ -379,6 +384,11 @@ void eliminarInmueble(){
     // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
     // Si es casa-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, PH: Si/No, Tipo de techo: Liviano/A dos aguas/Plano"
     DTInmueble* inmueble = controladorInm->detalleInmueble(codigoInmueble);
+    std::cout << "Codigo: " << inmueble->getCodigo() 
+              << ", Direccion: " << inmueble->getDireccion() 
+              << ", Numero de Puerta: " << inmueble->getNumeroPuerta() 
+              << ", Superficie: " << inmueble->getSuperficie() 
+              << " m2, Ano Construccion: " << inmueble->getAnioConstruccion() << std::endl;
     int deseaEliminar;
     std::cout << "¿Desea eliminar?: (1: Si, 0: No)";
     std::cin >> deseaEliminar;
@@ -420,7 +430,7 @@ void altaAdministracionPropiedad(){
     //TODO: Coleccion de DTInmuebleListado = Controlador->listarInmueblesNoAdministradosInmobiliaria(nicknameInmobiliaria);
     //Recorrer la coleccion Mostrar "- Codigo: xx, direccion: xxxx, propietario: bbbbb";
     IControladorInmueble* IControladorInm = factory->getIControladorInmueble();
-    std::set<DTInmuebleListado*> inmueblesNoAdministrados = IControladorUsu->listarInmueblesNoAdministradosInmobiliaria(nicknameInmobiliaria);
+    std::set<DTInmuebleListado*> inmueblesNoAdministrados = IControladorUsu->listarInmueblesNoAdministrados(nicknameInmobiliaria);
     for(std::set<DTInmuebleListado*>::iterator it = inmueblesNoAdministrados.begin(); it != inmueblesNoAdministrados.end(); ++it) {
         DTInmuebleListado* dti = *it;
         std::cout << "- Codigo: " << dti->getCodigo() << ", Direccion: " << dti->getDireccion() << ", Propietario: " << dti->getPropietario() << std::endl;

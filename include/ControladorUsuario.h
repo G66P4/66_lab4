@@ -26,7 +26,7 @@ public:
     std::set<DTUsuario*> listarInmobiliarias();
     std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(std::string nickname);
     std::set<DTUsuario*> listarPropietarios();
-    std::set<DTInmuebleListado*> listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria);
+    std::set<DTInmuebleListado*> listarInmueblesNoAdministrados(std::string nicknameInmobiliaria);
     bool altaAdministraPropiedad(std::string nicknameInmobiliaria, int codigoInmueble);
     void representarPropietario(std::string nickname, std::string nicknamePropietario);
     ~ControladorUsuario();

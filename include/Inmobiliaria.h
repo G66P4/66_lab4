@@ -33,7 +33,6 @@ public:
     std::string getTelefono() const;
 
     std::set<DTInmuebleAdministrado*> obtenerInmuebleData();//devuelve todos los inmuebles administrados por la inmobiliaria
-    std::set<DTInmuebleListado*> listarInmueblesNoAdministrados();//devuelve todos los inmuebles no administrados por la inmobiliaria
     bool agregarInmuebleAdministrado(Inmueble* inmueble);
     AdministraPropiedad* adminPropFind(int codigoInmueble);
     void eliminarLinkAdmProp(int codigoInmueble);

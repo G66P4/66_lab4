@@ -1,10 +1,11 @@
 #ifndef INMUEBLE_H
 #define INMUEBLE_H
 #include <string>
+#include <set>
 #include "DTFecha.h"
 #include "DTInmuebleAdministrado.h"
-#include "Inmobiliaria.h"
 #include "TipoInmueble.h"
+class Inmobiliaria;
 
 class AdministraPropiedad; 
 

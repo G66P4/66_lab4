@@ -25,7 +25,10 @@ int ManejadorInmueble::generarNuevoCodigo() {
 }
 
 void ManejadorInmueble::agregarInmueble(Inmueble* inmueble) {
-    inmuebles[inmueble->getCodigo()] = inmueble;
+    if(inmueble != NULL) {
+        int codigo = inmueble->getCodigo();
+        inmuebles[codigo] = inmueble;
+    }
 }
 
 void ManejadorInmueble::eliminarInmueble(int codigo) {

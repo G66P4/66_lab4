@@ -4,7 +4,6 @@
 #include "DTUsuario.h"
 #include "DTNotificacion.h"
 #include "DTInmuebleListado.h"
-#include "AdministraPropiedad.h"
 #include "ManejadorInmueble.h"
 
 #include <string>
