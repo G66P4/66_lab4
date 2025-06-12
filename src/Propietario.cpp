@@ -14,4 +14,8 @@ std::string Propietario::getTelefono(){
     return telefono;
 };
 
+void Propietario::asociarInmueble(Inmueble* inmueble){
+    inmueblesDueno.push_back(inmueble);
+};
+
 Propietario::~Propietario(){};

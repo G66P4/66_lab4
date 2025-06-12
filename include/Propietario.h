@@ -28,6 +28,7 @@ class Propietario : public Usuario {
         std::string getTelefono();
         void Notificar(DTNotificacion notificacion);
         void removerLinkPropiedad(int codigoInmueble);
+        void asociarInmueble(Inmueble* inmueble);
 };
 
 #endif
