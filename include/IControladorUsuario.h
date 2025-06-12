@@ -16,7 +16,8 @@ class IControladorUsuario {
         virtual std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(std::string nickname) = 0;
         virtual std::set<DTUsuario*> listarPropietarios() = 0;
         virtual bool altaAdministraPropiedad(std::string nicknameInmobiliaria, int codigoInmueble) = 0;
-        virtual std::set<DTInmuebleListado*> listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria);
+        virtual std::set<DTInmuebleListado*> listarInmueblesNoAdministrados(std::string nicknameInmobiliaria);
+        virtual void representarPropietario(std::string nickname, std::string nicknamePropietario) = 0;
 
         ~IControladorUsuario() {}
 };

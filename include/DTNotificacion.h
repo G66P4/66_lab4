@@ -28,7 +28,7 @@ public:
     TipoInmueble getTipoInmuebl() const;
 
     // Destructor
-    ~DTNotificacion(){}
+    ~DTNotificacion();
 };
 
 #endif

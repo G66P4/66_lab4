@@ -59,6 +59,7 @@ std::set<DTInmuebleAdministrado*> ControladorUsuario::listarInmueblesAdministrad
     std::set<DTInmuebleAdministrado*> inmueblesAdminSet;
     Inmobiliaria* inmo = ManejadorUsuario::getInstance()->findInmobiliaria(nickname);
     inmueblesAdminSet = inmo->obtenerInmuebleData();
+    return inmueblesAdminSet;
 }
 
 
@@ -73,11 +74,6 @@ std::set<DTUsuario*> ControladorUsuario::listarPropietarios() {
         propietariosSet.insert(dtu);
     }
     return propietariosSet;
-}
-
-std::set<DTInmuebleListado*> ControladorUsuario::listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria) {
-    Inmobiliaria* inmobiliaria = ManejadorUsuario::getInstance()->findInmobiliaria(nicknameInmobiliaria);
-    return inmobiliaria->listarInmueblesNoAdministrados();
 }
 
 bool ControladorUsuario::altaAdministraPropiedad(std::string nicknameInmobiliaria, int codigoInmueble) {
@@ -96,3 +92,23 @@ bool ControladorUsuario::altaAdministraPropiedad(std::string nicknameInmobiliari
 ControladorUsuario::~ControladorUsuario() {
     instance = NULL; 
 }
+void ControladorUsuario::representarPropietario(std::string nickname, std::string nicknamePropietario) {
+    Inmobiliaria* inmobiliaria = ManejadorUsuario::getInstance()->findInmobiliaria(nickname);
+    if (inmobiliaria != NULL) {
+        inmobiliaria->representarPropietario(nicknamePropietario);
+    }
+}
+
+std::set<DTInmuebleListado*> ControladorUsuario::listarInmueblesNoAdministrados(std::string nicknameInmobiliaria) {
+    std::set<DTInmuebleListado*> inmueblesNoAdminSet;
+    Inmobiliaria* inmobiliaria = ManejadorUsuario::getInstance()->findInmobiliaria(nicknameInmobiliaria);
+    if (inmobiliaria != NULL) {
+        std::list<Propietario*> propietarios = ManejadorUsuario::getInstance()->getPropietarios();
+        for (std::list<Propietario*>::iterator it = propietarios.begin(); it != propietarios.end(); ++it) {
+            Propietario* propietario = *it;
+            inmueblesNoAdminSet.merge(propietario->listarInmueblesNoAdministrados(nicknameInmobiliaria));
+        }
+    }
+    return inmueblesNoAdminSet; 
+}
+    

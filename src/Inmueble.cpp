@@ -36,11 +36,12 @@ std::set<AdministraPropiedad*>& Inmueble::getAdministracion(){
 }
 
 
-DTInmuebleAdministrado Inmueble::getinfoInmueble(Inmobiliaria* inm){
+DTInmuebleAdministrado* Inmueble::getinfoInmueble(Inmobiliaria* inm){
     for (std::set<AdministraPropiedad*>::iterator it = administracion.begin(); it != administracion.end(); ++it) {
         AdministraPropiedad* administrador = *it;
         if(administrador->getInmobiliaria()==inm){
-            return DTInmuebleAdministrado(codigo,direccion,administrador->getFecha());
+            DTInmuebleAdministrado* dtInmueble = new DTInmuebleAdministrado(codigo,direccion, administrador->getFecha());
+            return dtInmueble;
         }
     }
     throw std::runtime_error("Inmobiliaria no encontrada en la administración del inmueble");
@@ -61,4 +62,12 @@ void Inmueble::eliminarLinksInmueble(int codigoInmueble){
         administrador.erase(eliminar); 
     }
  
+}
+
+Inmueble::~Inmueble(){
+    // Eliminar los enlaces de administración del inmueble
+    eliminarLinksInmueble(codigo);
+    
+    // Limpiar el set de administraciones
+    administracion.clear();
 }

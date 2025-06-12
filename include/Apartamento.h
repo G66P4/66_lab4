@@ -15,7 +15,7 @@ public:
     int anoConstruccion, int piso, bool tieneAscensor, float gastosComunes);
 
     ~Apartamento();
-
+    TipoInmueble consultarTipo();
     // Getters
     int getPiso() const;
     bool getTieneAscensor() const;

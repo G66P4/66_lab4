@@ -3,9 +3,13 @@
 #include "Usuario.h"
 #include "DTUsuario.h"
 #include "DTNotificacion.h"
+#include "DTInmuebleListado.h"
+#include "ManejadorInmueble.h"
 
 #include <string>
+#include <set>
 #include <list>
+#include <map>
 
 class Inmueble;
 class Inmobiliaria;
@@ -26,8 +30,11 @@ class Propietario : public Usuario {
         //Getters
         std::string getCuentaBancaria();
         std::string getTelefono();
+        
         void Notificar(DTNotificacion notificacion);
         void removerLinkPropiedad(int codigoInmueble);
+        void asociarInmueble(Inmueble* inmueble);
+        std::set<DTInmuebleListado*> listarInmueblesNoAdministrados(std::string nicknameInmobiliaria);
 };
 
 #endif

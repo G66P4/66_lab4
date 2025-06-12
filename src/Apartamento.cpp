@@ -11,6 +11,10 @@ Apartamento::Apartamento(int codigo, std::string direccion, int numeroPuerta, in
 // Destructor
 Apartamento::~Apartamento() {}
 
+TipoInmueble Apartamento::consultarTipo() {
+    return TipoInmueble::apartamento;
+}
+
 // Getters
 int Apartamento::getPiso() const {
     return piso;

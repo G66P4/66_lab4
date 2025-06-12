@@ -4,7 +4,6 @@
 #include "TipoInmueble.h"
 #include "TipoPublicacion.h"
 #include "Inmueble.h"
-#include "Publicacion.h"
 #include "DTFecha.h"
 #include "Inmobiliaria.h"
 
