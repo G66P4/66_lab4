@@ -16,19 +16,13 @@ class ControladorInmueble : public IControladorInmueble{
     public:
         static ControladorInmueble* getInstance();
         void eliminarInmueble(int codigoInmueble);
-        ~ControladorInmueble();
-        
         bool altaCasa(std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, bool esPH, TipoTecho techo, std::string nicknamePropietario);
         bool altaApartamento(std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, int piso, bool tieneAscensor, float gastosComunes, std::string nicknamePropietario);
-        DTInmueble* detalleInmueblePublicacion(int codigoInmueble);
-        // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
-        //Si es casa-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, PH: Si/No, Tipo de techo: Liviano/A dos aguas/Plano"
-        std::set<DTInmuebleListado*> listarInmuebles();
+        DTInmueble* detalleInmueblePublicacion(int codigoPublicacion);
         DTInmueble* detalleInmueble(int codigoInmueble);
-        // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
-        // Si es casa-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, PH: Si/No, Tipo de techo: Liviano/A dos aguas/Plano"
+        std::set<DTInmuebleListado*> listarInmuebles();
         std::set<DTInmuebleListado*> listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria) ;
         void altaAdministraPropiedad(int codigoInmueble, std::string nicknameInmobiliaria);
-    
+        ~ControladorInmueble();
 };
 #endif

@@ -48,18 +48,42 @@ DTInmuebleAdministrado* Inmueble::getinfoInmueble(Inmobiliaria* inm){
 }
 
 void Inmueble::eliminarLinksInmueble(int codigoInmueble){
-    std::set<AdministraPropiedad*>& administrador = this->getAdministracion();
-    std::set<AdministraPropiedad*>::iterator it = administrador.begin();
-    while(it!=administrador.end()){
+    std::set<AdministraPropiedad*>& administradores = this->getAdministracion();
+    std::set<AdministraPropiedad*>::iterator it = administradores.begin();
+    while(it!=administradores.end()){
         AdministraPropiedad* adminProp = *it;
         Inmobiliaria* mob = adminProp->getInmobiliaria();
+        adminProp->eliminarPublicaciones(); 
+        mob->eliminarLinkAdmProp(codigoInmueble);
 
-        //std::string nickMob=getter nickname inmobiliaria y creo que no es necesario
-        //mob->eliminarLinkAdmProp(codigoInmueble);
-        //removerLinkPropiedad(codigoInmueble);
+        std::list<Propietario*> listapropietarios=ManejadorUsuario::getInstance()->getPropietarios();
+        std::list<Propietario*>::iterator itprop = listapropietarios.begin();
+        bool propietarioEncontrado = false;
+        Propietario* propietario =NULL;
+        while(itprop != listapropietarios.end() && !propietarioEncontrado){
+            propietario = *itprop;
+            propietarioEncontrado=propietario->esPropietario(codigo);
+            ++itprop;
+        }
+        propietario->removerLinkPropiedad(codigoInmueble);
         std::set<AdministraPropiedad*>::iterator eliminar = it;
         it++; 
-        administrador.erase(eliminar); 
+        administradores.erase(eliminar); 
     }
  
+}
+
+bool Inmueble::esAdministrado(Inmobiliaria* inmobiliaria) {
+    std::set<AdministraPropiedad*>& ap = this->getAdministracion();
+    std::set<AdministraPropiedad*>::iterator it;
+    for (it = ap.begin(); it != ap.end(); ++it) {
+        if ((*it)->inmobiliariaAsociada(inmobiliaria)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void Inmueble::asociarAdministracion(AdministraPropiedad* adminProp) {
+    administracion.insert(adminProp);
 }

@@ -11,6 +11,8 @@ class Casa : public Inmueble {
     public:
         Casa(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, bool esPH, TipoTecho techo);
         TipoInmueble consultarTipo();
+        bool getEsPH();
+        TipoTecho getTecho();
         ~Casa();
 };
 

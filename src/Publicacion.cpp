@@ -59,6 +59,10 @@ float Publicacion::getPrecio() const {
     return precio;
 }
 
+AdministraPropiedad* Publicacion::getAdminProp() {
+    return adminProp;
+}
+
 bool Publicacion::estaActiva() const {
     return activa;
 }
