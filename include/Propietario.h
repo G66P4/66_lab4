@@ -34,6 +34,7 @@ class Propietario : public Usuario {
         void Notificar(DTNotificacion notificacion);
         void removerLinkPropiedad(int codigoInmueble);
         void asociarInmueble(Inmueble* inmueble);
+        bool esPropietario(int codigoInmueble);
         std::set<DTInmuebleListado*> listarInmueblesNoAdministrados(std::string nicknameInmobiliaria);
 };
 
