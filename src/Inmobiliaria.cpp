@@ -2,12 +2,11 @@
 #include "../include/AdministraPropiedad.h"
 #include "../include/DTInmuebleAdministrado.h"
 #include "../include/DTInmuebleListado.h"
-#include "../include/Inmueble.h"
 #include "../include/Usuario.h"
 #include "../include/Propietario.h"
 #include "../include/ManejadorUsuario.h"
 #include "../include/Publicacion.h"
-
+#include "../include/Inmueble.h"
 
 Inmobiliaria::Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email,
                            std::string direccion, std::string url, std::string telefono)
@@ -42,9 +41,29 @@ std::set<DTInmuebleAdministrado*> Inmobiliaria::obtenerInmuebleData() {
 }
 
 std::set<DTInmuebleListado*> Inmobiliaria::listarInmueblesNoAdministrados() {
-    std::set<DTInmuebleListado*> vacio;
-    return vacio;
+    std::set<DTInmuebleListado*> resultado;
+
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    std::list<Propietario*> propietarios = mu->getPropietarios();
+
+    for (Propietario* propietario : propietarios) {
+        std::list<Inmueble*> inmuebles = propietario->getInmueblesDueno();
+
+        for (Inmueble* inmueble : inmuebles) {
+            int codigo = inmueble->getCodigo();
+
+            if (propiedades.find(codigo) == propiedades.end()) {
+                DTInmuebleAdministrado* adminDto = inmueble->getinfoInmueble(this);
+                DTInmuebleListado* listadoDto = convertirADListado(adminDto, propietario);
+                resultado.insert(listadoDto);
+                delete adminDto; 
+            }
+        }
+    }
+
+    return resultado;
 }
+
 
 bool Inmobiliaria::agregarInmuebleAdministrado(Inmueble* inmueble) {
     int codigo = inmueble->getCodigo();

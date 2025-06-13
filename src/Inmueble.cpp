@@ -2,6 +2,7 @@
 #include "../include/ControladorUsuario.h"
 #include "../include/ControladorInmueble.h"
 #include "../include/AdministraPropiedad.h"
+#include "../include/DTUsuario.h"
 #include <stdexcept> 
 Inmueble::Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion){
     this->codigo=codigo;
@@ -94,4 +95,20 @@ Inmueble::~Inmueble(){
     
     // Limpiar el set de administraciones
     administracion.clear();
+}
+
+DTInmuebleListado* convertirADListado(DTInmuebleAdministrado* adminDto, Propietario* propietario) {
+    
+    DTUsuario* dtUsuario = propietario->getPropietarioData();
+
+    
+    std::string nombrePropietario = dtUsuario->getNombre();
+
+    
+    int codigo = adminDto->getCodigo();
+    std::string direccion = adminDto->getDireccion();
+   
+
+    
+    return new DTInmuebleListado(codigo, direccion, nombrePropietario);
 }

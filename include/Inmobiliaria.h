@@ -41,6 +41,7 @@ public:
     AdministraPropiedad* adminPropFind(int codigoInmueble);
     void eliminarLinkAdmProp(int codigoInmueble);
     DTUsuario* getInmobiliariaData();
+    void Inmobiliaria::altaAdministracionPropiedad(Inmueble*,DTFecha*);
 
 
     void representarPropietario(std::string nicknamePropietario);

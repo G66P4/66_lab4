@@ -33,6 +33,7 @@ class Inmueble {
         std::set<AdministraPropiedad*>& getAdministracion(); 
         bool esAdministrado(Inmobiliaria* inmobiliaria);
         void asociarAdministracion(AdministraPropiedad* adminProp);
+        DTInmuebleListado* convertirADListado(DTInmuebleAdministrado* adminDto, Propietario* propietario);
 
 };
 
