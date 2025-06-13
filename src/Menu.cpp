@@ -240,10 +240,10 @@ void altaUsuario(){
                         icontrolador->altaApartamento(inmuebleDireccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes, nickname);
                     }
                 }
+                std::cout << "¿Quiere seguir ingresando? (1: Si, 0: No): ";
+                std::cin >> salir;
+                std::cin.ignore();
             }
-            std::cout << "¿Quiere seguir ingresando? (1: Si, 0: No): ";
-            std::cin >> salir;
-            std::cin.ignore();
         }
         //TODO: controlador->finalizarAltaUsuario(); PREGUNTAR AL PROFE
     }else{
@@ -323,9 +323,9 @@ void consultaPublicaciones(){
     std::cin >> inTipoInmueble;
     std::cin.ignore();
     TipoInmueble tipoInmueble = Todos;
-    if(inTipoPublicacion == 1){
+    if(inTipoInmueble == 1){
         tipoInmueble = casa;
-    }else if(inTipoPublicacion == 2){
+    }else if(inTipoInmueble == 2){
         tipoInmueble = apartamento;
     }
     std::cout << "Publicaciones encontradas:\n";
