@@ -111,7 +111,7 @@ std::set<DTInmuebleListado*> ControladorInmueble::listarInmuebles(){
 std::set<DTInmuebleListado*> ControladorInmueble::listarInmueblesNoAdministradosInmobiliaria(std::string nicknameInmobiliaria){
     ManejadorUsuario* m = ManejadorUsuario::getInstance();
     Inmobiliaria* ci = m->findInmobiliaria(nicknameInmobiliaria);
-    std::set<DTInmuebleListado*> listinmuebles=ci->getinmueblesNoAdminPropietario();
+    std::set<DTInmuebleListado*> listinmuebles=ci->listarInmueblesNoAdministrados();
     return listinmuebles;
     
 }
