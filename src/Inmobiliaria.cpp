@@ -150,3 +150,19 @@ Inmobiliaria::~Inmobiliaria() {
     }
     propiedades.clear();
 }
+
+void Inmobiliaria::altaAdministracionPropiedad(Inmueble* inmueble, DTFecha* fechaComienzo) {
+    int codigo = inmueble->getCodigo();
+
+    if (propiedades.find(codigo) != propiedades.end()) {
+        throw std::runtime_error("El inmueble ya está siendo administrado por esta inmobiliaria");
+    }
+
+    AdministraPropiedad* nuevaAdmin = new AdministraPropiedad(fechaComienzo);
+
+    // setear la inmobiliaria y el inmueble porque el constructor no lo hace
+    nuevaAdmin->setInmobiliaria(this);
+    nuevaAdmin->setInmueble(inmueble);
+
+    propiedades[codigo] = nuevaAdmin;
+}
