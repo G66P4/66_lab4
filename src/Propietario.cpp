@@ -46,6 +46,15 @@ std::set<DTInmuebleListado*> Propietario::listarInmueblesNoAdministrados(std::st
         
 };
 
+bool Propietario::esPropietario(int codigoInmueble){
+    for(Inmueble* inmueble : inmueblesDueno){
+        if(inmueble->getCodigo() == codigoInmueble){
+            return true;
+        }
+    }
+    return false;
+};
+
 void Propietario::Notificar(DTNotificacion notificacion){
     DTNotificacion* nuevaNotificacion = new DTNotificacion(notificacion);
     notificaciones.push_back(nuevaNotificacion);
