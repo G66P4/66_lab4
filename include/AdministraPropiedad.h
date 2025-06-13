@@ -39,7 +39,6 @@ public:
     void eliminarPublicaciones();
     bool inmobiliariaAsociada(Inmobiliaria* inmobiliaria);
     
-    ;
 };
 
 #endif

@@ -53,10 +53,11 @@ std::set<DTInmuebleListado*> Inmobiliaria::listarInmueblesNoAdministrados() {
             int codigo = inmueble->getCodigo();
 
             if (propiedades.find(codigo) == propiedades.end()) {
-                DTInmuebleAdministrado* adminDto = inmueble->getinfoInmueble(this);
-                DTInmuebleListado* listadoDto = convertirADListado(adminDto, propietario);
+                std::string direccion = inmueble->getDireccion();
+                std::string nombrePropietario = propietario->getPropietarioData()->getNombre();
+
+                DTInmuebleListado* listadoDto = new DTInmuebleListado(codigo, direccion, nombrePropietario);
                 resultado.insert(listadoDto);
-                delete adminDto; 
             }
         }
     }
@@ -146,9 +147,18 @@ void Inmobiliaria::modificar(Publicacion* pub) {
 Inmobiliaria::~Inmobiliaria() {
     std::map<int, AdministraPropiedad*>::iterator it;
     for (it = propiedades.begin(); it != propiedades.end(); ++it) {
-        delete it->second;
+        AdministraPropiedad* admin = it->second;
+
+        
+        admin->setInmueble(NULL);
+        admin->setInmobiliaria(NULL);
+
+        delete admin;
     }
+
     propiedades.clear();
+    representa.clear();     
+    suscriptores.clear();   
 }
 
 void Inmobiliaria::altaAdministracionPropiedad(Inmueble* inmueble, DTFecha* fechaComienzo) {

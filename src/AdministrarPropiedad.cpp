@@ -101,4 +101,3 @@ void AdministraPropiedad::eliminarPublicaciones(){
 bool AdministraPropiedad::inmobiliariaAsociada(Inmobiliaria* inmobiliaria){
     return this->inmobiliaria == inmobiliaria;
 }
-    
