@@ -4,7 +4,11 @@
 #include <set>
 #include "DTFecha.h"
 #include "DTInmuebleAdministrado.h"
+#include "DTInmuebleListado.h"
 #include "TipoInmueble.h"
+
+class Propietario;
+
 class Inmobiliaria;
 
 class AdministraPropiedad; 

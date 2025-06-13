@@ -6,12 +6,13 @@
 #include "Propietario.h"
 #include "DTInmuebleAdministrado.h"
 #include "DTInmuebleListado.h"
-#include "Publicacion.h"
 
 #include <string>
 #include <map>
 #include <set>
 #include <list>
+
+class Publicacion;
 
 class AdministraPropiedad;
 
@@ -41,7 +42,7 @@ public:
     AdministraPropiedad* adminPropFind(int codigoInmueble);
     void eliminarLinkAdmProp(int codigoInmueble);
     DTUsuario* getInmobiliariaData();
-    void Inmobiliaria::altaAdministracionPropiedad(Inmueble*,DTFecha*);
+    void altaAdministracionPropiedad(Inmueble*,DTFecha*);
 
 
     void representarPropietario(std::string nicknamePropietario);
