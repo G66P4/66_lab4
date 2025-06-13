@@ -5,6 +5,7 @@
 class IObserver{
     public:
         virtual void Notificar(DTNotificacion* notificacion) = 0;
+        virtual ~IObserver() {}
 };
 
 #endif

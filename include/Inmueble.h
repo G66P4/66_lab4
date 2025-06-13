@@ -24,7 +24,7 @@ class Inmueble {
 
     public:
         Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
-        ~Inmueble();
+        virtual ~Inmueble();
 
         int getCodigo();
         std::string getDireccion();

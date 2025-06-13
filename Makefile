@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++23
+CXXFLAGS = -Wall -Wextra -pedantic -Wnon-virtual-dtor -Woverloaded-virtual -std=c++23 
 
 INCLUDE_DIR = include
 SRC_DIR = src

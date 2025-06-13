@@ -25,8 +25,7 @@ void ControladorPublicacion::borrarInstance(){
         instance = NULL;
     }
 }
-std::set<DTPublicacion*> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble)
-{
+std::set<DTPublicacion*> ControladorPublicacion::listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble){
     ManejadorPublicacion *manejadorPub = ManejadorPublicacion::getInstancia();
     std::set<DTPublicacion*> listaDePublicacionesFiltrada;
     std::map<int, Publicacion *> listaDePublicacionesActivas = manejadorPub->getPublicacionesActivas();
@@ -41,7 +40,7 @@ std::set<DTPublicacion*> listarPublicacion(TipoPublicacion tipoPublicacion, floa
     }
     return listaDePublicacionesFiltrada;
 };
-bool altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio)
+bool ControladorPublicacion::altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio)
 {
     ManejadorUsuario *manejadorInmo = ManejadorUsuario::getInstance();
     Inmobiliaria *inmo = manejadorInmo->findInmobiliaria(nicknameInmobiliaria);  
