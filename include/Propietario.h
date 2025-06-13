@@ -30,6 +30,7 @@ class Propietario : public Usuario {
         //Getters
         std::string getCuentaBancaria();
         std::string getTelefono();
+        std::list<Inmueble*> getInmueblesDueno();
         
         void Notificar(DTNotificacion notificacion);
         void removerLinkPropiedad(int codigoInmueble);
