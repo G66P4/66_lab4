@@ -55,6 +55,15 @@ bool Propietario::esPropietario(int codigoInmueble){
     return false;
 };
 
+void Propietario::removerLinkPropiedad(int codigoInmueble){
+    for(auto it = inmueblesDueno.begin(); it != inmueblesDueno.end(); ++it){
+        if((*it)->getCodigo() == codigoInmueble){
+            inmueblesDueno.erase(it);
+            break;
+        }
+    }
+};
+
 void Propietario::Notificar(DTNotificacion notificacion){
     DTNotificacion* nuevaNotificacion = new DTNotificacion(notificacion);
     notificaciones.push_back(nuevaNotificacion);
