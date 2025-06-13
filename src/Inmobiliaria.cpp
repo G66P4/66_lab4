@@ -123,3 +123,11 @@ void Inmobiliaria::modificar(Publicacion* pub) {
 
     delete noti;
 }
+
+Inmobiliaria::~Inmobiliaria() {
+    std::map<int, AdministraPropiedad*>::iterator it;
+    for (it = propiedades.begin(); it != propiedades.end(); ++it) {
+        delete it->second;
+    }
+    propiedades.clear();
+}

@@ -27,6 +27,7 @@ private:
 
 public:
     Inmobiliaria(std::string nickname,std::string contasena , std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);
+    Inmobiliaria::~Inmobiliaria();
 
     // Getters
     std::string getDireccion() const;
