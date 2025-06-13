@@ -19,7 +19,7 @@ class IControladorUsuario {
         virtual std::set<DTInmuebleListado*> listarInmueblesNoAdministrados(std::string nicknameInmobiliaria);
         virtual void representarPropietario(std::string nickname, std::string nicknamePropietario) = 0;
 
-        ~IControladorUsuario() {}
+        virtual ~IControladorUsuario() {}
 };
 
 #endif

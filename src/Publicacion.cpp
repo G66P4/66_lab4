@@ -67,10 +67,6 @@ bool Publicacion::estaActiva() const {
     return activa;
 }
 
-AdministraPropiedad* Publicacion::getAdminProp(){
-    return this->adminProp;
-}
-
 //setter
 void Publicacion::setActiva(bool activa) {
     this->activa = activa;

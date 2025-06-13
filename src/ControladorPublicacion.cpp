@@ -65,3 +65,9 @@ bool altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoP
         return false;
     }
 };
+
+ControladorPublicacion::~ControladorPublicacion() {
+    if (instance != NULL) {
+        instance = NULL;
+    }
+}

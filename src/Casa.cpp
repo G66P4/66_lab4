@@ -5,6 +5,15 @@ Casa::Casa(int codigo, std::string direccion, int numeroPuerta, int superficie, 
     this->esPH = esPH;
     this->techo = techo;
 }
+
+bool Casa::getEsPH() {
+    return esPH;
+}
+
+TipoTecho Casa::getTecho() {
+    return techo;
+}
+
 TipoInmueble Casa::consultarTipo() {
     return TipoInmueble::casa;
 }

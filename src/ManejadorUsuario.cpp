@@ -13,16 +13,20 @@ ManejadorUsuario* ManejadorUsuario::getInstance() {
     return instance;
 }
 
-void ManejadorUsuario::agregarUsuario(Usuario* usuario) {
-    usuarios[usuario->getNickname()] = usuario;
-    if (usuario->esInmobiliaria()) {
-        Inmobiliarias.push_back(dynamic_cast<Inmobiliaria*>(usuario));
-    } else if (usuario->esPropietario()) {
-        Propietarios.push_back(dynamic_cast<Propietario*>(usuario));
-    } else if (usuario->esCliente()) {
-        Clientes.push_back(dynamic_cast<Cliente*>(usuario));
-    }
-}   
+void ManejadorUsuario::agregarCliente(Cliente* cliente) {
+    usuarios[cliente->getNickname()] = cliente;
+    Clientes.push_back(cliente);
+}
+
+void ManejadorUsuario::agregarPropietario(Propietario* propietario) {
+    usuarios[propietario->getNickname()] = propietario;
+    Propietarios.push_back(propietario);
+}
+
+void ManejadorUsuario::agregarInmobiliaria(Inmobiliaria* inmobiliaria) {
+    usuarios[inmobiliaria->getNickname()] = inmobiliaria;
+    Inmobiliarias.push_back(inmobiliaria);
+}
 
 void ManejadorUsuario::eliminarUsuario(std::string nickname) {
     Inmobiliaria* usuario = findInmobiliaria(nickname);

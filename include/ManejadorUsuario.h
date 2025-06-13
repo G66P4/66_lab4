@@ -22,7 +22,9 @@ class ManejadorUsuario {
 
     public:
         static ManejadorUsuario* getInstance();
-        void agregarUsuario(Usuario* usuario);
+        void agregarCliente(Cliente* cliente);
+        void agregarPropietario(Propietario* propietario);
+        void agregarInmobiliaria(Inmobiliaria* inmobiliaria);
         void eliminarUsuario(std::string nickname);
         bool existeUsuario( std::string& nickname);
         Usuario* findUsuario( std::string& nickname);
