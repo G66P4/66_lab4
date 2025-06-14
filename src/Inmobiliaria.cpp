@@ -114,11 +114,20 @@ void Inmobiliaria::representarPropietario(std::string nicknamePropietario) {
     representa.push_back(propietario);
 }
 
-void Inmobiliaria::agregarSuscripcion(Usuario* usuario) {
+bool Inmobiliaria::esSuscriptor(std::string nickname){
+    for (IObserver* usuario : suscriptores) {
+        if (usuario->getNicknameO() == nickname) {
+            return true; // El usuario es un suscriptor
+        }
+    }
+    return false; // El usuario no es un suscriptor
+}
+
+void Inmobiliaria::agregarSuscripcion(IObserver* usuario) {
     suscriptores.insert(usuario);
 }
 
-void Inmobiliaria::eliminarSuscripcion(Usuario* usuario) {
+void Inmobiliaria::eliminarSuscripcion(IObserver* usuario) {
     suscriptores.erase(usuario);
 }
 
@@ -134,10 +143,9 @@ void Inmobiliaria::modificar(Publicacion* pub) {
         pub->getAdminProp()->getInmueble()->consultarTipo()
     );
 
-    for (Usuario* usuario : suscriptores) {
-        IObserver* obs = dynamic_cast<IObserver*>(usuario);
-        if (obs != nullptr) {
-            obs->Notificar(noti);
+    for (IObserver* usuario : suscriptores) {
+        if (usuario != nullptr) {
+            usuario->Notificar(noti);
         }
     }
 

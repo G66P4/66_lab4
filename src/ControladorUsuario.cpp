@@ -76,6 +76,19 @@ std::set<DTUsuario*> ControladorUsuario::listarPropietarios() {
     return propietariosSet;
 }
 
+std::set<DTUsuario*> ControladorUsuario::listarClientes() {
+    std::set<DTUsuario*> clientesSet;
+
+    std::list<Cliente*> clientes = ManejadorUsuario::getInstance()->getClientes();
+    
+    for (std::list<Cliente*>::iterator it = clientes.begin(); it != clientes.end(); ++it) {
+        Cliente* cliente = *it;
+        DTUsuario* dtu = cliente->getClienteData();
+        clientesSet.insert(dtu);
+    }
+    return clientesSet;
+}
+
 bool ControladorUsuario::altaAdministraPropiedad(std::string nicknameInmobiliaria, int codigoInmueble) {
     Inmobiliaria* inmobiliaria = ManejadorUsuario::getInstance()->findInmobiliaria(nicknameInmobiliaria);
     if (inmobiliaria == NULL) {
@@ -111,4 +124,32 @@ std::set<DTInmuebleListado*> ControladorUsuario::listarInmueblesNoAdministrados(
     }
     return inmueblesNoAdminSet; 
 }
+
+std::set<Inmobiliaria*> ControladorUsuario::listarInmobiliariasNoSuscrito(std::string nickname) {
+    std::set<Inmobiliaria*> inmobiliariasNoSuscrito;
+    std::list<Inmobiliaria*> inmobiliarias = ManejadorUsuario::getInstance()->getInmobiliarias();
+    
+    for (std::list<Inmobiliaria*>::iterator it = inmobiliarias.begin(); it != inmobiliarias.end(); ++it) {
+        Inmobiliaria* inmobiliaria = *it;
+        if (!inmobiliaria->esSuscriptor(nickname)) {
+            inmobiliariasNoSuscrito.insert(inmobiliaria);
+        }
+    }
+    return inmobiliariasNoSuscrito;
+}
+
+std::list<DTNotificacion*> ControladorUsuario::listarNotificaciones(std::string nickname) {
+    std::list<DTNotificacion*> notificacionesSet;
+    Propietario* propietario = ManejadorUsuario::getInstance()->findPropietario(nickname);
+    if (propietario != NULL) {
+        notificacionesSet = propietario->consultarNotificaciones();
+    } else {
+        Cliente* cliente = ManejadorUsuario::getInstance()->findCliente(nickname);
+        if (cliente != NULL) {
+            notificacionesSet = cliente->consultarNotificaciones();
+        }
+    }
+    return notificacionesSet;
+}  
+    
     

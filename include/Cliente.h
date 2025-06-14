@@ -18,6 +18,8 @@ public:
     std::list<DTNotificacion*> consultarNotificaciones();
     void Notificar(DTNotificacion *notificacion);
     std::list<Inmobiliaria*> getInmobiliariasSuscritas() const;
+    DTUsuario* getClienteData();
+    std::string getNicknameO(); // Implementación del método de IObserver
     Cliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string apellido, std::string documento);
     ~Cliente();
     // Getters

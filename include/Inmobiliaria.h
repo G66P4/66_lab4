@@ -6,6 +6,7 @@
 #include "Propietario.h"
 #include "DTInmuebleAdministrado.h"
 #include "DTInmuebleListado.h"
+#include "IObserver.h"
 
 #include <string>
 #include <map>
@@ -23,7 +24,7 @@ private:
     std::string telefono;
 
     std::list<Propietario*> representa;
-    std::set<Usuario*> suscriptores; 
+    std::set<IObserver*> suscriptores; 
 
     std::map<int, AdministraPropiedad*> propiedades; // clave = código del inmueble 
 
@@ -43,11 +44,12 @@ public:
     void eliminarLinkAdmProp(int codigoInmueble);
     DTUsuario* getInmobiliariaData();
     void altaAdministracionPropiedad(Inmueble*,DTFecha*);
+    bool esSuscriptor(std::string nickname);
 
 
     void representarPropietario(std::string nicknamePropietario);
-    void agregarSuscripcion(Usuario* usuario);     
-    void eliminarSuscripcion(Usuario* usuario);    
+    void agregarSuscripcion(IObserver* usuario);     
+    void eliminarSuscripcion(IObserver* usuario);    
 
     void modificar(Publicacion* pub); 
 };

@@ -6,6 +6,7 @@
 #include "DTUsuario.h"
 #include "DTInmuebleAdministrado.h"
 #include "DTInmuebleListado.h"
+#include "Inmobiliaria.h"
 
 class IControladorUsuario {
     public:
@@ -15,9 +16,12 @@ class IControladorUsuario {
         virtual std::set<DTUsuario*> listarInmobiliarias() = 0;
         virtual std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(std::string nickname) = 0;
         virtual std::set<DTUsuario*> listarPropietarios() = 0;
+        virtual std::set<DTUsuario*> listarClientes() = 0;
         virtual bool altaAdministraPropiedad(std::string nicknameInmobiliaria, int codigoInmueble) = 0;
         virtual std::set<DTInmuebleListado*> listarInmueblesNoAdministrados(std::string nicknameInmobiliaria)=0;
         virtual void representarPropietario(std::string nickname, std::string nicknamePropietario) = 0;
+        virtual std::set<Inmobiliaria*> listarInmobiliariasNoSuscrito(std::string nickname) = 0;
+        virtual std::list<DTNotificacion*> listarNotificaciones(std::string nickname) = 0;
 
         virtual ~IControladorUsuario();
 };

@@ -73,4 +73,11 @@ DTUsuario* Propietario::getPropietarioData(){
     return new DTUsuario(this->getNickname(), this->getNombre());
 };
 
+std::list<DTNotificacion*> Propietario::consultarNotificaciones()
+{
+    std::list<DTNotificacion*> ultimasNotificaciones = this->notificaciones;
+    notificaciones.clear();
+    return ultimasNotificaciones;
+};
+
 Propietario::~Propietario(){};

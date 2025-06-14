@@ -42,6 +42,15 @@ std::list<Inmobiliaria*> Cliente::getInmobiliariasSuscritas() const{
     return inmobiliariasSuscritas;
 }
 
+DTUsuario* Cliente::getClienteData() {
+    return new DTUsuario(getNickname(), getNombre());
+}
+
+std::string Cliente::getNicknameO() {
+    std::string nickname = getNickname();
+    return nickname;
+}
+
 Cliente::~Cliente()
 {
     for (DTNotificacion* notificacion : notificaciones) {

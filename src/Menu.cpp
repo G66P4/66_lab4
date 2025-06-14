@@ -296,6 +296,8 @@ void altaPublicacion(){
     //TODO:Controlador->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio)
     IControladorPublicacion* controladorPub = factory->getIControladorPublicacion();
     controladorPub->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio);
+    //agregar notificar
+    std::cout << "Publicacion creada exitosamente." << std::endl;
 }
 
 void consultaPublicaciones(){
@@ -401,11 +403,79 @@ void eliminarInmueble(){
 }
 
 void suscribirseNotificaciones(){
+    Factory* factory = Factory::getInstance();
+    IControladorUsuario* conUsu = factory->getIControladorUsuario();
+
+    std::cout << "Que Tipo de Usuario desea Suscribir: (0: Cliente, 1:Propietario)";
+    int tipoUsuario;
+    std::cin >> tipoUsuario;
+    std::cin.ignore();
+
+    std::set<DTUsuario*> usuarioSet;
+    if (tipoUsuario < 0 || tipoUsuario > 1){
+        std::cout << "Opcion no valida. Intente de nuevo." << std::endl;
+        return;
+    }else if (tipoUsuario == 0){
+        std::cout <<"Lista de Clientes:\n";
+        usuarioSet = conUsu->listarClientes();
+    }else if (tipoUsuario == 1){
+        std::cout <<"Lista de Propietarios:\n";
+        usuarioSet = conUsu->listarPropietarios();
+    }
+    for(std::set<DTUsuario*>::iterator it = usuarioSet.begin(); it != usuarioSet.end(); ++it) {
+        DTUsuario* dtu = *it;
+        std::cout << "- Nickname: " << dtu->getNickname() << ", Nombre: " << dtu->getNombre() << std::endl;
+    }
+
+    std::cout << "Nickname del usuario: ";
+    std::string nicknameUsuario;
+    std::getline(std::cin, nicknameUsuario);
+
+    std::cout << "Lista de Inmobiliarias no Suscrito:\n";
+    std::set<Inmobiliaria*> inmoNoSuscrito = conUsu->listarInmobiliariasNoSuscrito(nicknameUsuario);
+    for(std::set<Inmobiliaria*>::iterator it = inmoNoSuscrito.begin(); it != inmoNoSuscrito.end(); ++it) {
+        Inmobiliaria* inm = *it;
+        std::cout << "- Nickname: " << inm->getNickname() << ", Nombre: " << inm->getNombre() << std::endl;
+    }
+
+    int salir = 1;
+    while(salir != 0){
+        std::cout << "Nickname Inmobiliaria a suscribir: ";
+        std::string nicknameInmobiliaria;
+        std::getline(std::cin, nicknameInmobiliaria);
+        //llamada a agregar suscripcion
+
+        std::cout << "¿Desea seguir suscribiendose? (1: Si, 0: No): ";
+        std::cin >> salir;
+        std::cin.ignore();
+    }
 
 }
 
 void consultaNotificaciones(){
+    Factory* factory = Factory::getInstance();
+    IControladorUsuario* conUsu = factory->getIControladorUsuario();
+    std::cout << "Ingrese el nickname del usuario a consultar: ";
 
+    std::string nicknameUsuario;
+    std::getline(std::cin, nicknameUsuario);
+    std::list<DTNotificacion*> notificaciones = conUsu->listarNotificaciones(nicknameUsuario);
+    if (notificaciones.empty()) {
+        std::cout << "No hay notificaciones para el usuario " << nicknameUsuario << std::endl;
+        return;
+    }else{
+        std::cout << "Notificaciones para el usuario " << nicknameUsuario << ":\n";
+        for (std::list<DTNotificacion*>::iterator it = notificaciones.begin(); it != notificaciones.end(); ++it) {
+            DTNotificacion* dtn = *it;
+            std::cout << "- Codigo: " << dtn->getCodigoPublicacion() 
+                      << ", Fecha: " << dtn->getFechaPublicacion() 
+                      << ", Texto: " << dtn->getTextoPublicacion() 
+                      << ", Tipo Publicacion: " << (dtn->getTipoPublicacion() == Venta ? "Venta" : "Alquiler")
+                      << ", Tipo Inmueble: " << (dtn->getTipoInmuebl() == casa ? "Casa" : "Apartamento")
+                      << ", Inmobiliaria: " << dtn->getNickInmobiliaria() 
+                      << std::endl;
+        }
+    }
 }
 
 void eliminarSuscripciones(){
@@ -431,6 +501,7 @@ void altaAdministracionPropiedad(){
     //Recorrer la coleccion Mostrar "- Codigo: xx, direccion: xxxx, propietario: bbbbb";
     IControladorInmueble* IControladorInm = factory->getIControladorInmueble();
     std::set<DTInmuebleListado*> inmueblesNoAdministrados = IControladorUsu->listarInmueblesNoAdministrados(nicknameInmobiliaria);
+    std::cout << "Inmuebles no administrados por la inmobiliaria " << nicknameInmobiliaria << ":\n";
     for(std::set<DTInmuebleListado*>::iterator it = inmueblesNoAdministrados.begin(); it != inmueblesNoAdministrados.end(); ++it) {
         DTInmuebleListado* dti = *it;
         std::cout << "- Codigo: " << dti->getCodigo() << ", Direccion: " << dti->getDireccion() << ", Propietario: " << dti->getPropietario() << std::endl;
