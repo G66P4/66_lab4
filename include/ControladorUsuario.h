@@ -31,6 +31,7 @@ public:
     void representarPropietario(std::string nickname, std::string nicknamePropietario);
     std::set<Inmobiliaria*> listarInmobiliariasNoSuscrito(std::string nickname);
     std::list<DTNotificacion*> listarNotificaciones(std::string nickname);
+    std::set<Inmobiliaria*> listarInmobiliariasSuscrito(std::string nickname);
 
     ~ControladorUsuario();
 };

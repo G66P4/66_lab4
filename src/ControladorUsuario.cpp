@@ -151,5 +151,18 @@ std::list<DTNotificacion*> ControladorUsuario::listarNotificaciones(std::string 
     }
     return notificacionesSet;
 }  
+
+std::set<Inmobiliaria*> ControladorUsuario::listarInmobiliariasSuscrito(std::string nickname) {
+    std::set<Inmobiliaria*> inmobiliariasSuscrito;
+    std::list<Inmobiliaria*> inmobiliarias = ManejadorUsuario::getInstance()->getInmobiliarias();
+    
+    for (std::list<Inmobiliaria*>::iterator it = inmobiliarias.begin(); it != inmobiliarias.end(); ++it) {
+        Inmobiliaria* inmobiliaria = *it;
+        if (inmobiliaria->esSuscriptor(nickname)) {
+            inmobiliariasSuscrito.insert(inmobiliaria);
+        }
+    }
+    return inmobiliariasSuscrito;
+}
     
     

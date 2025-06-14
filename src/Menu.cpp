@@ -443,6 +443,7 @@ void suscribirseNotificaciones(){
         std::cout << "Nickname Inmobiliaria a suscribir: ";
         std::string nicknameInmobiliaria;
         std::getline(std::cin, nicknameInmobiliaria);
+        
         //llamada a agregar suscripcion
 
         std::cout << "¿Desea seguir suscribiendose? (1: Si, 0: No): ";
@@ -479,7 +480,51 @@ void consultaNotificaciones(){
 }
 
 void eliminarSuscripciones(){
+    Factory* factory = Factory::getInstance();
+    IControladorUsuario* conUsu = factory->getIControladorUsuario();
 
+    std::cout << "Que Tipo de Usuario desea Eliminar Suscripciones: (0: Cliente, 1:Propietario)";
+    int tipoUsuario;
+    std::cin >> tipoUsuario;
+    std::cin.ignore();
+
+    std::set<DTUsuario*> usuarioSet;
+    if (tipoUsuario < 0 || tipoUsuario > 1){
+        std::cout << "Opcion no valida. Intente de nuevo." << std::endl;
+        return;
+    }else if (tipoUsuario == 0){
+        std::cout <<"Lista de Clientes:\n";
+        usuarioSet = conUsu->listarClientes();
+    }else if (tipoUsuario == 1){
+        std::cout <<"Lista de Propietarios:\n";
+        usuarioSet = conUsu->listarPropietarios();
+    }
+    for(std::set<DTUsuario*>::iterator it = usuarioSet.begin(); it != usuarioSet.end(); ++it) {
+        DTUsuario* dtu = *it;
+        std::cout << "- Nickname: " << dtu->getNickname() << ", Nombre: " << dtu->getNombre() << std::endl;
+    }
+
+    std::cout << "Nickname del usuario: ";
+    std::string nicknameUsuario;
+    std::getline(std::cin, nicknameUsuario);
+    std::cout << "Lista de Inmobiliarias suscrito:\n";
+    std::set<Inmobiliaria*> inmoSuscrito = conUsu->listarInmobiliariasSuscrito(nicknameUsuario);
+    for(std::set<Inmobiliaria*>::iterator it = inmoSuscrito.begin(); it != inmoSuscrito.end(); ++it) {
+        Inmobiliaria* inm = *it;
+        std::cout << "- Nickname: " << inm->getNickname() << ", Nombre: " << inm->getNombre() << std::endl;
+    }
+    int salir = 1;
+    while(salir != 0){
+        std::cout << "Nickname Inmobiliaria a eliminar suscripcion: ";
+        std::string nicknameInmobiliaria;
+        std::getline(std::cin, nicknameInmobiliaria);
+
+        //llamada a eliminar suscripcion
+
+        std::cout << "¿Desea seguir eliminando suscripciones? (1: Si, 0: No): ";
+        std::cin >> salir;
+        std::cin.ignore();
+    }
 }
 
 void altaAdministracionPropiedad(){
