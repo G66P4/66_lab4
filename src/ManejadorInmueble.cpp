@@ -1,5 +1,4 @@
 #include "../include/ManejadorInmueble.h"
-
 ManejadorInmueble* ManejadorInmueble::instance = NULL;
 
 ManejadorInmueble::ManejadorInmueble() {}
@@ -34,7 +33,7 @@ void ManejadorInmueble::agregarInmueble(Inmueble* inmueble) {
 void ManejadorInmueble::eliminarInmueble(int codigo) {
     Inmueble* inmueble =findInmueble(codigo);
     if(inmueble!=NULL){
-        inmueble->~Inmueble();
+        delete inmueble;
         inmuebles.erase(codigo);
     }
     

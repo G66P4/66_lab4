@@ -90,9 +90,7 @@ void Inmueble::asociarAdministracion(AdministraPropiedad* adminProp) {
 
 }
 Inmueble::~Inmueble(){
-    // Eliminar los enlaces de administración del inmueble
-    eliminarLinksInmueble(codigo);
-    
     // Limpiar el set de administraciones
     administracion.clear();
 }
+
