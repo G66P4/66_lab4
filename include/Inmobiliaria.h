@@ -13,6 +13,10 @@
 #include <set>
 #include <list>
 
+class Propietario;
+
+class IObserver;
+
 class Publicacion;
 
 class AdministraPropiedad;
