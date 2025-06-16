@@ -29,7 +29,7 @@ std::set<DTInmuebleListado*> Propietario::listarInmueblesNoAdministrados(std::st
 
     for(std::map<int, Inmueble*>::iterator it = inmuebles.begin(); it != inmuebles.end(); ++it) {
         Inmueble* inmueble = it->second;
-        std::set<AdministraPropiedad*>& administracion = inmueble->getAdministracion();
+        std::set<AdministraPropiedad*> administracion = inmueble->getAdministracion();
         for(std::set<AdministraPropiedad*>::iterator itAdmin = administracion.begin(); itAdmin != administracion.end(); ++itAdmin) {
             AdministraPropiedad* adminProp = *itAdmin;
             if(adminProp->getInmobiliaria()->getNickname() == nicknameInmobiliaria) {

@@ -1,5 +1,6 @@
 #include "../include/CargaDatos.h"
 #include <cstddef>
+#include <iostream>
 
 CargaDatos* CargaDatos::instance = NULL;
 
@@ -13,6 +14,7 @@ CargaDatos::CargaDatos() {
     // Caso usuario cliente
     controladorUsuario->altaCliente("luisito23","qweasd12","Luis","luisito23@gmail.com","Pérez","46859342");
     controladorUsuario->altaCliente("anarojo88","claveAna1","Ana","anarojo88@hotmail.com","Rojo","31287465");
+    std::cout << "Clientes creados correctamente." << std::endl;
 
     //caso usuario propietario
     controladorUsuario->altaPropietario("marcelom", "banco123", "Marcelo", "marcelo.m@gmail.com", "123456789012", "099876543");

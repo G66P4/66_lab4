@@ -6,6 +6,7 @@
 #include "../include/AdministraPropiedad.h"
 
 #include <string>
+#include <iostream>
 using namespace std;
 
 Publicacion::Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, const string& texto, float precio, bool activa){
@@ -23,10 +24,11 @@ Publicacion::Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, const
 Publicacion::~Publicacion() {}
 
 bool Publicacion::cumple(TipoPublicacion tipoPub, float precioMinimo, float precioMaximo, TipoInmueble tipoInm)  {
-    return tipo == tipoPub &&
-           precio >= precioMinimo &&
-           precio <= precioMaximo &&
-           adminProp->getInmueble()->consultarTipo() == tipoInm;
+    if(tipoInm==Todos){
+        return (tipoPub == tipo && precio >= precioMinimo && precio <= precioMaximo);
+    } else {
+        return (tipoPub == tipo && precio >= precioMinimo && precio <= precioMaximo && adminProp->getInmueble()->consultarTipo() == tipoInm);
+    }
 }
 
 

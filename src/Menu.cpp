@@ -456,6 +456,27 @@ void suscribirseNotificaciones(){
 void consultaNotificaciones(){
     Factory* factory = Factory::getInstance();
     IControladorUsuario* conUsu = factory->getIControladorUsuario();
+     std::cout << "Que Tipo de Usuario desea Consultar Suscripciones: (0: Cliente, 1:Propietario)";
+    int tipoUsuario;
+    std::cin >> tipoUsuario;
+    std::cin.ignore();
+
+    std::set<DTUsuario*> usuarioSet;
+    if (tipoUsuario < 0 || tipoUsuario > 1){
+        std::cout << "Opcion no valida. Intente de nuevo." << std::endl;
+        return;
+    }else if (tipoUsuario == 0){
+        std::cout <<"Lista de Clientes:\n";
+        usuarioSet = conUsu->listarClientes();
+    }else if (tipoUsuario == 1){
+        std::cout <<"Lista de Propietarios:\n";
+        usuarioSet = conUsu->listarPropietarios();
+    }
+    for(std::set<DTUsuario*>::iterator it = usuarioSet.begin(); it != usuarioSet.end(); ++it) {
+        DTUsuario* dtu = *it;
+        std::cout << "- Nickname: " << dtu->getNickname() << ", Nombre: " << dtu->getNombre() << std::endl;
+    }
+    
     std::cout << "Ingrese el nickname del usuario a consultar: ";
 
     std::string nicknameUsuario;

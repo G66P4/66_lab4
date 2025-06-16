@@ -8,6 +8,7 @@
 #include "../include/Inmobiliaria.h"
 #include <map>
 #include <set>
+#include <iostream>
 
 ControladorPublicacion* ControladorPublicacion::instance = NULL;
 
@@ -35,6 +36,7 @@ std::set<DTPublicacion*> ControladorPublicacion::listarPublicacion(TipoPublicaci
         Publicacion *publicacion = it->second;
         if (publicacion->cumple(tipoPublicacion, precioMinimo, precioMaximo, tipoInmueble))
         {
+            
             listaDePublicacionesFiltrada.insert(publicacion->crearDTPublicacion());
         }
     }
