@@ -519,7 +519,7 @@ void eliminarSuscripciones(){
         std::string nicknameInmobiliaria;
         std::getline(std::cin, nicknameInmobiliaria);
 
-        //llamada a eliminar suscripcion
+        conUsu->eliminarSuscripcion(nicknameUsuario, nicknameInmobiliaria);
 
         std::cout << "¿Desea seguir eliminando suscripciones? (1: Si, 0: No): ";
         std::cin >> salir;
