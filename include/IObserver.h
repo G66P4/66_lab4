@@ -2,6 +2,8 @@
 #define IOBSERVER_H
 #include "DTNotificacion.h"
 
+class Inmobiliaria;
+
 class IObserver{
     public:
         virtual void Notificar(DTNotificacion* notificacion) = 0;
