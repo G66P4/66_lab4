@@ -14,7 +14,7 @@
 class Inmueble;
 class Inmobiliaria;
 
-class Propietario : public Usuario {
+class Propietario : public Usuario, public IObserver {
     private:
         std::string cuentaBancaria;
         std::string telefono;
@@ -32,11 +32,14 @@ class Propietario : public Usuario {
         std::string getTelefono();
         std::list<Inmueble*> getInmueblesDueno();
         std::list<DTNotificacion*> consultarNotificaciones();
-        
-        void Notificar(DTNotificacion notificacion);
+        std::string getNicknameO(); 
+
+        void Notificar(DTNotificacion* notificacion);
         void removerLinkPropiedad(int codigoInmueble);
         void asociarInmueble(Inmueble* inmueble);
         bool esPropietario(int codigoInmueble);
+        void agregarSuscripcion(Inmobiliaria* inmobiliaria);
+        void eliminarSuscripcion(Inmobiliaria* inmobiliaria);
         std::set<DTInmuebleListado*> listarInmueblesNoAdministrados(std::string nicknameInmobiliaria);
 };
 

@@ -23,6 +23,8 @@ class IControladorUsuario {
         virtual std::set<Inmobiliaria*> listarInmobiliariasNoSuscrito(std::string nickname) = 0;
         virtual std::list<DTNotificacion*> listarNotificaciones(std::string nickname) = 0;
         virtual std::set<Inmobiliaria*> listarInmobiliariasSuscrito(std::string nickname) = 0;
+        virtual void suscribirNotificaciones(std::string nicknameUsuario, std::string nicknameInmobiliaria) = 0;
+        virtual void eliminarSuscripcion(std::string nicknameUsuario, std::string nicknameInmobiliaria) = 0;
 
         virtual ~IControladorUsuario();
 };

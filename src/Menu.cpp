@@ -444,7 +444,7 @@ void suscribirseNotificaciones(){
         std::string nicknameInmobiliaria;
         std::getline(std::cin, nicknameInmobiliaria);
         
-        //llamada a agregar suscripcion
+        conUsu->suscribirNotificaciones(nicknameUsuario, nicknameInmobiliaria);
 
         std::cout << "¿Desea seguir suscribiendose? (1: Si, 0: No): ";
         std::cin >> salir;

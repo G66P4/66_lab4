@@ -164,5 +164,36 @@ std::set<Inmobiliaria*> ControladorUsuario::listarInmobiliariasSuscrito(std::str
     }
     return inmobiliariasSuscrito;
 }
+
+
+void ControladorUsuario::suscribirNotificaciones(std::string nicknameUsuario, std::string nicknameInmobiliaria) {
+    Inmobiliaria* inmobiliaria = ManejadorUsuario::getInstance()->findInmobiliaria(nicknameInmobiliaria);
+    IObserver* propietario = ManejadorUsuario::getInstance()->findPropietario(nicknameUsuario);
+    if( propietario != NULL && inmobiliaria != NULL) {
+        propietario->agregarSuscripcion(inmobiliaria);
+        inmobiliaria->agregarSuscripcion(propietario);
+    } else {
+        Cliente* cliente = ManejadorUsuario::getInstance()->findCliente(nicknameUsuario);
+        if (cliente != NULL && inmobiliaria != NULL) {
+            cliente->agregarSuscripcion(inmobiliaria);
+            inmobiliaria->agregarSuscripcion(cliente);
+        }
+    }
     
+}
+
+void ControladorUsuario::eliminarSuscripcion(std::string nicknameUsuario, std::string nicknameInmobiliaria) {
+    Inmobiliaria* inmobiliaria = ManejadorUsuario::getInstance()->findInmobiliaria(nicknameInmobiliaria);
+    IObserver* propietario = ManejadorUsuario::getInstance()->findPropietario(nicknameUsuario);
+    if( propietario != NULL && inmobiliaria != NULL) {
+        propietario->eliminarSuscripcion(inmobiliaria);
+        inmobiliaria->eliminarSuscripcion(propietario);
+    } else {
+        Cliente* cliente = ManejadorUsuario::getInstance()->findCliente(nicknameUsuario);
+        if (cliente != NULL && inmobiliaria != NULL) {
+            cliente->eliminarSuscripcion(inmobiliaria);
+            inmobiliaria->eliminarSuscripcion(cliente);
+        }
+    }
+}
     

@@ -28,6 +28,8 @@ public:
     // Setters
     void setApellido( std::string nuevoApellido);
     void setDocumento( std::string nuevoDocumento);
+    void agregarSuscripcion(Inmobiliaria* inmobiliaria);
+    void eliminarSuscripcion(Inmobiliaria* inmobiliaria);
 };
 
 #endif

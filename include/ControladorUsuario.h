@@ -32,6 +32,8 @@ public:
     std::set<Inmobiliaria*> listarInmobiliariasNoSuscrito(std::string nickname);
     std::list<DTNotificacion*> listarNotificaciones(std::string nickname);
     std::set<Inmobiliaria*> listarInmobiliariasSuscrito(std::string nickname);
+    void suscribirNotificaciones(std::string nicknameUsuario, std::string nicknameInmobiliaria);     
+    void eliminarSuscripcion(std::string nicknameUsuario, std::string nicknameInmobiliaria);   
 
     ~ControladorUsuario();
 };

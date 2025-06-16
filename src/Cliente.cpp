@@ -51,6 +51,18 @@ std::string Cliente::getNicknameO() {
     return nickname;
 }
 
+void Cliente::agregarSuscripcion(Inmobiliaria* inmobiliaria) {
+    if (inmobiliaria != NULL) {
+        inmobiliariasSuscritas.push_back(inmobiliaria);
+    }
+}
+
+void Cliente::eliminarSuscripcion(Inmobiliaria* inmobiliaria) {
+    if(inmobiliaria != NULL) {
+        inmobiliariasSuscritas.remove(inmobiliaria);
+    }
+}
+
 Cliente::~Cliente()
 {
     for (DTNotificacion* notificacion : notificaciones) {

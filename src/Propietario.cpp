@@ -64,9 +64,8 @@ void Propietario::removerLinkPropiedad(int codigoInmueble){
     }
 };
 
-void Propietario::Notificar(DTNotificacion notificacion){
-    DTNotificacion* nuevaNotificacion = new DTNotificacion(notificacion);
-    notificaciones.push_back(nuevaNotificacion);
+void Propietario::Notificar(DTNotificacion* notificacion){
+    notificaciones.push_back(notificacion);
 };
 
 DTUsuario* Propietario::getPropietarioData(){
@@ -78,6 +77,22 @@ std::list<DTNotificacion*> Propietario::consultarNotificaciones()
     std::list<DTNotificacion*> ultimasNotificaciones = this->notificaciones;
     notificaciones.clear();
     return ultimasNotificaciones;
+};
+
+std::string Propietario::getNicknameO() {
+    return getNickname();
+};
+
+void Propietario::agregarSuscripcion(Inmobiliaria* inmobiliaria) {
+    if (inmobiliaria != NULL) {
+        inmobiliariasSuscritas.push_back(inmobiliaria);
+    }
+};
+
+void Propietario::eliminarSuscripcion(Inmobiliaria* inmobiliaria) {
+    if(inmobiliaria != NULL) {
+        inmobiliariasSuscritas.remove(inmobiliaria);
+    }
 };
 
 Propietario::~Propietario(){};
