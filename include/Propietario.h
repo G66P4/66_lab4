@@ -1,6 +1,7 @@
 #ifndef PROPIETARIO_H
 #define PROPIETARIO_H
 #include "Usuario.h"
+#include "IObserver.h"
 #include "DTUsuario.h"
 #include "DTNotificacion.h"
 #include "DTInmuebleListado.h"
@@ -14,7 +15,7 @@
 class Inmueble;
 class Inmobiliaria;
 
-class Propietario : public Usuario, public IObserver {
+class Propietario : public Usuario , public IObserver {
     private:
         std::string cuentaBancaria;
         std::string telefono;
