@@ -17,7 +17,7 @@ Publicacion::Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, const
     this->activa = activa;
 
     // Inicializar adminProp a NULL, se asignará más tarde
-    this->adminProp = nullptr;
+    this->adminProp = NULL;
 }
 
 Publicacion::~Publicacion() {}
