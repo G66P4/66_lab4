@@ -45,7 +45,7 @@ int Publicacion::getCodigo() const {
     return codigo;
 }
 
-DTFecha Publicacion::getFecha() const {
+DTFecha* Publicacion::getFecha() const {
     return fecha;
 }
 

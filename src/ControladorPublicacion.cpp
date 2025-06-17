@@ -52,7 +52,29 @@ bool ControladorPublicacion::altaPublicacion(std::string nicknameInmobiliaria, i
     if (!(admiProp->tienePub(fechaActual, tipoPublicacion)))
     {
         //Creo una nueva publicacion
-        Publicacion *publicacion = new Publicacion(codigoInmueble, fechaActual, tipoPublicacion, texto, precio, true);
+        std::set<Publicacion *> publicaciones = admiProp->getPublicaciones();
+        Publicacion *fechaMasReciente = NULL;
+        for (std::set<Publicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end(); ++it) {
+            Publicacion* pub = *it;
+            // Verificamos si es de tipo Alquiler usando dynamic_cast
+            if(fechaMasReciente != NULL && pub->getTipo() == tipoPublicacion && pub->getFecha() >= fechaMasReciente->getFecha())
+            {
+                fechaMasReciente = pub;
+            }else if (fechaMasReciente == NULL && pub->getTipo() == tipoPublicacion)
+            {
+                fechaMasReciente = pub;
+            }
+        }
+        
+        bool activa;
+        if (fechaMasReciente != NULL && fechaMasReciente->getFecha() >= fechaActual) {
+            activa = false; // Si la fecha mas reciente es mayor a la actual, la nueva publicacion no esta activa
+        } else {
+            if (fechaMasReciente != NULL){fechaMasReciente->setActiva(false); } // Desactivamos la fecha mas reciente
+            activa = true; // Si no hay publicaciones o la fecha mas reciente es menor a la actual, la nueva publicacion esta activa
+        }
+      
+        Publicacion *publicacion = new Publicacion(codigoInmueble, fechaActual, tipoPublicacion, texto, precio, activa);
         publicacion->setAdminProp(admiProp);
         //Agrego la publicacion al administr propiedad
         admiProp->agregarPub(publicacion);
@@ -64,7 +86,6 @@ bool ControladorPublicacion::altaPublicacion(std::string nicknameInmobiliaria, i
     }
     else
     {
-        delete fechaActual;
         return false;
     }
 };

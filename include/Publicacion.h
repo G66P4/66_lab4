@@ -30,7 +30,7 @@ public:
 
     // Getters
     int getCodigo() const;
-    DTFecha getFecha() const;
+    DTFecha* getFecha() const;
     TipoPublicacion getTipo() const;
     std::string getTexto() const;
     float getPrecio() const;
