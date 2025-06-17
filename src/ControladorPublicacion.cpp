@@ -59,6 +59,7 @@ bool ControladorPublicacion::altaPublicacion(std::string nicknameInmobiliaria, i
         //Agrego la publicacion al manejador de publicaciones
         ManejadorPublicacion *manejadorPub = ManejadorPublicacion::getInstancia(); 
         manejadorPub->agregarPublicacion(publicacion);
+        inmo->modificar(publicacion); // Notifico a la inmobiliaria que se ha creado una nueva publicacion
         return true; 
     }
     else
