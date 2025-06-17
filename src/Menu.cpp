@@ -302,6 +302,7 @@ void altaPublicacion(){
     //agregar notificar
     std::cout << "Publicacion creada exitosamente." << std::endl;
     }
+
 }
 
 void consultaPublicaciones(){
@@ -339,10 +340,14 @@ void consultaPublicaciones(){
     //Recorrer la coleccion Mostrar "- Codigo: xx, fecha: dd/mm/yyyy, texto: zzz, precio: aaa, inmobiliaria: bbb";
     IControladorPublicacion* controladorPub = factory->getIControladorPublicacion();
     std::set<DTPublicacion*> publicaciones = controladorPub->listarPublicacion(tipoPublicacion, precioMinimo, precioMaximo, tipoInmueble);
+    std::set<int> codigosPublicaciones;
+  
     for(std::set<DTPublicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end(); ++it) {
         DTPublicacion* dtp = *it;
+        codigosPublicaciones.insert(dtp->getCodigo());
         std::cout << "- Codigo: " << dtp->getCodigo() << ", Fecha: " << dtp->getFecha() << ", Texto: " << dtp->getTexto() 
                   << ", Precio: " << dtp->getPrecio() << ", Inmobiliaria: " << dtp->get_Inmobiliaria() << std::endl;
+        delete dtp;
     }
     int verDetalle;
     std::cout << "Ver detalle de la publicacion: (1: Si, 0: No)";
@@ -353,6 +358,9 @@ void consultaPublicaciones(){
         int codigoPublicacion;
         std::cin >> codigoPublicacion;
         std::cin.ignore();
+        if(codigosPublicaciones.find(codigoPublicacion) == codigosPublicaciones.end()) {
+            std::cout << "Codigo de publicacion no encontrado." << std::endl;
+        }else{
         std::cout << "Detalle del inmueble:\n";
         //TODO: DTInmueble = Controlador->detalleInmueblePublicacion(codigoPublicacion): DTInmueble
         //Mostrarlo:
@@ -365,6 +373,8 @@ void consultaPublicaciones(){
                   << ", Numero de Puerta: " << inmueble->getNumeroPuerta() 
                   << ", Superficie: " << inmueble->getSuperficie() 
                   << " m2, Ano Construccion: " << inmueble->getAnioConstruccion() << std::endl;
+        delete inmueble;
+    }
     }
 }
 

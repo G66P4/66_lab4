@@ -20,7 +20,6 @@ Publicacion::Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, const
     // Inicializar adminProp a NULL, se asignará más tarde
     this->adminProp = NULL;
 }
-
 Publicacion::~Publicacion() {}
 
 bool Publicacion::cumple(TipoPublicacion tipoPub, float precioMinimo, float precioMaximo, TipoInmueble tipoInm)  {
@@ -37,6 +36,7 @@ DTPublicacion* Publicacion::crearDTPublicacion() const {
     DTUsuario* dtInmo = adminProp->getInmobiliaria()->getInmobiliariaData();
 
     std::string inmobiliaria = dtInmo->getNickname(); // o dtInmo.getNombre()
+    delete dtInmo;
     DTPublicacion* DTP = new DTPublicacion( codigo, new DTFecha(fecha), texto, std::to_string(precio), inmobiliaria);
     return DTP;
 }
