@@ -30,7 +30,7 @@ void mostrarMenu() {
     std::cout << "4. Eliminar Inmueble" << std::endl;
     std::cout << "5. Suscribirse a Notificaciones" << std::endl;
     std::cout << "6. Consulta de Notificaciones" << std::endl;
-    std::cout << "7. Elimiinar Suscripciones" << std::endl;
+    std::cout << "7. Eliminar Suscripciones" << std::endl;
     std::cout << "8. Alta de Administracion de Propiedad" << std::endl;
     std::cout << "9. Cargar Datos" << std::endl;
     std::cout << "10. Ver fecha actual" << std::endl;
@@ -485,7 +485,9 @@ void consultaNotificaciones(){
 
     std::string nicknameUsuario;
     std::getline(std::cin, nicknameUsuario);
+
     std::list<DTNotificacion*> notificaciones = conUsu->listarNotificaciones(nicknameUsuario);
+
     if (notificaciones.empty()) {
         std::cout << "No hay notificaciones para el usuario " << nicknameUsuario << std::endl;
         return;
@@ -493,6 +495,7 @@ void consultaNotificaciones(){
         std::cout << "Notificaciones para el usuario " << nicknameUsuario << ":\n";
         for (std::list<DTNotificacion*>::iterator it = notificaciones.begin(); it != notificaciones.end(); ++it) {
             DTNotificacion* dtn = *it;
+            if(dtn != NULL){
             std::cout << "- Codigo: " << dtn->getCodigoPublicacion() 
                       << ", Fecha: " << dtn->getFechaPublicacion() 
                       << ", Texto: " << dtn->getTextoPublicacion() 
@@ -500,6 +503,7 @@ void consultaNotificaciones(){
                       << ", Tipo Inmueble: " << (dtn->getTipoInmuebl() == casa ? "Casa" : "Apartamento")
                       << ", Inmobiliaria: " << dtn->getNickInmobiliaria() 
                       << std::endl;
+            }
         }
     }
 }

@@ -153,7 +153,6 @@ void Inmobiliaria::modificar(Publicacion* pub) {
         }
     }
 
-    delete noti;
 }
 
 Inmobiliaria::~Inmobiliaria() {
