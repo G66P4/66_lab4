@@ -53,6 +53,7 @@ bool ControladorPublicacion::altaPublicacion(std::string nicknameInmobiliaria, i
     {
         //Creo una nueva publicacion
         Publicacion *publicacion = new Publicacion(codigoInmueble, fechaActual, tipoPublicacion, texto, precio, true);
+        publicacion->setAdminProp(admiProp);
         //Agrego la publicacion al administr propiedad
         admiProp->agregarPub(publicacion);
         //Agrego la publicacion al manejador de publicaciones

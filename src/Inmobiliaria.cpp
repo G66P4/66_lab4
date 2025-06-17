@@ -81,7 +81,7 @@ AdministraPropiedad* Inmobiliaria::adminPropFind(int codigoInmueble) {
     std::map<int, AdministraPropiedad*>::iterator it = propiedades.find(codigoInmueble);
     if (it != propiedades.end())
         return it->second;
-    return NULL;
+    return NULL;//esta funcion nunca debería retornar NULL, ya que se supone que el inmueble está administrado por la inmobiliaria
 }
 
 void Inmobiliaria::eliminarLinkAdmProp(int codigoInmueble) {
@@ -181,6 +181,6 @@ void Inmobiliaria::altaAdministracionPropiedad(Inmueble* inmueble, DTFecha* fech
     // setear la inmobiliaria y el inmueble porque el constructor no lo hace
     nuevaAdmin->setInmobiliaria(this);
     nuevaAdmin->setInmueble(inmueble);
-
+    inmueble->asociarAdministracion(nuevaAdmin);
     propiedades[codigo] = nuevaAdmin;
 }

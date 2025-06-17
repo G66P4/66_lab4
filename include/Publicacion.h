@@ -39,6 +39,7 @@ public:
     AdministraPropiedad* getAdminProp();
 
     //setter
+    void setAdminProp(AdministraPropiedad* adminProp);
     void setActiva(bool activa);
 };
 
