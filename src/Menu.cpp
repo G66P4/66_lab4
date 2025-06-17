@@ -270,6 +270,9 @@ void altaPublicacion(){
     //TODO: Coleccion de DTInmuebleAdministrado = controlador->listarInmueblesAdministrados(nicknameInmobiliaria);
     //Recorrer la coleccion Mostrar "- Codigo: xx, Direccion: yy, Propietario: zzz"
     std::set<DTInmuebleAdministrado*> inmueblesAdministrados = IControladorUsu->listarInmueblesAdministrados(nicknameInmobiliaria);
+    if (inmueblesAdministrados.empty()) {
+        std::cout << "La inmobiliaria no administra ningún inmueble actualmente." << std::endl;
+    }else{
     for(std::set<DTInmuebleAdministrado*>::iterator it = inmueblesAdministrados.begin(); it != inmueblesAdministrados.end(); ++it) {
         DTInmuebleAdministrado* dti = *it;
         std::cout << "- Codigo: " << dti->getCodigo() << ", Direccion: " << dti->getDireccion() << ", Fecha comienzo administracion: " << dti->getFechaComienzo() << std::endl;
@@ -298,6 +301,7 @@ void altaPublicacion(){
     controladorPub->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio);
     //agregar notificar
     std::cout << "Publicacion creada exitosamente." << std::endl;
+    }
 }
 
 void consultaPublicaciones(){
