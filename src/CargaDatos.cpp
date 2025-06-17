@@ -78,70 +78,72 @@ CargaDatos::CargaDatos() {
     //caso alta publicacion
     // ── Publicaciones ────────────────────────────────────────────────────
 
-controladorFechaActual->setNewFechaActual(9, 10 ,2011);
-controladorPublicacion->altaPublicacion("idealhome",   5, TipoPublicacion::Venta, "Casa al fondo Juan Paullier con 110 m fondo y techo liviano.", 47000.0f);
+    controladorFechaActual->setNewFechaActual(9, 10 ,2011);
+    controladorPublicacion->altaPublicacion("idealhome",   5, TipoPublicacion::Venta, "Casa al fondo Juan Paullier con 110 m fondo y techo liviano.", 47000.0f);
 
-controladorFechaActual->setNewFechaActual(15, 1,2016);
-controladorPublicacion->altaPublicacion("casasur123",  2, TipoPublicacion::Alquiler, "Oportunidad en Av. Brasil: apartamento de 75 m piso 5 con ascensor.", 28000.0f);
+    controladorFechaActual->setNewFechaActual(15, 1,2016);
+    controladorPublicacion->altaPublicacion("casasur123",  2, TipoPublicacion::Alquiler, "Oportunidad en Av. Brasil: apartamento de 75 m piso 5 con ascensor.", 28000.0f);
 
-controladorFechaActual->setNewFechaActual(5, 3,2019);
-controladorPublicacion->altaPublicacion("casasur123",  2, TipoPublicacion::Alquiler, "Apartamento luminoso en Av. Brasil piso alto con excelentes servicios.", 29500.0f);
+    controladorFechaActual->setNewFechaActual(5, 3,2019);
+    controladorPublicacion->altaPublicacion("casasur123",  2, TipoPublicacion::Alquiler, "Apartamento luminoso en Av. Brasil piso alto con excelentes servicios.", 29500.0f);
 
-controladorFechaActual->setNewFechaActual(3, 4,2019);
-controladorPublicacion->altaPublicacion("idealhome",   5, TipoPublicacion::Alquiler,"Casa ideal para familia en Juan Paullier barrio tranquilo.", 38500.0f);
+    controladorFechaActual->setNewFechaActual(3, 4,2019);
+    controladorPublicacion->altaPublicacion("idealhome",   5, TipoPublicacion::Alquiler,"Casa ideal para familia en Juan Paullier barrio tranquilo.", 38500.0f);
 
-controladorFechaActual->setNewFechaActual(12, 12,2019);
-controladorPublicacion->altaPublicacion("casasur123",  6, TipoPublicacion::Venta,"Apartamento en Bulevar Artigas piso 3 muy luminoso y moderno.", 375000.0f);
+    controladorFechaActual->setNewFechaActual(12, 12,2019);
+    controladorPublicacion->altaPublicacion("casasur123",  6, TipoPublicacion::Venta,"Apartamento en Bulevar Artigas piso 3 muy luminoso y moderno.", 375000.0f);
 
-controladorFechaActual->setNewFechaActual(12, 6,2020);
-controladorPublicacion->altaPublicacion("casasur123",  2, TipoPublicacion::Venta, "Excelente apartamento en Av. Brasil con 75 m ideal para reforma.", 390000.0f);
+    controladorFechaActual->setNewFechaActual(12, 6,2020);
+    controladorPublicacion->altaPublicacion("casasur123",  2, TipoPublicacion::Venta, "Excelente apartamento en Av. Brasil con 75 m ideal para reforma.", 390000.0f);
 
-controladorFechaActual->setNewFechaActual(20, 7,2020);
-controladorPublicacion->altaPublicacion("vivaurbana",  6, TipoPublicacion::Alquiler, "Apartamento 68 m en Bulevar Artigas tercer piso sin ascensor.", 23000.0f);
+    controladorFechaActual->setNewFechaActual(20, 7,2020);
+    controladorPublicacion->altaPublicacion("vivaurbana",  6, TipoPublicacion::Alquiler, "Apartamento 68 m en Bulevar Artigas tercer piso sin ascensor.", 23000.0f);
 
-controladorFechaActual->setNewFechaActual(4, 3,2022);
-controladorPublicacion->altaPublicacion("vivaurbana",  4, TipoPublicacion::Alquiler, "Apartamento con ascensor en Colonia 1542 piso 12 excelente conectividad.", 26000.0f);
+    controladorFechaActual->setNewFechaActual(4, 3,2022);
+    controladorPublicacion->altaPublicacion("vivaurbana",  4, TipoPublicacion::Alquiler, "Apartamento con ascensor en Colonia 1542 piso 12 excelente conectividad.", 26000.0f);
 
-controladorFechaActual->setNewFechaActual(12, 9,2022);
-controladorPublicacion->altaPublicacion("vivaurbana",  3, TipoPublicacion::Alquiler, "Casa excelente en Camino Maldonado de 95 m con patio al fondo.", 27000.0f);
+    controladorFechaActual->setNewFechaActual(12, 9,2022);
+    controladorPublicacion->altaPublicacion("vivaurbana",  3, TipoPublicacion::Alquiler, "Casa excelente en Camino Maldonado de 95 m con patio al fondo.", 27000.0f);
 
-controladorFechaActual->setNewFechaActual(1, 10,2023);
-controladorPublicacion->altaPublicacion("idealhome",   1, TipoPublicacion::Venta, "Casa en Av. Rivera de 120 m con techo plano ideal para familia.", 520000.0f);
+    controladorFechaActual->setNewFechaActual(1, 10,2023);
+    controladorPublicacion->altaPublicacion("idealhome",   1, TipoPublicacion::Venta, "Casa en Av. Rivera de 120 m con techo plano ideal para familia.", 520000.0f);
 
-controladorFechaActual->setNewFechaActual(18, 10,2023);
-controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Alquiler, "Apartamento amplio en Sarmiento 1476 piso 6 con ascensor.", 32000.0f);
+    controladorFechaActual->setNewFechaActual(18, 10,2023);
+    controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Alquiler, "Apartamento amplio en Sarmiento 1476 piso 6 con ascensor.", 32000.0f);
 
-controladorFechaActual->setNewFechaActual(19, 10,2023);
-controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Venta, "Apartamento de 80 m en Sarmiento excelente estado y vista.", 455000.0f);
+    controladorFechaActual->setNewFechaActual(19, 10,2023);
+    controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Venta, "Apartamento de 80 m en Sarmiento excelente estado y vista.", 455000.0f);
 
-controladorFechaActual->setNewFechaActual(20, 11,2023);
-controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Alquiler, "Apartamento con gran vista a la rambla", 31000.0f);
+    controladorFechaActual->setNewFechaActual(20, 11,2023);
+    controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Alquiler, "Apartamento con gran vista a la rambla", 31000.0f);
 
-controladorFechaActual->setNewFechaActual(20, 11,2023);
-controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Venta, "Aprtamente en excelentes condiciones de 80 m", 450000.0f);
+    controladorFechaActual->setNewFechaActual(20, 11,2023);
+    controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Venta, "Aprtamente en excelentes condiciones de 80 m", 450000.0f);
 
-controladorFechaActual->setNewFechaActual(8, 3,2024);
-controladorPublicacion->altaPublicacion("vivaurbana",  3, TipoPublicacion::Venta, "Venta de casa en Camino Maldonado 95 m bien distribuidos.", 430000.0f);
+    controladorFechaActual->setNewFechaActual(8, 3,2024);
+    controladorPublicacion->altaPublicacion("vivaurbana",  3, TipoPublicacion::Venta, "Venta de casa en Camino Maldonado 95 m bien distribuidos.", 430000.0f);
 
-controladorFechaActual->setNewFechaActual(5, 5,2024);
-controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Alquiler, "Alquiler en Sarmiento 80 m piso alto con excelentes terminaciones.", 33000.0f);
+    controladorFechaActual->setNewFechaActual(5, 5,2024);
+    controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Alquiler, "Alquiler en Sarmiento 80 m piso alto con excelentes terminaciones.", 33000.0f);
 
-controladorFechaActual->setNewFechaActual(1, 8,2024);
-controladorPublicacion->altaPublicacion("idealhome",   6, TipoPublicacion::Venta, "A estrenar en Bulevar Artigas 871 apartamento moderno.", 400000.0f);
-//suscripciones
-// ── Suscripciones a notificaciones ───────────────────────────────
-controladorUsuario->suscribirNotificaciones("luisito23",  "casasur123");
-controladorUsuario->suscribirNotificaciones("luisito23",  "idealhome");
-controladorUsuario->suscribirNotificaciones("anarojo88",  "casasur123");
-controladorUsuario->suscribirNotificaciones("anarojo88",  "idealhome");
-controladorUsuario->suscribirNotificaciones("anarojo88",  "vivaurbana");
-controladorUsuario->suscribirNotificaciones("marcelom",   "idealhome");
-controladorUsuario->suscribirNotificaciones("robertarce", "idealhome");
-controladorUsuario->suscribirNotificaciones("soledadf",   "vivaurbana");
-controladorUsuario->suscribirNotificaciones("martagal",   "vivaurbana");
-controladorUsuario->suscribirNotificaciones("jorge88",    "casasur123");
-controladorUsuario->suscribirNotificaciones("jorge88",    "idealhome");
-controladorUsuario->suscribirNotificaciones("jorge88",    "vivaurbana");
+    controladorFechaActual->setNewFechaActual(1, 8,2024);
+    controladorPublicacion->altaPublicacion("idealhome",   6, TipoPublicacion::Venta, "A estrenar en Bulevar Artigas 871 apartamento moderno.", 400000.0f);
+    //suscripciones
+    // ── Suscripciones a notificaciones ───────────────────────────────
+    controladorUsuario->suscribirNotificaciones("luisito23",  "casasur123");
+    controladorUsuario->suscribirNotificaciones("luisito23",  "idealhome");
+    controladorUsuario->suscribirNotificaciones("anarojo88",  "casasur123");
+    controladorUsuario->suscribirNotificaciones("anarojo88",  "idealhome");
+    controladorUsuario->suscribirNotificaciones("anarojo88",  "vivaurbana");
+    controladorUsuario->suscribirNotificaciones("marcelom",   "idealhome");
+    controladorUsuario->suscribirNotificaciones("robertarce", "idealhome");
+    controladorUsuario->suscribirNotificaciones("soledadf",   "vivaurbana");
+    controladorUsuario->suscribirNotificaciones("martagal",   "vivaurbana");
+    controladorUsuario->suscribirNotificaciones("jorge88",    "casasur123");
+    controladorUsuario->suscribirNotificaciones("jorge88",    "idealhome");
+    controladorUsuario->suscribirNotificaciones("jorge88",    "vivaurbana");
+    std::cout << "Suscripciones a notificaciones creadas correctamente." << std::endl;
+    std::cout << "Carga de datos completada." << std::endl;
 
 
 }
