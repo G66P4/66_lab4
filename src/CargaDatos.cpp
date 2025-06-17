@@ -22,11 +22,13 @@ CargaDatos::CargaDatos() {
     controladorUsuario->altaPropietario("soledadf", "sole789", "Soledad", "soledad.f@gmail.com", "654321987654", "092345678");
     controladorUsuario->altaPropietario("martagal", "martA01", "Marta", "marta.galvez@outlook.com", "321098765432", "098765432");
     controladorUsuario->altaPropietario("jorge88", "jorgepass88", "Jorge", "jorge.rivera@uy.com", "890123456789", "097654321");
+    std::cout << "Propietarios creados correctamente." << std::endl;
 
     // Caso usuario inmobiliaria
     controladorUsuario->altaInmobiliaria("casasur123", "casasur99", "Casa Sur", "contacto@casasur.com", "Canelones 2345", "https://casasur.com.uy", "24012345");
     controladorUsuario->altaInmobiliaria("idealhome", "home2025", "IHome","info@idealhome.uy", "Av. Italia 4567","https://idealhome.uy", "099123456");
     controladorUsuario->altaInmobiliaria("vivaurbana", "viva4567", "Viva Urbana", "contacto@vivaurbana.com", "18 de Julio 7890", "https://vivaurbana.com", "29109876");
+    std::cout << "Inmobiliarias creadas correctamente." << std::endl;
 
     //caso inmueble
     // ── Casas ─────────────────────────────────────────────────────────────
@@ -34,12 +36,13 @@ CargaDatos::CargaDatos() {
     controladorInmueble->altaCasa("Camino Maldonado", 1540,  95, 1988,  false, TipoTecho::Plano,   "robertarce");
     controladorInmueble->altaCasa("Juan Paullier",     801, 110, 200,  true,  TipoTecho::Liviano, "martagal");
     controladorInmueble->altaCasa("Cno. Carrasco",    1576, 140, 2007,  true,  TipoTecho::Plano,   "jorge88");
+    std::cout << "Casas creadas correctamente." << std::endl;
     // ── Apartamentos ──────────────────────────────────────────────────────
     controladorInmueble->altaApartamento("Av. Brasil",     2031,  75, 1980, 5,  true,  3500.0f, "marcelom");
     controladorInmueble->altaApartamento("Colonia",        1542,  60, 1978, 12, true,  2800.0f, "soledadf");
     controladorInmueble->altaApartamento("Bulevar Artigas",  871,  68, 2002, 3,  false, 2200.0f, "jorge88");
     controladorInmueble->altaApartamento("Sarmiento",      1476,  80, 2008, 6,  true,  3100.0f, "jorge88");
-
+    std::cout << "Apartamentos creados correctamente." << std::endl;
     //caso inmobiliaria representa propietario
     controladorUsuario->representarPropietario("casasur123", "marcelom");
     controladorUsuario->representarPropietario("idealhome",  "marcelom");
@@ -49,6 +52,7 @@ CargaDatos::CargaDatos() {
     controladorUsuario->representarPropietario("casasur123", "jorge88");
     controladorUsuario->representarPropietario("idealhome",  "jorge88");
     controladorUsuario->representarPropietario("vivaurbana", "jorge88");
+    std::cout << "Inmobiliarias representan propietarios correctamente." << std::endl;
     //caso inmobiliaria administra propiedad
     controladorFechaActual->setNewFechaActual(12, 12, 2015);
     controladorInmueble->altaAdministraPropiedad(2, "casasur123");   // 12/12/2015
@@ -70,8 +74,10 @@ CargaDatos::CargaDatos() {
     controladorInmueble->altaAdministraPropiedad(7, "idealhome");    // 18/09/2023
     controladorFechaActual->setNewFechaActual(19, 5, 2022);
     controladorInmueble->altaAdministraPropiedad(8, "vivaurbana");   // 19/05/2022
+    std::cout << "Inmuebles administrados correctamente." << std::endl;
     //caso alta publicacion
     // ── Publicaciones ────────────────────────────────────────────────────
+
 controladorFechaActual->setNewFechaActual(9, 10 ,2011);
 controladorPublicacion->altaPublicacion("idealhome",   5, TipoPublicacion::Venta, "Casa al fondo Juan Paullier con 110 m fondo y techo liviano.", 47000.0f);
 

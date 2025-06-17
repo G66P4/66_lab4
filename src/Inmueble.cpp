@@ -38,6 +38,9 @@ std::set<AdministraPropiedad*>& Inmueble::getAdministracion(){
 
 
 DTInmuebleAdministrado* Inmueble::getinfoInmueble(Inmobiliaria* inm){
+    if(administracion.empty()){
+        return NULL;
+    }
     for (std::set<AdministraPropiedad*>::iterator it = administracion.begin(); it != administracion.end(); ++it) {
         AdministraPropiedad* administrador = *it;
         if(administrador->getInmobiliaria()==inm){

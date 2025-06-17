@@ -34,7 +34,11 @@ std::set<DTInmuebleAdministrado*> Inmobiliaria::obtenerInmuebleData() {
     std::set<DTInmuebleAdministrado*> res;
    for (std::map<int, AdministraPropiedad*>::iterator it = propiedades.begin(); it != propiedades.end(); ++it) {
     Inmueble* inmueble = it->second->getInmueble();
-    res.insert(inmueble->getinfoInmueble(this));
+    DTInmuebleAdministrado* dt = inmueble->getinfoInmueble(this);
+    if(dt !=NULL){
+        res.insert(dt);
+    }
+    
 }
 
     return res;
@@ -183,4 +187,6 @@ void Inmobiliaria::altaAdministracionPropiedad(Inmueble* inmueble, DTFecha* fech
     nuevaAdmin->setInmueble(inmueble);
     inmueble->asociarAdministracion(nuevaAdmin);
     propiedades[codigo] = nuevaAdmin;
+
+    inmueble->asociarAdministracion(nuevaAdmin);
 }
