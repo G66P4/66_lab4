@@ -22,11 +22,13 @@ CargaDatos::CargaDatos() {
     controladorUsuario->altaPropietario("soledadf", "sole789", "Soledad", "soledad.f@gmail.com", "654321987654", "092345678");
     controladorUsuario->altaPropietario("martagal", "martA01", "Marta", "marta.galvez@outlook.com", "321098765432", "098765432");
     controladorUsuario->altaPropietario("jorge88", "jorgepass88", "Jorge", "jorge.rivera@uy.com", "890123456789", "097654321");
+    std::cout << "Propietarios creados correctamente." << std::endl;
 
     // Caso usuario inmobiliaria
     controladorUsuario->altaInmobiliaria("casasur123", "casasur99", "Casa Sur", "contacto@casasur.com", "Canelones 2345", "https://casasur.com.uy", "24012345");
     controladorUsuario->altaInmobiliaria("idealhome", "home2025", "IHome","info@idealhome.uy", "Av. Italia 4567","https://idealhome.uy", "099123456");
     controladorUsuario->altaInmobiliaria("vivaurbana", "viva4567", "Viva Urbana", "contacto@vivaurbana.com", "18 de Julio 7890", "https://vivaurbana.com", "29109876");
+    std::cout << "Inmobiliarias creadas correctamente." << std::endl;
 
     //caso inmueble
     // ── Casas ─────────────────────────────────────────────────────────────
@@ -34,12 +36,13 @@ CargaDatos::CargaDatos() {
     controladorInmueble->altaCasa("Camino Maldonado", 1540,  95, 1988,  false, TipoTecho::Plano,   "robertarce");
     controladorInmueble->altaCasa("Juan Paullier",     801, 110, 200,  true,  TipoTecho::Liviano, "martagal");
     controladorInmueble->altaCasa("Cno. Carrasco",    1576, 140, 2007,  true,  TipoTecho::Plano,   "jorge88");
+    std::cout << "Casas creadas correctamente." << std::endl;
     // ── Apartamentos ──────────────────────────────────────────────────────
     controladorInmueble->altaApartamento("Av. Brasil",     2031,  75, 1980, 5,  true,  3500.0f, "marcelom");
     controladorInmueble->altaApartamento("Colonia",        1542,  60, 1978, 12, true,  2800.0f, "soledadf");
     controladorInmueble->altaApartamento("Bulevar Artigas",  871,  68, 2002, 3,  false, 2200.0f, "jorge88");
     controladorInmueble->altaApartamento("Sarmiento",      1476,  80, 2008, 6,  true,  3100.0f, "jorge88");
-
+    std::cout << "Apartamentos creados correctamente." << std::endl;
     //caso inmobiliaria representa propietario
     controladorUsuario->representarPropietario("casasur123", "marcelom");
     controladorUsuario->representarPropietario("idealhome",  "marcelom");
@@ -49,6 +52,7 @@ CargaDatos::CargaDatos() {
     controladorUsuario->representarPropietario("casasur123", "jorge88");
     controladorUsuario->representarPropietario("idealhome",  "jorge88");
     controladorUsuario->representarPropietario("vivaurbana", "jorge88");
+    std::cout << "Inmobiliarias representan propietarios correctamente." << std::endl;
     //caso inmobiliaria administra propiedad
     controladorFechaActual->setNewFechaActual(12, 12, 2015);
     controladorInmueble->altaAdministraPropiedad(2, "casasur123");   // 12/12/2015
@@ -70,39 +74,42 @@ CargaDatos::CargaDatos() {
     controladorInmueble->altaAdministraPropiedad(7, "idealhome");    // 18/09/2023
     controladorFechaActual->setNewFechaActual(19, 5, 2022);
     controladorInmueble->altaAdministraPropiedad(8, "vivaurbana");   // 19/05/2022
+    std::cout << "Inmuebles administrados correctamente." << std::endl;
     //caso alta publicacion
     // ── Publicaciones ────────────────────────────────────────────────────
-controladorPublicacion->altaPublicacion("idealhome",   5, TipoPublicacion::Venta, "Casa al fondo Juan Paullier con 110 m fondo y techo liviano.", 47000.0f);
-controladorPublicacion->altaPublicacion("casasur123",  2, TipoPublicacion::Alquiler, "Oportunidad en Av. Brasil: apartamento de 75 m piso 5 con ascensor.", 28000.0f);
-controladorPublicacion->altaPublicacion("casasur123",  2, TipoPublicacion::Alquiler, "Apartamento luminoso en Av. Brasil piso alto con excelentes servicios.", 29500.0f);
-controladorPublicacion->altaPublicacion("idealhome",   5, TipoPublicacion::Alquiler,"Casa ideal para familia en Juan Paullier barrio tranquilo.", 38500.0f);
-controladorPublicacion->altaPublicacion("casasur123",  6, TipoPublicacion::Venta,"Apartamento en Bulevar Artigas piso 3 muy luminoso y moderno.", 375000.0f);
-controladorPublicacion->altaPublicacion("casasur123",  2, TipoPublicacion::Venta, "Excelente apartamento en Av. Brasil con 75 m ideal para reforma.", 390000.0f);
-controladorPublicacion->altaPublicacion("vivaurbana",  6, TipoPublicacion::Alquiler, "Apartamento 68 m en Bulevar Artigas tercer piso sin ascensor.", 23000.0f);
-controladorPublicacion->altaPublicacion("vivaurbana",  4, TipoPublicacion::Alquiler, "Apartamento con ascensor en Colonia 1542 piso 12 excelente conectividad.", 26000.0f);
-controladorPublicacion->altaPublicacion("vivaurbana",  3, TipoPublicacion::Alquiler, "Casa excelente en Camino Maldonado de 95 m con patio al fondo.", 27000.0f);
-controladorPublicacion->altaPublicacion("idealhome",   1, TipoPublicacion::Venta, "Casa en Av. Rivera de 120 m con techo plano ideal para familia.", 520000.0f);
-controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Alquiler, "Apartamento amplio en Sarmiento 1476 piso 6 con ascensor.", 32000.0f);
-controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Venta, "Apartamento de 80 m en Sarmiento excelente estado y vista.", 455000.0f);
-controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Alquiler, "Apartamento con gran vista a la rambla", 31000.0f);
-controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Venta, "Aprtamente en excelentes condiciones de 80 m", 450000.0f);
-controladorPublicacion->altaPublicacion("vivaurbana",  3, TipoPublicacion::Venta, "Venta de casa en Camino Maldonado 95 m bien distribuidos.", 430000.0f);
-controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Alquiler, "Alquiler en Sarmiento 80 m piso alto con excelentes terminaciones.", 33000.0f);
-controladorPublicacion->altaPublicacion("idealhome",   6, TipoPublicacion::Venta, "A estrenar en Bulevar Artigas 871 apartamento moderno.", 400000.0f);
-//suscripciones
-// ── Suscripciones a notificaciones ───────────────────────────────
-controladorUsuario->suscribirNotificaciones("luisito23",  "casasur123");
-controladorUsuario->suscribirNotificaciones("luisito23",  "idealhome");
-controladorUsuario->suscribirNotificaciones("anarojo88",  "casasur123");
-controladorUsuario->suscribirNotificaciones("anarojo88",  "idealhome");
-controladorUsuario->suscribirNotificaciones("anarojo88",  "vivaurbana");
-controladorUsuario->suscribirNotificaciones("marcelom",   "idealhome");
-controladorUsuario->suscribirNotificaciones("robertarce", "idealhome");
-controladorUsuario->suscribirNotificaciones("soledadf",   "vivaurbana");
-controladorUsuario->suscribirNotificaciones("martagal",   "vivaurbana");
-controladorUsuario->suscribirNotificaciones("jorge88",    "casasur123");
-controladorUsuario->suscribirNotificaciones("jorge88",    "idealhome");
-controladorUsuario->suscribirNotificaciones("jorge88",    "vivaurbana");
+    controladorPublicacion->altaPublicacion("idealhome",   5, TipoPublicacion::Venta, "Casa al fondo Juan Paullier con 110 m fondo y techo liviano.", 47000.0f);
+    controladorPublicacion->altaPublicacion("casasur123",  2, TipoPublicacion::Alquiler, "Oportunidad en Av. Brasil: apartamento de 75 m piso 5 con ascensor.", 28000.0f);
+    controladorPublicacion->altaPublicacion("casasur123",  2, TipoPublicacion::Alquiler, "Apartamento luminoso en Av. Brasil piso alto con excelentes servicios.", 29500.0f);
+    controladorPublicacion->altaPublicacion("idealhome",   5, TipoPublicacion::Alquiler,"Casa ideal para familia en Juan Paullier barrio tranquilo.", 38500.0f);
+    controladorPublicacion->altaPublicacion("casasur123",  6, TipoPublicacion::Venta,"Apartamento en Bulevar Artigas piso 3 muy luminoso y moderno.", 375000.0f);
+    controladorPublicacion->altaPublicacion("casasur123",  2, TipoPublicacion::Venta, "Excelente apartamento en Av. Brasil con 75 m ideal para reforma.", 390000.0f);
+    controladorPublicacion->altaPublicacion("vivaurbana",  6, TipoPublicacion::Alquiler, "Apartamento 68 m en Bulevar Artigas tercer piso sin ascensor.", 23000.0f);
+    controladorPublicacion->altaPublicacion("vivaurbana",  4, TipoPublicacion::Alquiler, "Apartamento con ascensor en Colonia 1542 piso 12 excelente conectividad.", 26000.0f);
+    controladorPublicacion->altaPublicacion("vivaurbana",  3, TipoPublicacion::Alquiler, "Casa excelente en Camino Maldonado de 95 m con patio al fondo.", 27000.0f);
+    controladorPublicacion->altaPublicacion("idealhome",   1, TipoPublicacion::Venta, "Casa en Av. Rivera de 120 m con techo plano ideal para familia.", 520000.0f);
+    controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Alquiler, "Apartamento amplio en Sarmiento 1476 piso 6 con ascensor.", 32000.0f);
+    controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Venta, "Apartamento de 80 m en Sarmiento excelente estado y vista.", 455000.0f);
+    controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Alquiler, "Apartamento con gran vista a la rambla", 31000.0f);
+    controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Venta, "Aprtamente en excelentes condiciones de 80 m", 450000.0f);
+    controladorPublicacion->altaPublicacion("vivaurbana",  3, TipoPublicacion::Venta, "Venta de casa en Camino Maldonado 95 m bien distribuidos.", 430000.0f);
+    controladorPublicacion->altaPublicacion("idealhome",   7, TipoPublicacion::Alquiler, "Alquiler en Sarmiento 80 m piso alto con excelentes terminaciones.", 33000.0f);
+    controladorPublicacion->altaPublicacion("idealhome",   6, TipoPublicacion::Venta, "A estrenar en Bulevar Artigas 871 apartamento moderno.", 400000.0f);
+    std::cout << "Publicaciones creadas correctamente." << std::endl;
+    //suscripciones
+    // ── Suscripciones a notificaciones ───────────────────────────────
+    controladorUsuario->suscribirNotificaciones("luisito23",  "casasur123");
+    controladorUsuario->suscribirNotificaciones("luisito23",  "idealhome");
+    controladorUsuario->suscribirNotificaciones("anarojo88",  "casasur123");
+    controladorUsuario->suscribirNotificaciones("anarojo88",  "idealhome");
+    controladorUsuario->suscribirNotificaciones("anarojo88",  "vivaurbana");
+    controladorUsuario->suscribirNotificaciones("marcelom",   "idealhome");
+    controladorUsuario->suscribirNotificaciones("robertarce", "idealhome");
+    controladorUsuario->suscribirNotificaciones("soledadf",   "vivaurbana");
+    controladorUsuario->suscribirNotificaciones("martagal",   "vivaurbana");
+    controladorUsuario->suscribirNotificaciones("jorge88",    "casasur123");
+    controladorUsuario->suscribirNotificaciones("jorge88",    "idealhome");
+    controladorUsuario->suscribirNotificaciones("jorge88",    "vivaurbana");
+    std::cout << "Suscripciones a notificaciones creadas correctamente." << std::endl;
 
 
 }
