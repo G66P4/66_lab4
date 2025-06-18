@@ -9,9 +9,9 @@
 #include <iostream>
 using namespace std;
 
-Publicacion::Publicacion(int codigo,int codigoinm , DTFecha* fecha, TipoPublicacion tipo, const string& texto, float precio, bool activa){
+Publicacion::Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, const string& texto, float precio, bool activa){
     this->codigo = codigo;
-    this->codigoinmueble = codigoinm;
+
     this->fecha = fecha;
     this->tipo = tipo;
     this->texto = texto;
@@ -38,7 +38,7 @@ DTPublicacion* Publicacion::crearDTPublicacion() const {
 
     std::string inmobiliaria = dtInmo->getNickname(); // o dtInmo.getNombre()
     delete dtInmo;
-    DTPublicacion* DTP = new DTPublicacion( codigo, codigoinmueble, new DTFecha(fecha), texto, std::to_string(precio), inmobiliaria);
+    DTPublicacion* DTP = new DTPublicacion( codigo, new DTFecha(fecha), texto, std::to_string(precio), inmobiliaria);
     return DTP;
 }
 //getters

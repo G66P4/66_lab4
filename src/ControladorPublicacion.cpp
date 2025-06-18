@@ -52,7 +52,7 @@ bool ControladorPublicacion::altaPublicacion(std::string nicknameInmobiliaria, i
     int codigo = ManejadorPublicacion::getInstancia()->generarNuevoCodigo();
     if (!(admiProp->tienePub(fechaActual, tipoPublicacion)))
     {     
-        Publicacion *publicacion = new Publicacion(codigo, codigoInmueble, fechaActual, tipoPublicacion, texto, precio, true);
+        Publicacion *publicacion = new Publicacion(codigo, fechaActual, tipoPublicacion, texto, precio, true);
         publicacion->setAdminProp(admiProp);
         //Agrego la publicacion al administr propiedad
         admiProp->agregarPub(publicacion);

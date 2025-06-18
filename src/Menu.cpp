@@ -374,7 +374,7 @@ void consultaPublicaciones(){
                   << ", Superficie: " << inmueble->getSuperficie() 
                   << " m2, Ano Construccion: " << inmueble->getAnioConstruccion() << std::endl;
         delete inmueble;
-    }
+        }
     }
 }
 
