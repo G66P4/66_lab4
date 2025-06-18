@@ -345,7 +345,7 @@ void consultaPublicaciones(){
     for(std::set<DTPublicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end(); ++it) {
         DTPublicacion* dtp = *it;
         codigosPublicaciones.insert(dtp->getCodigo());
-        std::cout << "- Codigo: " << dtp->getCodigo() << ", Codigo del Inmueble:"<< dtp->getCodigoinmueble() << ", Fecha: " << dtp->getFecha() << ", Texto: " << dtp->getTexto() 
+        std::cout << "- Codigo: " << dtp->getCodigo() << ", Fecha: " << dtp->getFecha() << ", Texto: " << dtp->getTexto() 
                   << ", Precio: " << dtp->getPrecio() << ", Inmobiliaria: " << dtp->get_Inmobiliaria() << std::endl;
         delete dtp;
     }
@@ -373,6 +373,16 @@ void consultaPublicaciones(){
                   << ", Numero de Puerta: " << inmueble->getNumeroPuerta() 
                   << ", Superficie: " << inmueble->getSuperficie() 
                   << " m2, Ano Construccion: " << inmueble->getAnioConstruccion() << std::endl;
+            if (dynamic_cast<DTApartamento*>(inmueble)) {
+                DTApartamento* apto = dynamic_cast<DTApartamento*>(inmueble);
+                std::cout << "Piso: " << apto->getPiso()
+                        << ", Ascensor: " << (apto->getTieneAscensor() ? "Si" : "No")
+                        << ", Gastos Comunes: " << apto->getGastosComunes() << std::endl;
+            } else if (dynamic_cast<DTCasa*>(inmueble)) {
+                DTCasa* casa = dynamic_cast<DTCasa*>(inmueble);
+                std::cout << "Es PH: " << (casa->getEsPH() ? "Si" : "No")
+                << ", Tipo de Techo: " << (casa->getTecho() == Liviano ? "Liviano" : (casa->getTecho() == A_dos_aguas ? "A dos aguas" : "Plano")) << std::endl;
+            }
         delete inmueble;
         }
     }
@@ -390,6 +400,7 @@ void eliminarInmueble(){
         DTInmuebleListado* dti = *it;
         std::cout << "- Codigo: " << dti->getCodigo() << ", Direccion: " << dti->getDireccion() << ", Propietario: " << dti->getPropietario() << std::endl;
     }
+
     std::cout << "Codigo del inmueble a eliminar: ";
     int codigoInmueble;
     std::cin >> codigoInmueble;
@@ -405,6 +416,17 @@ void eliminarInmueble(){
               << ", Numero de Puerta: " << inmueble->getNumeroPuerta() 
               << ", Superficie: " << inmueble->getSuperficie() 
               << " m2, Ano Construccion: " << inmueble->getAnioConstruccion() << std::endl;
+            if (dynamic_cast<DTApartamento*>(inmueble)) {
+                DTApartamento* apto = dynamic_cast<DTApartamento*>(inmueble);
+                std::cout << "Piso: " << apto->getPiso()
+                        << ", Ascensor: " << (apto->getTieneAscensor() ? "Si" : "No")
+                        << ", Gastos Comunes: " << apto->getGastosComunes() << std::endl;
+            } else if (dynamic_cast<DTCasa*>(inmueble)) {
+                DTCasa* casa = dynamic_cast<DTCasa*>(inmueble);
+                std::cout << "Es PH: " << (casa->getEsPH() ? "Si" : "No")
+                << ", Tipo de Techo: " << (casa->getTecho() == Liviano ? "Liviano" : (casa->getTecho() == A_dos_aguas ? "A dos aguas" : "Plano")) << std::endl;
+            }
+    delete inmueble;
     int deseaEliminar;
     std::cout << "¿Desea eliminar?: (1: Si, 0: No)";
     std::cin >> deseaEliminar;
