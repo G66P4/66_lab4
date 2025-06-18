@@ -11,7 +11,7 @@ private:
     // singleton
     static ManejadorPublicacion* instancia;
     ManejadorPublicacion();
-
+    static int ultimoCodigoPub;
 public:
     static ManejadorPublicacion* getInstancia();
 
@@ -20,7 +20,7 @@ public:
     std::map<int, Publicacion*> getPublicaciones() const;
     void eliminarPublicacion(int codigo);
     bool existe(int codigo) const;
-    
+    int generarNuevoCodigo();
     std::map<int, Publicacion*> getPublicacionesActivas() const;
     std::map<int, Publicacion*> getPublicacionesVenta() const;
     std::map<int, Publicacion*> getPublicacionesAlquiler() const;

@@ -49,10 +49,11 @@ bool ControladorPublicacion::altaPublicacion(std::string nicknameInmobiliaria, i
     AdministraPropiedad *admiProp = inmo->adminPropFind(codigoInmueble);
     ControladorFechaActual *manejadorFecha = ControladorFechaActual::getInstance();
     DTFecha *fechaActual = manejadorFecha->getFechaActual();
+    int codigo = ManejadorPublicacion::getInstancia()->generarNuevoCodigo();
     if (!(admiProp->tienePub(fechaActual, tipoPublicacion)))
     {
         //Creo una nueva publicacion
-        Publicacion *publicacion = new Publicacion(codigoInmueble, fechaActual, tipoPublicacion, texto, precio, true);
+        Publicacion *publicacion = new Publicacion(codigo, fechaActual, tipoPublicacion, texto, precio, true);
         publicacion->setAdminProp(admiProp);
         //Agrego la publicacion al administr propiedad
         admiProp->agregarPub(publicacion);

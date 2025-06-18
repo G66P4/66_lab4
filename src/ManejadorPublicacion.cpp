@@ -1,10 +1,9 @@
 #include "../include/ManejadorPublicacion.h"
 #include "../include/TipoPublicacion.h"
-
 ManejadorPublicacion* ManejadorPublicacion::instancia = NULL;
 
 ManejadorPublicacion::ManejadorPublicacion() {}
-
+int ManejadorPublicacion::ultimoCodigoPub = 0;
 ManejadorPublicacion* ManejadorPublicacion::getInstancia() {
     if (instancia == NULL)
         instancia = new ManejadorPublicacion();
@@ -85,4 +84,8 @@ ManejadorPublicacion::~ManejadorPublicacion() {
         delete it->second;
     }
     publicaciones.clear();
+}
+
+int ManejadorPublicacion::generarNuevoCodigo() {
+    return ++ultimoCodigoPub;
 }

@@ -308,7 +308,7 @@ void altaPublicacion(){
 void consultaPublicaciones(){
 
     Factory* factory = Factory::getInstance();
-
+    
     int inTipoPublicacion;
     std::cout << "Tipo de Publicacion: (1: Venta, 0: Alquiler)";
     std::cin >> inTipoPublicacion;
