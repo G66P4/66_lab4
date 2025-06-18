@@ -345,7 +345,7 @@ void consultaPublicaciones(){
     for(std::set<DTPublicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end(); ++it) {
         DTPublicacion* dtp = *it;
         codigosPublicaciones.insert(dtp->getCodigo());
-        std::cout << "- Codigo: " << dtp->getCodigo() << ", Fecha: " << dtp->getFecha() << ", Texto: " << dtp->getTexto() 
+        std::cout << "- Codigo: " << dtp->getCodigo() << ", Codigo del Inmueble:"<< dtp->getCodigoinmueble() << ", Fecha: " << dtp->getFecha() << ", Texto: " << dtp->getTexto() 
                   << ", Precio: " << dtp->getPrecio() << ", Inmobiliaria: " << dtp->get_Inmobiliaria() << std::endl;
         delete dtp;
     }

@@ -6,14 +6,16 @@
 class DTPublicacion {
     private:
         int codigo;
+        int codigoinmueble; 
         DTFecha* fecha;
         std::string texto;
         std::string precio;
         std::string inmobiliaria;
 
     public:
-        DTPublicacion(int codigo, DTFecha* fecha, std::string texto, std::string precio, std::string inmobiliaria);
+        DTPublicacion(int codigo, int codigoinm, DTFecha* fecha, std::string texto, std::string precio, std::string inmobiliaria);
         int getCodigo();
+        int getCodigoinmueble();
         DTFecha* getFecha();
         std::string getTexto();
         std::string getPrecio();

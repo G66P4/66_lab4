@@ -11,6 +11,7 @@
 class Publicacion {
 private:
     int codigo;
+    int codigoinmueble; 
     DTFecha* fecha;
     TipoPublicacion tipo;
     std::string texto;
@@ -20,7 +21,7 @@ private:
 
 public:
     // Constructor
-    Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, const std::string& texto, float precio, bool activa);
+    Publicacion(int codigo, int codigoinm, DTFecha* fecha, TipoPublicacion tipo, const std::string& texto, float precio, bool activa);
 
     // Destructor
     ~Publicacion();
