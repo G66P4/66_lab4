@@ -7,6 +7,7 @@
 #include "../include/DTFecha.h"
 #include "../include/TipoInmueble.h"
 #include "../include/TipoPublicacion.h"
+#include "../include/ManejadorPublicacion.h"
 // Constructor
 AdministraPropiedad::AdministraPropiedad(DTFecha *fecha)
 {
@@ -93,6 +94,8 @@ void AdministraPropiedad::eliminarPublicaciones(){
     for (it = publicaciones.begin(); it != publicaciones.end(); ++it)
     {
         Publicacion *pub = *it;
+        ManejadorPublicacion* mp = ManejadorPublicacion::getInstancia();
+        mp->eliminarPublicacion(pub->getCodigo()); // Elimina la publicación del manejador
         delete pub; // Elimina la publicación
     }
     publicaciones.clear(); // Limpia el conjunto de publicaciones

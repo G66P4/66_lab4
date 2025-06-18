@@ -75,6 +75,23 @@ CargaDatos::CargaDatos() {
     controladorFechaActual->setNewFechaActual(19, 5, 2022);
     controladorInmueble->altaAdministraPropiedad(8, "vivaurbana");   // 19/05/2022
     std::cout << "Inmuebles administrados correctamente." << std::endl;
+    
+        //suscripciones
+    // ── Suscripciones a notificaciones ───────────────────────────────
+    controladorUsuario->suscribirNotificaciones("luisito23",  "casasur123");
+    controladorUsuario->suscribirNotificaciones("luisito23",  "idealhome");
+    controladorUsuario->suscribirNotificaciones("anarojo88",  "casasur123");
+    controladorUsuario->suscribirNotificaciones("anarojo88",  "idealhome");
+    controladorUsuario->suscribirNotificaciones("anarojo88",  "vivaurbana");
+    controladorUsuario->suscribirNotificaciones("marcelom",   "idealhome");
+    controladorUsuario->suscribirNotificaciones("robertarce", "idealhome");
+    controladorUsuario->suscribirNotificaciones("soledadf",   "vivaurbana");
+    controladorUsuario->suscribirNotificaciones("martagal",   "vivaurbana");
+    controladorUsuario->suscribirNotificaciones("jorge88",    "casasur123");
+    controladorUsuario->suscribirNotificaciones("jorge88",    "idealhome");
+    controladorUsuario->suscribirNotificaciones("jorge88",    "vivaurbana");
+    std::cout << "Suscripciones a notificaciones creadas correctamente." << std::endl;
+    std::cout << "Carga de datos completada." << std::endl;
     //caso alta publicacion
     // ── Publicaciones ────────────────────────────────────────────────────
 
@@ -128,22 +145,7 @@ CargaDatos::CargaDatos() {
 
     controladorFechaActual->setNewFechaActual(1, 8,2024);
     controladorPublicacion->altaPublicacion("idealhome",   6, TipoPublicacion::Venta, "A estrenar en Bulevar Artigas 871 apartamento moderno.", 400000.0f);
-    //suscripciones
-    // ── Suscripciones a notificaciones ───────────────────────────────
-    controladorUsuario->suscribirNotificaciones("luisito23",  "casasur123");
-    controladorUsuario->suscribirNotificaciones("luisito23",  "idealhome");
-    controladorUsuario->suscribirNotificaciones("anarojo88",  "casasur123");
-    controladorUsuario->suscribirNotificaciones("anarojo88",  "idealhome");
-    controladorUsuario->suscribirNotificaciones("anarojo88",  "vivaurbana");
-    controladorUsuario->suscribirNotificaciones("marcelom",   "idealhome");
-    controladorUsuario->suscribirNotificaciones("robertarce", "idealhome");
-    controladorUsuario->suscribirNotificaciones("soledadf",   "vivaurbana");
-    controladorUsuario->suscribirNotificaciones("martagal",   "vivaurbana");
-    controladorUsuario->suscribirNotificaciones("jorge88",    "casasur123");
-    controladorUsuario->suscribirNotificaciones("jorge88",    "idealhome");
-    controladorUsuario->suscribirNotificaciones("jorge88",    "vivaurbana");
-    std::cout << "Suscripciones a notificaciones creadas correctamente." << std::endl;
-    std::cout << "Carga de datos completada." << std::endl;
+
 
 
 }
