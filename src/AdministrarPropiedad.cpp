@@ -96,7 +96,6 @@ void AdministraPropiedad::eliminarPublicaciones(){
         Publicacion *pub = *it;
         ManejadorPublicacion* mp = ManejadorPublicacion::getInstancia();
         mp->eliminarPublicacion(pub->getCodigo()); // Elimina la publicación del manejador
-        delete pub; // Elimina la publicación
     }
     publicaciones.clear(); // Limpia el conjunto de publicaciones
 }

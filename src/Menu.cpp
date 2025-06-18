@@ -179,11 +179,16 @@ void altaUsuario(){
                     for(std::set<DTUsuario*>::iterator it = Propietarios.begin(); it != Propietarios.end(); ++it) {
                         DTUsuario* dtu = *it;
                         std::cout << "- Nickname: " << dtu->getNickname() << ", Nombre: " << dtu->getNombre() << std::endl;
+                        delete dtu;
                     }
+                    if(Propietarios.empty()) {
+                        std::cout << "No hay propietarios registrados." << std::endl;
+                    }else{
                     std::cout << "Nickname propietario a representar: ";
                     std::string nicknamePropietario;
                     std::getline(std::cin, nicknamePropietario);
                     IConUsu->representarPropietario(nickname, nicknamePropietario);
+                    }
                 }else if (tipoUsuario == 2){
                     int tipoInmueble;
                     std::cout << "Indique el tipo de inmueble (1: Casa, 0: Apartamento): ";
@@ -263,7 +268,12 @@ void altaPublicacion(){
     for(std::set<DTUsuario*>::iterator it = inmobiliarias.begin(); it != inmobiliarias.end(); ++it) {
         DTUsuario* dtu = *it;
         std::cout << "- Nickname: " << dtu->getNickname() << ", Nombre: " << dtu->getNombre() << std::endl;
+        delete dtu;
     }
+    if(inmobiliarias.empty()) {
+        std::cout << "No hay inmobiliarias registradas." << std::endl;
+        
+    }else{
     std::cout << "Nickname de la inmobiliaria: ";
     std::string nicknameInmobiliaria;
     std::getline(std::cin, nicknameInmobiliaria);
@@ -276,6 +286,7 @@ void altaPublicacion(){
     for(std::set<DTInmuebleAdministrado*>::iterator it = inmueblesAdministrados.begin(); it != inmueblesAdministrados.end(); ++it) {
         DTInmuebleAdministrado* dti = *it;
         std::cout << "- Codigo: " << dti->getCodigo() << ", Direccion: " << dti->getDireccion() << ", Fecha comienzo administracion: " << dti->getFechaComienzo() << std::endl;
+        delete dti;
     }
     int codigoInmueble;
     std::cout << "Inmueble: ";
@@ -302,7 +313,7 @@ void altaPublicacion(){
     //agregar notificar
     std::cout << "Publicacion creada exitosamente." << std::endl;
     }
-
+}
 }
 
 void consultaPublicaciones(){
@@ -399,8 +410,12 @@ void eliminarInmueble(){
     for(std::set<DTInmuebleListado*>::iterator it = inmuebles.begin(); it != inmuebles.end(); ++it) {
         DTInmuebleListado* dti = *it;
         std::cout << "- Codigo: " << dti->getCodigo() << ", Direccion: " << dti->getDireccion() << ", Propietario: " << dti->getPropietario() << std::endl;
+        delete dti;
     }
-
+    if(inmuebles.empty()) {
+        std::cout << "No hay inmuebles registrados." << std::endl;
+        return;
+    }else{
     std::cout << "Codigo del inmueble a eliminar: ";
     int codigoInmueble;
     std::cin >> codigoInmueble;
@@ -435,7 +450,7 @@ void eliminarInmueble(){
         //TODO: Controlador->eliminarInmueble(codigoInmueble)
         controladorInm->eliminarInmueble(codigoInmueble);
     }
-
+}
 }
 
 void suscribirseNotificaciones(){
@@ -461,32 +476,50 @@ void suscribirseNotificaciones(){
     for(std::set<DTUsuario*>::iterator it = usuarioSet.begin(); it != usuarioSet.end(); ++it) {
         DTUsuario* dtu = *it;
         std::cout << "- Nickname: " << dtu->getNickname() << ", Nombre: " << dtu->getNombre() << std::endl;
+        delete dtu;
     }
+    if(usuarioSet.empty()) {
+        std::cout << "No hay usuarios registrados." << std::endl;
+    }else{
 
     std::cout << "Nickname del usuario: ";
     std::string nicknameUsuario;
     std::getline(std::cin, nicknameUsuario);
-
+    if(ManejadorUsuario::getInstance()->existeUsuario(nicknameUsuario) == false) {
+        std::cout << "Usuario no encontrado. Intente de nuevo." << std::endl;
+    }else{
     std::cout << "Lista de Inmobiliarias no Suscrito:\n";
     std::set<Inmobiliaria*> inmoNoSuscrito = conUsu->listarInmobiliariasNoSuscrito(nicknameUsuario);
     for(std::set<Inmobiliaria*>::iterator it = inmoNoSuscrito.begin(); it != inmoNoSuscrito.end(); ++it) {
         Inmobiliaria* inm = *it;
         std::cout << "- Nickname: " << inm->getNickname() << ", Nombre: " << inm->getNombre() << std::endl;
     }
-
+    if(inmoNoSuscrito.empty()) {
+        std::cout << "No hay inmobiliarias disponibles para suscribirse." << std::endl;
+    }else{
     int salir = 1;
     while(salir != 0){
         std::cout << "Nickname Inmobiliaria a suscribir: ";
         std::string nicknameInmobiliaria;
         std::getline(std::cin, nicknameInmobiliaria);
-        
+        if(ManejadorUsuario::getInstance()->existeUsuario(nicknameInmobiliaria) == false) {
+            std::cout << "Inmobiliaria no encontrada. Intente de nuevo." << std::endl;
+            continue;
+        }
         conUsu->suscribirNotificaciones(nicknameUsuario, nicknameInmobiliaria);
-
+        
         std::cout << "¿Desea seguir suscribiendose? (1: Si, 0: No): ";
         std::cin >> salir;
         std::cin.ignore();
+        std::set<Inmobiliaria*> inmoNoSuscrito = conUsu->listarInmobiliariasNoSuscrito(nicknameUsuario);
+        if(inmoNoSuscrito.empty()) {
+            std::cout << "No hay inmobiliarias disponibles para suscribirse." << std::endl;
+            return;
+        }
     }
-
+    }
+    }
+}
 }
 
 void consultaNotificaciones(){
@@ -511,7 +544,11 @@ void consultaNotificaciones(){
     for(std::set<DTUsuario*>::iterator it = usuarioSet.begin(); it != usuarioSet.end(); ++it) {
         DTUsuario* dtu = *it;
         std::cout << "- Nickname: " << dtu->getNickname() << ", Nombre: " << dtu->getNombre() << std::endl;
+        delete dtu;
     }
+    if(usuarioSet.empty()) {
+        std::cout << "No hay usuarios registrados." << std::endl;
+    }else{
     
     std::cout << "Ingrese el nickname del usuario a consultar: ";
 
@@ -519,8 +556,12 @@ void consultaNotificaciones(){
     std::getline(std::cin, nicknameUsuario);
     std::list<DTNotificacion*> notificaciones = conUsu->listarNotificaciones(nicknameUsuario);
     if (notificaciones.empty()) {
+        if(ManejadorUsuario::getInstance()->existeUsuario(nicknameUsuario) == false) {
+            std::cout << "Usuario no encontrado. Intente de nuevo." << std::endl;
+        }else{
         std::cout << "No hay notificaciones para el usuario " << nicknameUsuario << std::endl;
         return;
+        }
     }else{
         std::cout << "Notificaciones para el usuario " << nicknameUsuario << ":\n";
         for (std::list<DTNotificacion*>::iterator it = notificaciones.begin(); it != notificaciones.end(); ++it) {
@@ -534,6 +575,7 @@ void consultaNotificaciones(){
                       << std::endl;
         }
     }
+  }
 }
 
 void eliminarSuscripciones(){

@@ -34,7 +34,7 @@ CargaDatos::CargaDatos() {
     // ── Casas ─────────────────────────────────────────────────────────────
     controladorInmueble->altaCasa("Av. Rivera",       1011, 120, 1995,  true,  TipoTecho::Plano,   "marcelom");
     controladorInmueble->altaCasa("Camino Maldonado", 1540,  95, 1988,  false, TipoTecho::Plano,   "robertarce");
-    controladorInmueble->altaCasa("Juan Paullier",     801, 110, 200,  true,  TipoTecho::Liviano, "martagal");
+    controladorInmueble->altaCasa("Juan Paullier",     801, 110, 2000,  true,  TipoTecho::Liviano, "martagal");
     controladorInmueble->altaCasa("Cno. Carrasco",    1576, 140, 2007,  true,  TipoTecho::Plano,   "jorge88");
     std::cout << "Casas creadas correctamente." << std::endl;
     // ── Apartamentos ──────────────────────────────────────────────────────

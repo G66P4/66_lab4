@@ -59,7 +59,6 @@ void Inmueble::eliminarLinksInmueble(int codigoInmueble){
         Inmobiliaria* mob = adminProp->getInmobiliaria();
         adminProp->eliminarPublicaciones(); 
         mob->eliminarLinkAdmProp(codigoInmueble);
-        delete adminProp; // Eliminar el objeto AdministraPropiedad
         std::list<Propietario*> listapropietarios=ManejadorUsuario::getInstance()->getPropietarios();
         std::list<Propietario*>::iterator itprop = listapropietarios.begin();
         bool propietarioEncontrado = false;

@@ -21,7 +21,9 @@ Publicacion::Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, const
     // Inicializar adminProp a NULL, se asignará más tarde
     this->adminProp = NULL;
 }
-Publicacion::~Publicacion() {}
+Publicacion::~Publicacion() {
+    delete fecha;
+}
 
 bool Publicacion::cumple(TipoPublicacion tipoPub, float precioMinimo, float precioMaximo, TipoInmueble tipoInm)  {
     if(tipoInm==Todos){
