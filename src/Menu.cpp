@@ -30,7 +30,7 @@ void mostrarMenu() {
     std::cout << "4. Eliminar Inmueble" << std::endl;
     std::cout << "5. Suscribirse a Notificaciones" << std::endl;
     std::cout << "6. Consulta de Notificaciones" << std::endl;
-    std::cout << "7. Elimiinar Suscripciones" << std::endl;
+    std::cout << "7. Eliminar Suscripciones" << std::endl;
     std::cout << "8. Alta de Administracion de Propiedad" << std::endl;
     std::cout << "9. Cargar Datos" << std::endl;
     std::cout << "10. Ver fecha actual" << std::endl;
