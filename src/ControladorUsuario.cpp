@@ -115,12 +115,10 @@ void ControladorUsuario::representarPropietario(std::string nickname, std::strin
 std::set<DTInmuebleListado*> ControladorUsuario::listarInmueblesNoAdministrados(std::string nicknameInmobiliaria) {
     std::set<DTInmuebleListado*> inmueblesNoAdminSet;
     Inmobiliaria* inmobiliaria = ManejadorUsuario::getInstance()->findInmobiliaria(nicknameInmobiliaria);
-    if (inmobiliaria != NULL) {
-        std::list<Propietario*> propietarios = ManejadorUsuario::getInstance()->getPropietarios();
-        for (std::list<Propietario*>::iterator it = propietarios.begin(); it != propietarios.end(); ++it) {
-            Propietario* propietario = *it;
-            inmueblesNoAdminSet.merge(propietario->listarInmueblesNoAdministrados(nicknameInmobiliaria));
-        }
+    if (inmobiliaria == NULL) {
+        return inmueblesNoAdminSet; // Inmobiliaria no encontrada
+    }else {
+        inmueblesNoAdminSet = inmobiliaria->listarInmueblesNoAdministrados();
     }
     return inmueblesNoAdminSet; 
 }
