@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++23 -g
+CXXFLAGS = -fsanitize=address,leak -std=c++23 -g
 
 INCLUDE_DIR = include
 SRC_DIR = src
