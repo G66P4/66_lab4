@@ -130,6 +130,10 @@ void altaUsuario(){
     std::getline(std::cin, nickname);
     std::cout << "Contrasena: ";
     std::getline(std::cin, contrasena);
+    while (contrasena.length() < 6){
+        std::cout << "Contrasena invalida. Intente de nuevo" << std::endl;
+        std::getline(std::cin, contrasena);
+    };
     std::cout << "Nombre: ";
     std::getline(std::cin, nombre);
     std::cout << "Email: ";
