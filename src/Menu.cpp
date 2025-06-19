@@ -130,8 +130,8 @@ void altaUsuario(){
     std::getline(std::cin, nickname);
     std::cout << "Contrasena: ";
     std::getline(std::cin, contrasena);
-    while (contrasena.length() < 6){
-        std::cout << "Contrasena invalida. Intente de nuevo" << std::endl;
+    while (contrasena.length() <= 6){
+        std::cout << "La contraseña debe tener al menos 6 caracteres" << std::endl;
         std::getline(std::cin, contrasena);
     };
     std::cout << "Nombre: ";
