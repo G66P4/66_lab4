@@ -14,7 +14,7 @@ public:
     int getCodigo();
     std::string getDireccion();
     std::string getPropietario();
-    bool operator<(DTInmuebleListado *DT):
+    bool operator<(DTInmuebleListado *DT);
 };
 
 #endif
