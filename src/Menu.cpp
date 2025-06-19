@@ -141,7 +141,7 @@ void altaUsuario(){
     std::cout << "Email: ";
     std::getline(std::cin, email);
 
-    IControladorUsuario* IConUsu= factory->getIControladorUsuario();
+    IControladorUsuario* IConUsu = factory->getIControladorUsuario();
 
     if (tipoUsuario == 0){
         std::cout << "Apellido: ";
