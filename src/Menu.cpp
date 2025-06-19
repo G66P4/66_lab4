@@ -637,7 +637,10 @@ void altaAdministracionPropiedad(){
     for(std::set<DTUsuario*>::iterator it = inmobiliarias.begin(); it != inmobiliarias.end(); ++it) {
         DTUsuario* dtu = *it;
         std::cout << "- Nickname: " << dtu->getNickname() << ", Nombre: " << dtu->getNombre() << std::endl;
+        delete dtu;
     }
+    
+
     std::cout << "Nickname de la inmobiliaria: ";
     std::string nicknameInmobiliaria;
     std::getline(std::cin, nicknameInmobiliaria);
@@ -649,6 +652,7 @@ void altaAdministracionPropiedad(){
     for(std::set<DTInmuebleListado*>::iterator it = inmueblesNoAdministrados.begin(); it != inmueblesNoAdministrados.end(); ++it) {
         DTInmuebleListado* dti = *it;
         std::cout << "- Codigo: " << dti->getCodigo() << ", Direccion: " << dti->getDireccion() << ", Propietario: " << dti->getPropietario() << std::endl;
+        delete dti;
     }
     std::cout << "Codigo del inmueble a administrar: ";
     int codigoInmueble;

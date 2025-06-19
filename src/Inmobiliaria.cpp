@@ -58,10 +58,12 @@ std::set<DTInmuebleListado*> Inmobiliaria::listarInmueblesNoAdministrados() {
 
             if (propiedades.find(codigo) == propiedades.end()) {
                 std::string direccion = inmueble->getDireccion();
-                std::string nombrePropietario = propietario->getPropietarioData()->getNombre();
+                DTUsuario* propietarioData = propietario->getPropietarioData();
+                std::string nombrePropietario = propietarioData->getNombre();
 
                 DTInmuebleListado* listadoDto = new DTInmuebleListado(codigo, direccion, nombrePropietario);
                 resultado.insert(listadoDto);
+                delete propietarioData; // Liberar memoria del DTUsuario
             }
         }
     }
