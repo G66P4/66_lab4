@@ -21,6 +21,8 @@
 #include <cstdlib> 
 #include <string>
 #include <set>
+#include <vector>
+#include <algorithm>
 
 void mostrarMenu() {
     std::cout << "=== Menu de Operaciones ===" << std::endl;
@@ -652,12 +654,19 @@ void altaAdministracionPropiedad(){
     //Recorrer la coleccion Mostrar "- Codigo: xx, direccion: xxxx, propietario: bbbbb";
     IControladorInmueble* IControladorInm = factory->getIControladorInmueble();
     std::set<DTInmuebleListado*> inmueblesNoAdministrados = IControladorUsu->listarInmueblesNoAdministrados(nicknameInmobiliaria);
+    std::vector<DTInmuebleListado*> inmueblesVec(inmueblesNoAdministrados.begin(), inmueblesNoAdministrados.end());
+
+
+    std::sort(inmueblesVec.begin(), inmueblesVec.end(), [](DTInmuebleListado* a, DTInmuebleListado* b) {
+        return a->getCodigo() < b->getCodigo();
+    });
+
     std::cout << "Inmuebles no administrados por la inmobiliaria " << nicknameInmobiliaria << ":\n";
     std::set<int> codigosInmueblesNoAdministrados;
-    for(std::set<DTInmuebleListado*>::iterator it = inmueblesNoAdministrados.begin(); it != inmueblesNoAdministrados.end(); ++it) {
-        DTInmuebleListado* dti = *it;
+    for (DTInmuebleListado* dti : inmueblesVec) {
         codigosInmueblesNoAdministrados.insert(dti->getCodigo());
-        std::cout << "- Codigo: " << dti->getCodigo() << ", Direccion: " << dti->getDireccion() << ", Propietario: " << dti->getPropietario() << std::endl;
+        std::cout << "- Codigo: " << dti->getCodigo() << ", Direccion: " << dti->getDireccion()
+                  << ", Propietario: " << dti->getPropietario() << std::endl;
         delete dti;
     }
     std::cout << "Codigo del inmueble a administrar: ";
