@@ -653,8 +653,10 @@ void altaAdministracionPropiedad(){
     IControladorInmueble* IControladorInm = factory->getIControladorInmueble();
     std::set<DTInmuebleListado*> inmueblesNoAdministrados = IControladorUsu->listarInmueblesNoAdministrados(nicknameInmobiliaria);
     std::cout << "Inmuebles no administrados por la inmobiliaria " << nicknameInmobiliaria << ":\n";
+    std::set<int> codigosInmueblesNoAdministrados;
     for(std::set<DTInmuebleListado*>::iterator it = inmueblesNoAdministrados.begin(); it != inmueblesNoAdministrados.end(); ++it) {
         DTInmuebleListado* dti = *it;
+        codigosInmueblesNoAdministrados.insert(dti->getCodigo());
         std::cout << "- Codigo: " << dti->getCodigo() << ", Direccion: " << dti->getDireccion() << ", Propietario: " << dti->getPropietario() << std::endl;
         delete dti;
     }
@@ -663,8 +665,15 @@ void altaAdministracionPropiedad(){
     std::cin >> codigoInmueble;
     std::cin.ignore();
     //TODO: Controlador->altaAdministraPropiedad(nicknameInmobiliaria, codigoInmueble);
-    IControladorInm->altaAdministraPropiedad(codigoInmueble, nicknameInmobiliaria);
-
+    if(codigosInmueblesNoAdministrados.find(codigoInmueble) == codigosInmueblesNoAdministrados.end()) {
+        if(ManejadorInmueble::getInstance()->existeInmueble(codigoInmueble) == false) {
+            std::cout << "Inmueble no encontrado." << std::endl;
+        }else{
+            std::cout << "El inmueble ya esta administrado por la inmobiliaria" << std::endl;
+        }
+    }else{
+        IControladorInm->altaAdministraPropiedad(codigoInmueble, nicknameInmobiliaria);
+    }
 }
 
 void cargarDatos(){
