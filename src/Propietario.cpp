@@ -23,25 +23,25 @@ void Propietario::asociarInmueble(Inmueble* inmueble){
     inmueblesDueno.push_back(inmueble);
 };
 
-std::set<DTInmuebleListado*> Propietario::listarInmueblesNoAdministrados(std::string nicknameInmobiliaria){
+std::set<DTInmuebleListado*> Propietario::getInmueblesNoAdmin(Inmobiliaria* inm){
+    std::string nicknameInmobiliaria=inm->getNickname();
     std::set<DTInmuebleListado*> inmueblesNoAdminSet;
     std::map<int,Inmueble*> inmuebles = ManejadorInmueble::getInstance()->getInmuebles();
 
     for(std::map<int, Inmueble*>::iterator it = inmuebles.begin(); it != inmuebles.end(); ++it) {
         Inmueble* inmueble = it->second;
-        std::set<AdministraPropiedad*> administracion = inmueble->getAdministracion();
-        for(std::set<AdministraPropiedad*>::iterator itAdmin = administracion.begin(); itAdmin != administracion.end(); ++itAdmin) {
-            AdministraPropiedad* adminProp = *itAdmin;
-            if(adminProp->getInmobiliaria()->getNickname() == nicknameInmobiliaria) {
-                // Si el inmueble ya está administrado por la inmobiliaria, no lo agregamos
-                break;
-            } else {
+            // Verificamos si el inmueble es propiedad del propietario actual
+            if(!esPropietario(inmueble->getCodigo())) {
+                continue; // Si no es propiedad, saltamos al siguiente inmueble
+            }
+        bool administrado=inmueble->esAdministrado(inm); 
+            if(!administrado) {
                 // Si no está administrado, lo agregamos al set
                 DTInmuebleListado* dtInmueble = new DTInmuebleListado(inmueble->getCodigo(), inmueble->getDireccion(), this->getNickname());
                 inmueblesNoAdminSet.insert(dtInmueble);
             }
         }
-    }
+    
     return inmueblesNoAdminSet;
         
 };

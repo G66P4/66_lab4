@@ -45,30 +45,17 @@ std::set<DTInmuebleAdministrado*> Inmobiliaria::obtenerInmuebleData() {
 }
 
 std::set<DTInmuebleListado*> Inmobiliaria::listarInmueblesNoAdministrados() {
-    std::set<DTInmuebleListado*> resultado;
+    std::set<DTInmuebleListado*> listInmueblesPropietario;
 
     ManejadorUsuario* mu = ManejadorUsuario::getInstance();
     std::list<Propietario*> propietarios = mu->getPropietarios();
 
     for (Propietario* propietario : propietarios) {
-        std::list<Inmueble*> inmuebles = propietario->getInmueblesDueno();
-
-        for (Inmueble* inmueble : inmuebles) {
-            int codigo = inmueble->getCodigo();
-
-            if (propiedades.find(codigo) == propiedades.end()) {
-                std::string direccion = inmueble->getDireccion();
-                DTUsuario* propietarioData = propietario->getPropietarioData();
-                std::string nombrePropietario = propietarioData->getNombre();
-
-                DTInmuebleListado* listadoDto = new DTInmuebleListado(codigo, direccion, nombrePropietario);
-                resultado.insert(listadoDto);
-                delete propietarioData; // Liberar memoria del DTUsuario
-            }
-        }
+        std::set<DTInmuebleListado*> parciales=propietario->getInmueblesNoAdmin(this);
+        listInmueblesPropietario.insert(parciales.begin(), parciales.end());
     }
 
-    return resultado;
+    return listInmueblesPropietario;
 }
 
 
@@ -138,11 +125,10 @@ void Inmobiliaria::eliminarSuscripcion(IObserver* usuario) {
 }
 
 void Inmobiliaria::modificar(Publicacion* pub) {
-    DTFecha* fechaActual = DTFecha::obtenerFechaActual();
 
     DTNotificacion* noti = new DTNotificacion(
         pub->getCodigo(),
-        fechaActual,
+        pub->getFecha(),
         pub->getTexto(),
         getNickname(),
         pub->getTipo(),
