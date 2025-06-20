@@ -604,28 +604,58 @@ void eliminarSuscripciones(){
     for(std::set<DTUsuario*>::iterator it = usuarioSet.begin(); it != usuarioSet.end(); ++it) {
         DTUsuario* dtu = *it;
         std::cout << "- Nickname: " << dtu->getNickname() << ", Nombre: " << dtu->getNombre() << std::endl;
+        delete dtu;
     }
+    if(usuarioSet.empty()) {
 
-    std::cout << "Nickname del usuario: ";
-    std::string nicknameUsuario;
-    std::getline(std::cin, nicknameUsuario);
-    std::cout << "Lista de Inmobiliarias suscrito:\n";
-    std::set<Inmobiliaria*> inmoSuscrito = conUsu->listarInmobiliariasSuscrito(nicknameUsuario);
-    for(std::set<Inmobiliaria*>::iterator it = inmoSuscrito.begin(); it != inmoSuscrito.end(); ++it) {
-        Inmobiliaria* inm = *it;
-        std::cout << "- Nickname: " << inm->getNickname() << ", Nombre: " << inm->getNombre() << std::endl;
-    }
-    int salir = 1;
-    while(salir != 0){
-        std::cout << "Nickname Inmobiliaria a eliminar suscripcion: ";
-        std::string nicknameInmobiliaria;
-        std::getline(std::cin, nicknameInmobiliaria);
+        std::cout << "No hay usuarios registrados." << std::endl;
 
-        conUsu->eliminarSuscripcion(nicknameUsuario, nicknameInmobiliaria);
+    }else{
+        std::cout << "Nickname del usuario: ";
+        std::string nicknameUsuario;
+        std::getline(std::cin, nicknameUsuario);
+        if(ManejadorUsuario::getInstance()->existeUsuario(nicknameUsuario) == false) {
 
-        std::cout << "¿Desea seguir eliminando suscripciones? (1: Si, 0: No): ";
-        std::cin >> salir;
-        std::cin.ignore();
+            std::cout << "Usuario no encontrado. Intente de nuevo." << std::endl;
+
+            return;
+
+        }else{
+            std::cout << "Lista de Inmobiliarias suscrito:\n";
+            std::set<Inmobiliaria*> inmoSuscrito = conUsu->listarInmobiliariasSuscrito(nicknameUsuario);
+            std::set<std::string> inmobiliariasSuscritas;
+            for(std::set<Inmobiliaria*>::iterator it = inmoSuscrito.begin(); it != inmoSuscrito.end(); ++it) {
+                Inmobiliaria* inm = *it;
+                inmobiliariasSuscritas.insert(inm->getNickname());
+                std::cout << "- Nickname: " << inm->getNickname() << ", Nombre: " << inm->getNombre() << std::endl;
+            }
+            int salir = 1;
+            while(salir != 0){
+                std::cout << "Nickname Inmobiliaria a eliminar suscripcion: ";
+                std::string nicknameInmobiliaria;
+                std::getline(std::cin, nicknameInmobiliaria);
+                if(ManejadorUsuario::getInstance()->existeUsuario(nicknameInmobiliaria) == false) {
+
+                    std::cout << "Inmobiliaria no encontrada. Intente de nuevo." << std::endl;
+
+                    continue;
+
+                }
+
+                if(inmobiliariasSuscritas.find(nicknameInmobiliaria) == inmobiliariasSuscritas.end()) {
+
+                    std::cout << "Inmobiliaria no suscrita. Intente de nuevo." << std::endl;
+
+                    continue;
+
+                }
+                conUsu->eliminarSuscripcion(nicknameUsuario, nicknameInmobiliaria);
+
+                std::cout << "¿Desea seguir eliminando suscripciones? (1: Si, 0: No): ";
+                std::cin >> salir;
+                std::cin.ignore();
+            }
+        }
     }
 }
 

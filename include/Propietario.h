@@ -41,7 +41,7 @@ class Propietario : public Usuario , public IObserver {
         bool esPropietario(int codigoInmueble);
         void agregarSuscripcion(Inmobiliaria* inmobiliaria);
         void eliminarSuscripcion(Inmobiliaria* inmobiliaria);
-        std::set<DTInmuebleListado*> listarInmueblesNoAdministrados(std::string nicknameInmobiliaria);
+        std::set<DTInmuebleListado*> getInmueblesNoAdmin(Inmobiliaria* inmobiliaria);
 };
 
 #endif
