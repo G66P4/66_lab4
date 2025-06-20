@@ -84,6 +84,7 @@ ManejadorPublicacion::~ManejadorPublicacion() {
         it->second->~Publicacion();
     }
     publicaciones.clear();
+    delete instancia;
 }
 
 int ManejadorPublicacion::generarNuevoCodigo() {

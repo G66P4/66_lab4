@@ -63,4 +63,5 @@ ManejadorInmueble::~ManejadorInmueble(){
         it++;
     }
     inmuebles.clear();
+    delete instance;
 }
