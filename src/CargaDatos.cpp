@@ -156,3 +156,13 @@ CargaDatos* CargaDatos::getInstance() {
     }
     return instance;
 }
+
+
+void CargaDatos::liberarInstancia() {
+    if (instance != NULL) {
+        delete instance;
+        instance = NULL;
+    }
+}
+
+CargaDatos::~CargaDatos() {}

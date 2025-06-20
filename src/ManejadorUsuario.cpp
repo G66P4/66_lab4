@@ -141,7 +141,6 @@ ManejadorUsuario::~ManejadorUsuario() {
     Inmobiliarias.clear();
     Propietarios.clear();
     Clientes.clear();
-    delete instance; 
 }
 
 std::list<Inmobiliaria*> ManejadorUsuario::getInmobiliarias() {
