@@ -65,7 +65,8 @@ void Propietario::removerLinkPropiedad(int codigoInmueble){
 };
 
 void Propietario::Notificar(DTNotificacion* notificacion){
-    notificaciones.push_back(notificacion);
+    DTNotificacion* copia = new DTNotificacion(*notificacion);
+    notificaciones.push_back(copia);
 };
 
 DTUsuario* Propietario::getPropietarioData(){
@@ -95,4 +96,9 @@ void Propietario::eliminarSuscripcion(Inmobiliaria* inmobiliaria) {
     }
 };
 
-Propietario::~Propietario(){};
+Propietario::~Propietario(){ 
+    for (DTNotificacion* noti : notificaciones) {
+        delete noti;
+    }
+    notificaciones.clear();
+}; 

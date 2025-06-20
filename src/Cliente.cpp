@@ -16,7 +16,8 @@ std::list<DTNotificacion*> Cliente::consultarNotificaciones()
 
 void Cliente::Notificar(DTNotificacion *notificacion)
 {
-    this->notificaciones.push_back(notificacion);
+    DTNotificacion* copia = new DTNotificacion(*notificacion);
+    this->notificaciones.push_back(copia);
 };
 // Getters
 std::string Cliente::getApellido()
