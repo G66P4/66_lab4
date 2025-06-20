@@ -14,7 +14,7 @@ ManejadorInmueble* ManejadorInmueble::getInstance() {
 
 void ManejadorInmueble::liberarInstancia(){
     if (instance != NULL) {
-           
+        delete instance;
         instance = NULL;     
     }
 }
@@ -59,9 +59,8 @@ std::map<int, Inmueble*>& ManejadorInmueble::getInmuebles() {
 ManejadorInmueble::~ManejadorInmueble(){
     std::map<int, Inmueble*>::iterator it = inmuebles.begin();
     while (it != inmuebles.end()) {
-        it->second->~Inmueble();
+        delete it->second;
         it++;
     }
     inmuebles.clear();
-    delete instance;
 }

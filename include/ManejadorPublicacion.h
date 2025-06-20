@@ -14,6 +14,7 @@ private:
     static int ultimoCodigoPub;
 public:
     static ManejadorPublicacion* getInstancia();
+    static void liberarInstancia();
 
     void agregarPublicacion(Publicacion* pub);
     Publicacion* find(int codigo);

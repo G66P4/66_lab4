@@ -20,6 +20,7 @@ class Factory {
 
     public:
         static Factory* getInstance();
+        static void liberarInstancia();
         IControladorFechaActual* getIControladorFechaActual();
         //TODO: Get interfaces de controladores
         IControladorUsuario* getIControladorUsuario();

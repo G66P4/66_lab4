@@ -22,6 +22,7 @@ class ManejadorUsuario {
 
     public:
         static ManejadorUsuario* getInstance();
+        static void liberarInstancia();
         void agregarCliente(Cliente* cliente);
         void agregarPropietario(Propietario* propietario);
         void agregarInmobiliaria(Inmobiliaria* inmobiliaria);

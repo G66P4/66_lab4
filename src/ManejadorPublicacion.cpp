@@ -10,6 +10,13 @@ ManejadorPublicacion* ManejadorPublicacion::getInstancia() {
     return instancia;
 }
 
+void ManejadorPublicacion::liberarInstancia() {
+    if (instancia != NULL) {
+        delete instancia;
+        instancia = NULL;
+    }
+}
+
 void ManejadorPublicacion::agregarPublicacion(Publicacion* pub) {
     int codigo = pub->getCodigo();
     publicaciones[codigo] = pub;

@@ -97,10 +97,10 @@ void ejecutarOpcion(int opcion) {
             break;
         case 0:
             std::cout << "Saliendo del programa..." << std::endl;
-            ManejadorInmueble::getInstance()->~ManejadorInmueble();
-            ManejadorUsuario::getInstance()->~ManejadorUsuario();
-            ManejadorPublicacion::getInstancia()->~ManejadorPublicacion();
-            Factory::getInstance()->~Factory();
+            ManejadorInmueble::liberarInstancia();
+            ManejadorUsuario::liberarInstancia();
+            ManejadorPublicacion::liberarInstancia();
+            Factory::liberarInstancia();
             exit(0);
         default:
             std::cout << "Opcion no valida. Intente de nuevo." << std::endl;

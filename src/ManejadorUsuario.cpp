@@ -13,6 +13,13 @@ ManejadorUsuario* ManejadorUsuario::getInstance() {
     return instance;
 }
 
+void ManejadorUsuario::liberarInstancia() {
+    if (instance != NULL) {
+        delete instance;
+        instance = NULL;     
+    }
+}
+
 void ManejadorUsuario::agregarCliente(Cliente* cliente) {
     usuarios[cliente->getNickname()] = cliente;
     Clientes.push_back(cliente);
