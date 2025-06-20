@@ -6,6 +6,7 @@
 #include "Propietario.h"
 #include "DTInmuebleAdministrado.h"
 #include "DTInmuebleListado.h"
+#include "DTNotificacion.h"
 #include "IObserver.h"
 
 #include <string>
@@ -21,19 +22,20 @@ class Publicacion;
 
 class AdministraPropiedad;
 
-class Inmobiliaria : public Usuario {
+class Inmobiliaria : public Usuario
+{
 private:
     std::string direccion;
     std::string url;
     std::string telefono;
 
-    std::list<Propietario*> representa;
-    std::set<IObserver*> suscriptores; 
-
-    std::map<int, AdministraPropiedad*> propiedades; // clave = código del inmueble 
+    std::list<Propietario *> representa;
+    std::set<IObserver *> suscriptores;
+    std::set<DTNotificacion *> notificaciones;        // Notificaciones que la inmobiliaria ha enviado
+    std::map<int, AdministraPropiedad *> propiedades; // clave = código del inmueble
 
 public:
-    Inmobiliaria(std::string nickname,std::string contasena , std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);
+    Inmobiliaria(std::string nickname, std::string contasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);
     ~Inmobiliaria();
 
     // Getters
@@ -41,21 +43,20 @@ public:
     std::string getUrl() const;
     std::string getTelefono() const;
 
-    std::set<DTInmuebleListado*> listarInmueblesNoAdministrados();
-    std::set<DTInmuebleAdministrado*> obtenerInmuebleData();//devuelve todos los inmuebles administrados por la inmobiliaria
-    bool agregarInmuebleAdministrado(Inmueble* inmueble);
-    AdministraPropiedad* adminPropFind(int codigoInmueble);
+    std::set<DTInmuebleListado *> listarInmueblesNoAdministrados();
+    std::set<DTInmuebleAdministrado *> obtenerInmuebleData(); // devuelve todos los inmuebles administrados por la inmobiliaria
+    bool agregarInmuebleAdministrado(Inmueble *inmueble);
+    AdministraPropiedad *adminPropFind(int codigoInmueble);
     void eliminarLinkAdmProp(int codigoInmueble);
-    DTUsuario* getInmobiliariaData();
-    void altaAdministracionPropiedad(Inmueble*,DTFecha*);
+    DTUsuario *getInmobiliariaData();
+    void altaAdministracionPropiedad(Inmueble *, DTFecha *);
     bool esSuscriptor(std::string nickname);
 
-
     void representarPropietario(std::string nicknamePropietario);
-    void agregarSuscripcion(IObserver* usuario);     
-    void eliminarSuscripcion(IObserver* usuario);    
+    void agregarSuscripcion(IObserver *usuario);
+    void eliminarSuscripcion(IObserver *usuario);
 
-    void modificar(Publicacion* pub); 
+    void modificar(Publicacion *pub);
 };
 
 #endif
