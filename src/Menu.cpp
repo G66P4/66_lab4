@@ -17,6 +17,7 @@
 #include "../include/IControladorFechaActual.h"
 #include "../include/ManejadorUsuario.h"
 #include "../include/ManejadorInmueble.h"
+#include "../include/ManejadorPublicacion.h"
 
 #include <cstdlib> 
 #include <string>
@@ -96,6 +97,10 @@ void ejecutarOpcion(int opcion) {
             break;
         case 0:
             std::cout << "Saliendo del programa..." << std::endl;
+            ManejadorInmueble::getInstance()->~ManejadorInmueble();
+            ManejadorUsuario::getInstance()->~ManejadorUsuario();
+            ManejadorPublicacion::getInstancia()->~ManejadorPublicacion();
+            Factory::getInstance()->~Factory();
             exit(0);
         default:
             std::cout << "Opcion no valida. Intente de nuevo." << std::endl;

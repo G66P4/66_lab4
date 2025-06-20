@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -fsanitize=address,leak -std=c++23 -g
+CXXFLAGS = -std=c++23 -g
 
 INCLUDE_DIR = include
 SRC_DIR = src
@@ -13,7 +13,7 @@ TARGET = $(BIN_DIR)/main
 
 all: $(TARGET)
 	@echo "Ejecutando el programa..."
-	@./$(TARGET)
+	@valgrind --leak-check=full ./$(TARGET)
 
 $(TARGET): $(OBJS) | $(BIN_DIR)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) 

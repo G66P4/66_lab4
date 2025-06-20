@@ -81,7 +81,7 @@ std::map<int, Publicacion*> ManejadorPublicacion::getPublicacionesAlquiler() con
 ManejadorPublicacion::~ManejadorPublicacion() {
     std::map<int, Publicacion*>::iterator it;
     for (it = publicaciones.begin(); it != publicaciones.end(); ++it) {
-        delete it->second;
+        it->second->~Publicacion();
     }
     publicaciones.clear();
 }

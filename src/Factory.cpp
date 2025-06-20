@@ -32,3 +32,19 @@ IControladorInmueble* Factory::getIControladorInmueble(){
 IControladorPublicacion* Factory::getIControladorPublicacion(){
     return ControladorPublicacion::getInstance();
 }
+
+Factory::~Factory() {
+    if (controladorUsuario != NULL) {
+        controladorUsuario->~IControladorUsuario();
+    }
+    if (controladorInmueble != NULL) {
+        controladorInmueble->~IControladorInmueble();
+    }
+    if (controladorPublicacion != NULL) {
+        controladorPublicacion->~IControladorPublicacion();
+    }
+    if (instance != NULL) {
+        delete instance;
+        instance = NULL;
+    }
+}
