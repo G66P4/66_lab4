@@ -135,7 +135,7 @@ bool ManejadorUsuario::esCliente( std::string& nickname) {
 ManejadorUsuario::~ManejadorUsuario() {
     std::map<std::string, Usuario*>::iterator it;   
     for(it=usuarios.begin(); it!=usuarios.end(); ++it) {
-        it->second->~Usuario(); // Liberar memoria de cada usuario
+       delete it->second; // Liberar memoria de cada usuario
     }
     usuarios.clear();
     Inmobiliarias.clear();

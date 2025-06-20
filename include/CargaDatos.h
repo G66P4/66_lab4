@@ -14,6 +14,7 @@ class CargaDatos {
     public:
         static CargaDatos* getInstance();
         ~CargaDatos();
+        static void liberarInstancia();
 };
 
 #endif

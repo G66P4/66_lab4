@@ -16,8 +16,7 @@ std::list<DTNotificacion*> Cliente::consultarNotificaciones()
 
 void Cliente::Notificar(DTNotificacion *notificacion)
 {
-    DTNotificacion* copia = new DTNotificacion(*notificacion);
-    this->notificaciones.push_back(copia);
+    this->notificaciones.push_back(notificacion);
 };
 // Getters
 std::string Cliente::getApellido()
@@ -66,8 +65,5 @@ void Cliente::eliminarSuscripcion(Inmobiliaria* inmobiliaria) {
 
 Cliente::~Cliente()
 {
-    for (DTNotificacion* notificacion : notificaciones) {
-        delete notificacion; // Liberar memoria de las notificaciones
-    }
     notificaciones.clear();
 }
