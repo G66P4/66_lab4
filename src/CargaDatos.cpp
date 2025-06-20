@@ -146,7 +146,11 @@ CargaDatos::CargaDatos() {
     controladorFechaActual->setNewFechaActual(1, 8,2024);
     controladorPublicacion->altaPublicacion("idealhome",   6, TipoPublicacion::Venta, "A estrenar en Bulevar Artigas 871 apartamento moderno.", 400000.0f);
 
-
+    delete controladorUsuario;
+    delete controladorInmueble; 
+    delete controladorPublicacion;
+    delete controladorFechaActual;
+    
 
 }
 

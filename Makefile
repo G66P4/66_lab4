@@ -13,7 +13,7 @@ TARGET = $(BIN_DIR)/main
 
 all: $(TARGET)
 	@echo "Ejecutando el programa..."
-	@valgrind --leak-check=full -s ./$(TARGET)
+	@valgrind --leak-check=full --show-leak-kinds=all -s ./$(TARGET)
 
 $(TARGET): $(OBJS) | $(BIN_DIR)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) 
