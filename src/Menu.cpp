@@ -95,13 +95,22 @@ void ejecutarOpcion(int opcion) {
             std::cout << " - ASIGNAR FECHA ACTUAL - " << std::endl;
             asignarFechaActual();
             break;
-        case 0:
+        case 0:{
             std::cout << "Saliendo del programa..." << std::endl;
             ManejadorInmueble::liberarInstancia();
             ManejadorUsuario::liberarInstancia();
             ManejadorPublicacion::liberarInstancia();
+            IControladorInmueble* CI = Factory::getInstance()->getIControladorInmueble();
+            delete CI;
+            IControladorUsuario* CU = Factory::getInstance()->getIControladorUsuario();
+            delete CU;
+            IControladorPublicacion* CP = Factory::getInstance()->getIControladorPublicacion();
+            delete CP;
+            IControladorFechaActual* CFecha = Factory::getInstance()->getIControladorFechaActual();
+            delete CFecha;
             Factory::liberarInstancia();
             exit(0);
+        }
         default:
             std::cout << "Opcion no valida. Intente de nuevo." << std::endl;
     }
@@ -237,7 +246,6 @@ void altaUsuario(){
                         //TODO: controlador->altaCasa(direccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
                         IControladorInmueble* icontroladorInm = factory->getIControladorInmueble();
                         icontroladorInm->altaCasa(inmuebleDireccion, numeroPuerta, superficie, anoConstruccion, esPH, techo, nickname);
-                        delete icontroladorInm;
                     }else{
                         int piso;
                         std::cout << "Piso: ";
@@ -255,7 +263,6 @@ void altaUsuario(){
                         //TODO: controlador->altaApartamento(direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes)
                         IControladorInmueble* icontrolador = factory->getIControladorInmueble();
                         icontrolador->altaApartamento(inmuebleDireccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes, nickname);
-                        delete icontrolador;
                     }
                 }
                 std::cout << "¿Quiere seguir ingresando? (1: Si, 0: No): ";
@@ -266,7 +273,6 @@ void altaUsuario(){
     }else{
         std::cout << "Error al crear el usuario" << std::endl;
     }
-    delete IConUsu;
 }
 
 void altaPublicacion(){
@@ -324,8 +330,6 @@ void altaPublicacion(){
         IControladorPublicacion* controladorPub = factory->getIControladorPublicacion();
         controladorPub->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio);
         //agregar notificar
-        delete controladorPub;
-        delete IControladorUsu;
         std::cout << "Publicacion creada exitosamente." << std::endl;
         }
     }
@@ -410,10 +414,8 @@ void consultaPublicaciones(){
                 << ", Tipo de Techo: " << (casa->getTecho() == Liviano ? "Liviano" : (casa->getTecho() == A_dos_aguas ? "A dos aguas" : "Plano")) << std::endl;
             }
         delete inmueble;
-        delete controladorInmueble;
         }
     }
-    delete controladorPub;
 }
 
 void eliminarInmueble(){
@@ -468,7 +470,7 @@ void eliminarInmueble(){
             controladorInm->eliminarInmueble(codigoInmueble);
         }
     }
-    delete controladorInm;
+
 }
 
 void suscribirseNotificaciones(){
@@ -538,7 +540,6 @@ void suscribirseNotificaciones(){
             }
         }
     }
-    delete conUsu;
 }
 
 void consultaNotificaciones(){
@@ -593,7 +594,6 @@ void consultaNotificaciones(){
         }
     }
   }
-  delete conUsu;
 }
 
 void eliminarSuscripciones(){
@@ -672,7 +672,6 @@ void eliminarSuscripciones(){
             }
         }
     }
-    delete conUsu;
 }
 
 void altaAdministracionPropiedad(){
@@ -724,8 +723,7 @@ void altaAdministracionPropiedad(){
     }else{
         IControladorInm->altaAdministraPropiedad(codigoInmueble, nicknameInmobiliaria);
     }
-    delete IControladorInm;
-    delete IControladorUsu;
+
 }
 
 void cargarDatos(){
