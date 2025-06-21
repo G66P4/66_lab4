@@ -52,28 +52,31 @@ DTInmuebleAdministrado* Inmueble::getinfoInmueble(Inmobiliaria* inm){
 }
 
 void Inmueble::eliminarLinksInmueble(int codigoInmueble){
+    std::list<Propietario*> listapropietarios = ManejadorUsuario::getInstance()->getPropietarios();
+    std::list<Propietario*>::iterator itprop = listapropietarios.begin();
+    bool propietarioEncontrado = false;
+    Propietario* propietario = NULL;
+    while(itprop != listapropietarios.end() && !propietarioEncontrado) {
+        propietario = *itprop;
+        propietarioEncontrado = propietario->esPropietario(codigoInmueble);
+        ++itprop;
+    }
+        propietario->removerLinkPropiedad(codigoInmueble);
+    
+
     std::set<AdministraPropiedad*>& administradores = this->getAdministracion();
     std::set<AdministraPropiedad*>::iterator it = administradores.begin();
-    while(it!=administradores.end()){
+    while(it != administradores.end()) {
         AdministraPropiedad* adminProp = *it;
         Inmobiliaria* mob = adminProp->getInmobiliaria();
-        adminProp->eliminarPublicaciones(); 
+        adminProp->eliminarPublicaciones();
         mob->eliminarLinkAdmProp(codigoInmueble);
-        std::list<Propietario*> listapropietarios=ManejadorUsuario::getInstance()->getPropietarios();
-        std::list<Propietario*>::iterator itprop = listapropietarios.begin();
-        bool propietarioEncontrado = false;
-        Propietario* propietario =NULL;
-        while(itprop != listapropietarios.end() && !propietarioEncontrado){
-            propietario = *itprop;
-            propietarioEncontrado=propietario->esPropietario(codigo);
-            ++itprop;
-        }
-        propietario->removerLinkPropiedad(codigoInmueble);
+
         std::set<AdministraPropiedad*>::iterator eliminar = it;
-        it++; 
-        administradores.erase(eliminar); 
+        ++it;
+        administradores.erase(eliminar);
     }
- 
+
 }
 
 bool Inmueble::esAdministrado(Inmobiliaria* inmobiliaria) {
@@ -93,6 +96,7 @@ void Inmueble::asociarAdministracion(AdministraPropiedad* adminProp) {
 }
 Inmueble::~Inmueble(){
     // Limpiar el set de administraciones
+    eliminarLinksInmueble(this->codigo);
     administracion.clear();
 }
 
