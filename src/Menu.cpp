@@ -302,8 +302,10 @@ void altaPublicacion(){
         if (inmueblesAdministrados.empty()) {
             std::cout << "La inmobiliaria no administra ningún inmueble actualmente." << std::endl;
         }else{
+        std::set<int> codigosInmueblesAdministrados;
         for(std::set<DTInmuebleAdministrado*>::iterator it = inmueblesAdministrados.begin(); it != inmueblesAdministrados.end(); ++it) {
             DTInmuebleAdministrado* dti = *it;
+            codigosInmueblesAdministrados.insert(dti->getCodigo());
             std::cout << "- Codigo: " << dti->getCodigo() << ", Direccion: " << dti->getDireccion() << ", Fecha comienzo administracion: " << dti->getFechaComienzo() << std::endl;
             delete dti;
         }
@@ -311,26 +313,32 @@ void altaPublicacion(){
         std::cout << "Inmueble: ";
         std::cin >> codigoInmueble;
         std::cin.ignore();
-        int inTipoPublicacion;
-        std::cout << "Tipo de Publicacion: (1: Venta, 0: Alquiler)";
-        std::cin >> inTipoPublicacion;
-        TipoPublicacion tipoPublicacion = Alquiler;
-        if(inTipoPublicacion == 1){
-            tipoPublicacion = Venta;
-        }
-        std::cin.ignore();
-        std::cout << "Texto: ";
-        std::string texto;
-        std::getline(std::cin, texto);
-        std::cout << "Precio: ";
-        float precio;
-        std::cin >> precio;
-        std::cin.ignore();
-        //TODO:Controlador->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio)
-        IControladorPublicacion* controladorPub = factory->getIControladorPublicacion();
-        controladorPub->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio);
-        //agregar notificar
-        std::cout << "Publicacion creada exitosamente." << std::endl;
+        if(codigosInmueblesAdministrados.find(codigoInmueble) == codigosInmueblesAdministrados.end()) {
+
+            std::cout << "Codigo de inmueble no encontrado." << std::endl;
+
+        }else{
+            int inTipoPublicacion;
+            std::cout << "Tipo de Publicacion: (1: Venta, 0: Alquiler)";
+            std::cin >> inTipoPublicacion;
+            TipoPublicacion tipoPublicacion = Alquiler;
+            if(inTipoPublicacion == 1){
+                tipoPublicacion = Venta;
+            }
+            std::cin.ignore();
+            std::cout << "Texto: ";
+            std::string texto;
+            std::getline(std::cin, texto);
+            std::cout << "Precio: ";
+            float precio;
+            std::cin >> precio;
+            std::cin.ignore();
+            //TODO:Controlador->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio)
+            IControladorPublicacion* controladorPub = factory->getIControladorPublicacion();
+            controladorPub->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio);
+            //agregar notificar
+            std::cout << "Publicacion creada exitosamente." << std::endl;
+            }
         }
     }
 }
