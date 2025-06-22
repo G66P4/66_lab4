@@ -156,7 +156,7 @@ void Inmobiliaria::modificar(Publicacion *pub)
     notificaciones.insert(noti);
     for (IObserver *usuario : suscriptores)
     {
-        if (usuario != nullptr)
+        if (usuario != NULL)
         {
             usuario->Notificar(noti);
         }

@@ -200,6 +200,12 @@ void ControladorUsuario::eliminarNotificaciones(std::string nicknameUsuario, std
     IObserver* suscrito = ManejadorUsuario::getInstance()->findPropietario(nicknameUsuario);
     if(suscrito != NULL && inmo != NULL){
         suscrito->eliminarNotificaciones(nicknameInmobiliaria);
+    }else{
+        IObserver* suscrito = ManejadorUsuario::getInstance()->findCliente(nicknameUsuario);
+        if (suscrito!= NULL && inmo != NULL){
+            suscrito->eliminarNotificaciones(nicknameInmobiliaria);
+        }
+        
     }
 }
     
