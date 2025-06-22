@@ -187,11 +187,19 @@ void ControladorUsuario::eliminarSuscripcion(std::string nicknameUsuario, std::s
         propietario->eliminarSuscripcion(inmobiliaria);
         inmobiliaria->eliminarSuscripcion(propietario);
     } else {
-        Cliente* cliente = ManejadorUsuario::getInstance()->findCliente(nicknameUsuario);
+        IObserver* cliente = ManejadorUsuario::getInstance()->findCliente(nicknameUsuario);
         if (cliente != NULL && inmobiliaria != NULL) {
             cliente->eliminarSuscripcion(inmobiliaria);
             inmobiliaria->eliminarSuscripcion(cliente);
         }
+    }
+}
+
+void ControladorUsuario::eliminarNotificaciones(std::string nicknameUsuario, std::string nicknameInmobiliaria){
+    Inmobiliaria* inmo = ManejadorUsuario::getInstance()->findInmobiliaria(nicknameInmobiliaria);
+    IObserver* suscrito = ManejadorUsuario::getInstance()->findPropietario(nicknameUsuario);
+    if(suscrito != NULL && inmo != NULL){
+        suscrito->eliminarNotificaciones(nicknameInmobiliaria);
     }
 }
     

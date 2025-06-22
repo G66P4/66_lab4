@@ -8,9 +8,10 @@ class IObserver{
     public:
         virtual void Notificar(DTNotificacion* notificacion) = 0;
         virtual ~IObserver() {}
-        virtual std::string getNicknameO() = 0; // Método para obtener el nickname del usuario
-        virtual void agregarSuscripcion(Inmobiliaria* inmobiliaria) = 0; // Método para agregar una suscripción a una inmobiliaria
-        virtual void eliminarSuscripcion(Inmobiliaria* inmobiliaria) = 0; // Método para eliminar una suscripción a una inmobiliaria
+        virtual std::string getNicknameO() = 0; 
+        virtual void agregarSuscripcion(Inmobiliaria* inmobiliaria) = 0; 
+        virtual void eliminarSuscripcion(Inmobiliaria* inmobiliaria) = 0; 
+        virtual void eliminarNotificaciones(std::string NickInmo) = 0;
 };
 
 #endif

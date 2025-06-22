@@ -63,6 +63,15 @@ void Cliente::eliminarSuscripcion(Inmobiliaria* inmobiliaria) {
     }
 }
 
+void Cliente::eliminarNotificaciones(std::string NickInmo){
+    for (std::list<DTNotificacion*>::iterator it = notificaciones.begin(); it != notificaciones.end(); it++){
+        DTNotificacion* DTN = *it;
+        if(DTN->getNickInmobiliaria() == NickInmo){
+            notificaciones.remove(DTN);
+        }
+    }
+}
+
 Cliente::~Cliente()
 {
     notificaciones.clear();

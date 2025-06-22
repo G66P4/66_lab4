@@ -30,6 +30,7 @@ public:
     void setDocumento( std::string nuevoDocumento);
     void agregarSuscripcion(Inmobiliaria* inmobiliaria);
     void eliminarSuscripcion(Inmobiliaria* inmobiliaria);
+    void eliminarNotificaciones(std::string NickInmo);
 };
 
 #endif

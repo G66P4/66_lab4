@@ -677,6 +677,7 @@ void eliminarSuscripciones(){
 
                 }
                 conUsu->eliminarSuscripcion(nicknameUsuario, nicknameInmobiliaria);
+                conUsu->eliminarNotificaciones(nicknameUsuario, nicknameInmobiliaria);
 
                 std::cout << "¿Desea seguir eliminando suscripciones? (1: Si, 0: No): ";
                 std::cin >> salir;
