@@ -1,7 +1,6 @@
  — Finger Bienes Raíces — 
 =
-Este repositorio contiene el desarrollo del sistema Finger Bienes Raíces©, una plataforma para la gestión de bienes inmuebles que permite la interacción entre clientes, p
-ropietarios e inmobiliarias en procesos de compra, venta y alquiler de propiedades.
+Este repositorio contiene el desarrollo del sistema Finger Bienes Raíces©, una plataforma para la gestión de bienes inmuebles que permite la interacción entre clientes, propietarios e inmobiliarias en procesos de compra, venta y alquiler de propiedades.
 Este proyecto fue realizado como parte del Laboratorio 1 de Programación 4 (2025) de la Facultad de Ingeniería - Universidad de la República (UDELAR).
 
 Funcionalidades principales del sistema
