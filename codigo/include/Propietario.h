@@ -1,0 +1,48 @@
+#ifndef PROPIETARIO_H
+#define PROPIETARIO_H
+#include "Usuario.h"
+#include "IObserver.h"
+#include "DTUsuario.h"
+#include "DTNotificacion.h"
+#include "DTInmuebleListado.h"
+#include "ManejadorInmueble.h"
+
+#include <string>
+#include <set>
+#include <list>
+#include <map>
+
+class Inmueble;
+class Inmobiliaria;
+
+class Propietario : public Usuario , public IObserver {
+    private:
+        std::string cuentaBancaria;
+        std::string telefono;
+        std::list<DTNotificacion*> notificaciones;
+        std::list<Inmueble*> inmueblesDueno;
+        std::list<Inmobiliaria*> inmobiliariasSuscritas;
+
+    public:
+        //falta Notificar a las inmobiliarias suscritas consultar suscripciones y que propietario es hoijo de iovserver(es copiar y pegar lo de Cliente)
+        Propietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono);
+        DTUsuario* getPropietarioData();
+        ~Propietario();
+        //Getters
+        std::string getCuentaBancaria();
+        std::string getTelefono();
+        std::list<Inmueble*> getInmueblesDueno();
+        std::list<DTNotificacion*> consultarNotificaciones();
+        std::string getNicknameO(); 
+
+        void Notificar(DTNotificacion* notificacion);
+        void removerLinkPropiedad(int codigoInmueble);
+        void asociarInmueble(Inmueble* inmueble);
+        bool esPropietario(int codigoInmueble);
+        void agregarSuscripcion(Inmobiliaria* inmobiliaria);
+        void eliminarSuscripcion(Inmobiliaria* inmobiliaria);
+        void eliminarNotificaciones(std::string NickInmo);
+        std::set<DTInmuebleListado*> getInmueblesNoAdmin(Inmobiliaria* inmobiliaria);
+};
+
+#endif
