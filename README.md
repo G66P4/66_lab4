@@ -1,5 +1,4 @@
-# G66P4
-Finger Bienes Raíces — Modelo de Dominio
+ — Finger Bienes Raíces — 
 =
 Este repositorio contiene el desarrollo del sistema Finger Bienes Raíces©, una plataforma para la gestión de bienes inmuebles que permite la interacción entre clientes, p
 ropietarios e inmobiliarias en procesos de compra, venta y alquiler de propiedades.
